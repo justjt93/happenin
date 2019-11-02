@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     return [
-        'title' => $faker->cityPrefix,
-        'description' => $faker->sentence(12, true),
+        'title' => $faker->jobTitle,
+        'description' => $faker->realText(200, 2),
         'latitude' => $faker->latitude(50.059148, 50.112787),
         'longitude' => $faker->longitude(14.356330, 14.467470),
         'address' => $faker->address,
