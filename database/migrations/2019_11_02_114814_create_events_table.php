@@ -23,7 +23,7 @@ class CreateEventsTable extends Migration
             $table->datetime('starts_at');
             $table->datetime('ends_at');
             $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('created_by_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
