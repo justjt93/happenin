@@ -15,6 +15,10 @@ class UserSeeder extends Seeder
 
         factory(App\User::class, 50)->create()->each(function ($user) {
             $user->comments()->save(factory(App\Comment::class)->make());
+        })->each(function ($user) {
+            $user->ratings()->save(factory(App\Rating::class)->make());
+        })->each(function ($user) {
+            $user->images()->save(factory(App\Image::class)->make());
         });
     }
 }
