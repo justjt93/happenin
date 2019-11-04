@@ -15,7 +15,8 @@
         </style>
     </head>
     <body>
-        <h1>hi new blade</h1>
+        <div id="app"></div>
+
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
