@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('/home', 'Auth\LoggedInController@index');

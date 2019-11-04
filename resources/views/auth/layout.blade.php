@@ -8,10 +8,12 @@
     <style>
       body {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         height: 100vh; /* to be adjusted once menu added */
         width: 100%;
+        
       }
 
       .form-group {
@@ -56,6 +58,7 @@
         background-color: white;
         font-size: 1rem;
       }
+
     </style>
  
     <title>@yield('title')</title>
