@@ -53,21 +53,30 @@ export default class RegForm extends React.Component {
             password_confirmation: this.state.password_confirmation
         })
       })
-      .then(response => response.json())
+      .then (response => response.json())
       .then(data => this.setState ({
         response: data
       }));
-      
-      
       // .then(data => {
       //     if (data.status === 'success') {
       //         this.props.onLoginSuccess(data.data.token);
       //     }
       // })
     }
+
+    handleRedirect = () => {
+      location.replace("../");
+    }
   
   render() {
     let errors = this.state.response ? this.state.response.errors : "";
+
+    if (this.state.response) {
+      if (this.state.response.status === "success") {
+        location.replace("../");
+      }
+    }
+    
     
     return (
         <>
@@ -96,6 +105,7 @@ export default class RegForm extends React.Component {
               
             <input type="submit" className="btn-sign-up" value="submit"/>
           </form>
+          <button onClick={this.handleRedirect}>redirect</button>
         </div>
             
         </>
