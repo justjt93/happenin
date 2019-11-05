@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./resources/sass/C:/web/bootcamp/projects/happenin/resources/sass/C:/web/bootcamp/projects/happenin/resources/sass/map.scss"],"names":[],"mappings":"AAAA;EACI;EACA","file":"/css/app.css","sourcesContent":["#app{\r\n    height: 100vh;\r\n    background: red;\r\n}"],"sourceRoot":""}
