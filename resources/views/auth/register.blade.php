@@ -6,7 +6,11 @@ Registration
  
 @section('content')
 
-  <div class="register-form">
+    <div id="register"></div>
+
+    <script src="{{ mix('js/register.js') }}"></script>
+
+  {{-- <div class="register-form">
       <h3>Registration</h3>
  
       <form action="{{ route('register') }}" method="POST">
@@ -40,7 +44,7 @@ Registration
       <button type="submit" class="btn-sign-up">Sign up</button>
     
       </form>
-  </div>
+  </div> --}}
   
   
 @endsection
