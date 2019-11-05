@@ -42,10 +42,10 @@ function renderMap() {
                     onClick={() => {
                         setSelectedEvent(event);
                     }}
-                    // icon={{
-                    //     url: `/${event.images}`,
-                    //     scaledSize: new window.google.maps.Size(25,25)
-                    // }}
+                    icon={{
+                        url: `./images/${event.type_id}.png`,
+                        scaledSize: new window.google.maps.Size(25,25)
+                    }}
                 />
             ))}
 

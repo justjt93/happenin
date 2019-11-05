@@ -1,50 +1,18 @@
 export default [
     {
-        featureType: "administrative",
-        stylers: [
-            {
-                visibility: "off"
-            }
-        ]
-    },
-    {
-        featureType: "poi",
-        stylers: [
-            {
-                visibility: "simplified"
-            }
-        ]
-    },
-    {
-        featureType: "road",
-        elementType: "labels",
-        stylers: [
-            {
-                visibility: "simplified"
-            }
-        ]
-    },
-    {
-        featureType: "water",
-        stylers: [
-            {
-                visibility: "simplified"
-            }
-        ]
-    },
-    {
-        featureType: "transit",
-        stylers: [
-            {
-                visibility: "simplified"
-            }
-        ]
-    },
-    {
         featureType: "landscape",
         stylers: [
             {
-                visibility: "simplified"
+                hue: "#FFBB00"
+            },
+            {
+                saturation: 43.400000000000006
+            },
+            {
+                lightness: 37.599999999999994
+            },
+            {
+                gamma: 1
             }
         ]
     },
@@ -52,7 +20,33 @@ export default [
         featureType: "road.highway",
         stylers: [
             {
-                visibility: "off"
+                hue: "#FFC200"
+            },
+            {
+                saturation: -61.8
+            },
+            {
+                lightness: 45.599999999999994
+            },
+            {
+                gamma: 1
+            }
+        ]
+    },
+    {
+        featureType: "road.arterial",
+        stylers: [
+            {
+                hue: "#FF0300"
+            },
+            {
+                saturation: -100
+            },
+            {
+                lightness: 51.19999999999999
+            },
+            {
+                gamma: 1
             }
         ]
     },
@@ -60,16 +54,16 @@ export default [
         featureType: "road.local",
         stylers: [
             {
-                visibility: "on"
-            }
-        ]
-    },
-    {
-        featureType: "road.highway",
-        elementType: "geometry",
-        stylers: [
+                hue: "#FF0300"
+            },
             {
-                visibility: "on"
+                saturation: -100
+            },
+            {
+                lightness: 52
+            },
+            {
+                gamma: 1
             }
         ]
     },
@@ -77,29 +71,33 @@ export default [
         featureType: "water",
         stylers: [
             {
-                color: "#84afa3"
+                hue: "#0078FF"
             },
             {
-                lightness: 52
+                saturation: -13.200000000000003
+            },
+            {
+                lightness: 2.4000000000000057
+            },
+            {
+                gamma: 1
             }
         ]
     },
     {
+        featureType: "poi",
         stylers: [
             {
-                saturation: -17
+                hue: "#00FF6A"
             },
             {
-                gamma: 0.36
-            }
-        ]
-    },
-    {
-        featureType: "transit.line",
-        elementType: "geometry",
-        stylers: [
+                saturation: -1.0989010989011234
+            },
             {
-                color: "#3f518c"
+                lightness: 11.200000000000017
+            },
+            {
+                gamma: 1
             }
         ]
     }
