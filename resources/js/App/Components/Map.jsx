@@ -1,52 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import mapstyle from './mapstyle';
 import {
     GoogleMap,
     withScriptjs,
     withGoogleMap,
-    Marker
+    Marker,
+    InfoWindow
 } from "react-google-maps";
 
-export default class Map extends React.Component {
-    constructor(props) {
-        super(props);
+function renderMap() {
+ 
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    const [data, setData] = useState([]);
 
-        this.renderMap = this.renderMap.bind(this);
-        this.state = {
-            data: [
-                {
-                    id: 1
+    async function fetchData() {
+        const res = await fetch("/api/events");
+        res.json().then(dataResponse => {
+            setData(dataResponse);
+        });
+    }
+
+    useEffect(() => {
+        if(data.length < 2) {
+            fetchData();
+        }
+    }, [data]);
+
+    return (
+        <GoogleMap
+            defaultZoom={13}
+            defaultCenter={{ lat: 50.094758, lng: 14.415807 }}
+            defaultOptions={{styles: mapstyle}}
+        >
+            {data.map(event => (
+                <Marker
+                    key={event.id}
+                    position={{
+                        lat: parseFloat(event.latitude),
+                        lng: parseFloat(event.longitude)
+                    }}
+                    onClick={() => {
+                        setSelectedEvent(event);
+                    }}
+                    // icon={{
+                    //     url: `/${event.images}`,
+                    //     scaledSize: new window.google.maps.Size(25,25)
+                    // }}
+                />
+            ))}
+
+            {selectedEvent && (
+                <InfoWindow
+                    position={{
+                        lat: parseFloat(selectedEvent.latitude),
+                        lng: parseFloat(selectedEvent.longitude)
+                    }
                 }
-            ]
-        };
-    }
-    renderMap = () => {
-        // console.log(this.state.data[0].latitude);
-        return (
-            <GoogleMap
-                defaultZoom={10}
-                defaultCenter={{ lat: 50.095593, lng: 14.358506 }}
-            >
-                {this.state.data.map(event => (
-                    <Marker
-                        key={event.id}
-                        position={{
-                            lat: event.latitude,
-                            lng: event.longitude
-                        }}
-                    />
-                ))}
-            </GoogleMap>
-        );
-    }
+                onCloseClick={() => {
+                    setSelectedEvent(null);
+                }}
+                >
+                    <div>
+                        <h2>{selectedEvent.title}</h2>
+                        <p>{selectedEvent.address}</p>
+                        <hr/>
+                        <p>{selectedEvent.description}</p>
+                        <button>more info</button>
+                    </div>
+                </InfoWindow>
+            )}
+        </GoogleMap>
+    );
+}
 
-    componentDidMount() {
-        fetch("/api/events")
-            .then(response => response.json())
-            .then(dataResponse => this.setState({ data: dataResponse }));
-    }
-
+export default class Map extends React.Component {
     render() {
-        const WrappedMap = withScriptjs(withGoogleMap(this.renderMap));
+        const WrappedMap = withScriptjs(withGoogleMap(renderMap));
 
         return (
             <WrappedMap
