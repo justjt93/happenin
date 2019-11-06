@@ -105,7 +105,6 @@ export default class RegForm extends React.Component {
               
             <input type="submit" className="btn-sign-up" value="submit"/>
           </form>
-          <button onClick={this.handleRedirect}>redirect</button>
         </div>
             
         </>
