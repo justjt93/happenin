@@ -44,7 +44,7 @@ function renderMap() {
                     }}
                     icon={{
                         url: `./images/${event.type_id}.png`,
-                        scaledSize: new window.google.maps.Size(25,25)
+                        scaledSize: new window.google.maps.Size(43,55)
                     }}
                 />
             ))}
