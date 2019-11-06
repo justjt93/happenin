@@ -8,7 +8,7 @@ export default class AddEvent extends React.Component {
       return (
           <>
               <Menu />
-              <div className="form-container">
+              <div className="auth-container">
                 <AddEventForm />
               </div>
               
