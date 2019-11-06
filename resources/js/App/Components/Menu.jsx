@@ -5,7 +5,10 @@ export default class Menu extends React.Component {
     render() {
         return (
             <>
-                <h1>Menu Component</h1>
+                <div className="menu">
+                    <h2>happenin'</h2>
+                    <img src="./images/burger.png" alt="menu"/>
+                </div>
             </>
         )
     }
