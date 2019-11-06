@@ -11,4 +11,9 @@ class EventController extends Controller
     {
         return Event::with("images")->with("ratings")->with("comments")->get();
     }
+
+    public function create()
+    {
+        return view('add-event/add-event');
+    }
 }
