@@ -1,0 +1,81 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  background-color: $primary;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  color: $primary;
+}
+
+.error-message {
+  color: red;
+  font-size: .7rem;
+}
+
+.register-form, .login-form {
+  margin-top: 8rem;
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 4px;
+  color: $primary;
+}
+
+.form-control {
+  color: $primary;
+  margin-top: .5rem;
+  border: none;
+  border-bottom: darkgrey solid 1px;
+  width: 80%;
+  font-size: 1rem;
+}
+
+.form-control::placeholder {
+  font-size: 1rem;
+  color: darkgrey;
+}
+
+.auth-h3 {
+  color: $primary;
+  margin: 1rem;
+}
+
+.auth-submit {
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-sign-up {
+  border: $primary solid 1px;
+  font-size: 1rem;
+  background-color: $secondary;
+  text-align: center;
+
+  &:hover {
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+
+.auth-label {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.auth-link-register {
+  text-align: center;
+}

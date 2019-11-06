@@ -9,6 +9,6 @@ class LoggedInController extends Controller
 {
     public function index()
     {
-        return view("auth.logged-in");
+        return json_encode(["status" => "success"]);
     }
 }

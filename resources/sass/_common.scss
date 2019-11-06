@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
@@ -9,4 +10,25 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+  color:white;
+  font-weight: normal;
+}
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0px;
+  width: 100vw;
+  height: 4rem;
+  z-index: 1;
+  padding: 1rem;
+  background-color: $primary;
+  
+  
+  img{
+    width: 35px;
+    height: 16px;
+  }
 }

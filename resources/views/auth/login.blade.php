@@ -6,7 +6,11 @@ Login
  
 @section('content')
 
-  <div class="register-form">
+    <div id="login"></div>
+
+    <script src="{{ mix('js/login.js') }}"></script>
+
+  {{-- <div class="register-form">
       <h3>Sign in</h3>
  
       <form action="{{ route('login') }}" method="POST">
@@ -30,6 +34,6 @@ Login
     
       </form>
   </div>
-  
+   --}}
   
 @endsection
