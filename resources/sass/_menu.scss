@@ -1,0 +1,80 @@
+//top menu
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 64px;
+  z-index: 1;
+  padding: 1rem;
+  background-color: $primary;
+  
+  .burger {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+
+    .line {
+      background-color: $secondary;
+      width: 100%;
+      height: 4px;
+    }
+  }
+  
+  img{
+    width: 35px;
+    height: 16px;
+  }
+
+  .menu-btn {
+    cursor: pointer;
+    padding: 1rem;
+  }
+}
+
+//sidenav
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  background-color: $primary;
+  color: $secondary;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: .95;
+  overflow-x: hidden;
+  transition: 0.5s;
+
+  .close-sidenav {
+    font-size: 50px;
+    padding: 0 32px;
+    cursor: pointer;
+    // margin-bottom: 16px;
+    align-self: flex-end;
+  }
+
+  a {
+    color: darken($secondary, 30%);
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  .sidenav-item {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+}
