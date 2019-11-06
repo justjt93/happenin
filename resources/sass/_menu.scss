@@ -58,17 +58,18 @@
     font-size: 50px;
     padding: 0 32px;
     cursor: pointer;
-    // margin-bottom: 16px;
+    margin-bottom: 16px;
     align-self: flex-end;
   }
 
   a {
-    color: darken($secondary, 30%);
+    color: $secondary;
+    border-left: solid $primary 2px;
     text-decoration: none;
     transition: 0.3s;
 
     &:hover {
-      color: $secondary;
+      text-decoration: underline;
     }
   }
 

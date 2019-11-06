@@ -25,7 +25,7 @@ export default class Menu extends React.Component {
                 </div>
                 <div className="sidenav" id="sidenav">
                     <div className="close-sidenav" onClick={this.closeNav}>&times;</div>
-                    <a href="#"><div className="sidenav-item">Login</div></a>
+                    <a href="/login"><div className="sidenav-item">Login</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
