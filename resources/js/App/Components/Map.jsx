@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import mapstyle from './mapstyle';
+import mapstyle from "./mapstyle";
 import {
     GoogleMap,
     withScriptjs,
@@ -9,7 +9,6 @@ import {
 } from "react-google-maps";
 
 function renderMap() {
- 
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [data, setData] = useState([]);
 
@@ -21,7 +20,7 @@ function renderMap() {
     }
 
     useEffect(() => {
-        if(data.length < 2) {
+        if (data.length < 2) {
             fetchData();
         }
     }, [data]);
@@ -29,8 +28,9 @@ function renderMap() {
     return (
         <GoogleMap
             defaultZoom={13}
+            maxZoom={14}
             defaultCenter={{ lat: 50.094758, lng: 14.415807 }}
-            defaultOptions={{styles: mapstyle}}
+            defaultOptions={{ styles: mapstyle, streetViewControl: false, maxZoom:18, minZoom: 12 }}
         >
             {data.map(event => (
                 <Marker
@@ -44,7 +44,7 @@ function renderMap() {
                     }}
                     icon={{
                         url: `./images/${event.type_id}.png`,
-                        scaledSize: new window.google.maps.Size(43,55)
+                        scaledSize: new window.google.maps.Size(43, 55)
                     }}
                 />
             ))}
@@ -54,16 +54,15 @@ function renderMap() {
                     position={{
                         lat: parseFloat(selectedEvent.latitude),
                         lng: parseFloat(selectedEvent.longitude)
-                    }
-                }
-                onCloseClick={() => {
-                    setSelectedEvent(null);
-                }}
+                    }}
+                    onCloseClick={() => {
+                        setSelectedEvent(null);
+                    }}
                 >
                     <div>
                         <h2>{selectedEvent.title}</h2>
                         <p>{selectedEvent.address}</p>
-                        <hr/>
+                        <hr />
                         <p>{selectedEvent.description}</p>
                         <button>more info</button>
                     </div>
