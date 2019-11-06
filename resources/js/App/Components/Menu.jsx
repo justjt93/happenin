@@ -16,7 +16,7 @@ export default class Menu extends React.Component {
         return (
             <>
                 <div className="menu">
-                    <h2>happenin'</h2>
+                    <a href="/" className="logo"><h2>happenin'</h2></a>
                     <div className="burger" id="burger" onClick={this.openNav}>
                         <div className="line"></div>
                         <div className="line"></div>
