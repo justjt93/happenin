@@ -5,17 +5,9 @@ export default class LoginForm extends React.Component {
       super(props);
 
       this.state = {
-          name: "",
           email: "",
           password: "",
-          password_confirmation: "",
       };
-    }
-
-    handleNameChange = (event) => {
-      this.setState({
-        name: event.target.value,
-      })
     }
 
     handleEmailChange = (event) => {
@@ -30,16 +22,10 @@ export default class LoginForm extends React.Component {
       })
     }
 
-    handleReTypePasswordChange = (event) => {
-      this.setState({
-        password_confirmation: event.target.value,
-      })
-    }
-
     handleSubmit = (event) => {
       event.preventDefault();
       
-      fetch('/register', {
+      fetch('/login', {
         method: 'POST',
         headers: {
             'Accept':       'application/json',
@@ -47,10 +33,8 @@ export default class LoginForm extends React.Component {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
         body: JSON.stringify({
-            name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password_confirmation: this.state.password_confirmation
         })
       })
       .then (response => response.json())
@@ -85,11 +69,6 @@ export default class LoginForm extends React.Component {
           <form action="" onSubmit={this.handleSubmit}>
 
             <div className="form-group">
-              <input type="text" className="form-control" placeholder="Your name" name="name" value={this.state.name} onChange={this.handleNameChange}/>
-              <span className="error-message">{errors.name}</span>
-            </div>
-
-            <div className="form-group">
               <input type="email" className="form-control" placeholder="Email" name="email" value={this.state.email} onChange={this.handleEmailChange}/>
               <span className="error-message">{errors.email}</span>
             </div>
@@ -99,13 +78,9 @@ export default class LoginForm extends React.Component {
               <span className="error-message">{errors.password}</span>
             </div>
 
-            <div className="form-group">
-              <input type="password" className="form-control" placeholder="Re-type password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleReTypePasswordChange}/>
-            </div>
-              
             <input type="submit" className="btn-sign-up" value="submit"/>
+            <a href="/register">Don't have an account? Register here</a>
           </form>
-          <button onClick={this.handleRedirect}>redirect</button>
         </div>
             
         </>
