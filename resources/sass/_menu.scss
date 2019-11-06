@@ -63,12 +63,13 @@
   }
 
   a {
-    color: darken($secondary, 30%);
+    color: $secondary;
+    border-left: solid $primary 2px;
     text-decoration: none;
     transition: 0.3s;
 
     &:hover {
-      color: $secondary;
+      text-decoration: underline;
     }
   }
 
