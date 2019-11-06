@@ -64,22 +64,29 @@ export default class LoginForm extends React.Component {
     
     return (
         <>
-        <div className="register-form">
-          <h3>Login Form</h3>
+        <div className="login-form">
+          <h3 className="auth-h3">Login Form</h3>
           <form action="" onSubmit={this.handleSubmit}>
 
             <div className="form-group">
-              <input type="email" className="form-control" placeholder="Email" name="email" value={this.state.email} onChange={this.handleEmailChange}/>
+              <label htmlFor="email" className="auth-label">Email</label><br/>
+              <input type="email" id="email" className="form-control" placeholder="example@example.com" name="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
               <span className="error-message">{errors.email}</span>
             </div>
 
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="Password" name="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+              <label htmlFor="password" className="auth-label">Password</label><br/>
+              <input type="password" id="password" className="form-control" name="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/><br/>
               <span className="error-message">{errors.password}</span>
             </div>
 
-            <input type="submit" className="btn-sign-up" value="submit"/>
-            <a href="/register">Don't have an account? Register here</a>
+            <div className="auth-submit">
+              <input type="submit" className="btn-sign-up" value="Login"/>
+            </div>
+
+            <div className="auth-link-register">
+              <a href="/register">Don't have an account? Register here</a>
+            </div>
           </form>
         </div>
             

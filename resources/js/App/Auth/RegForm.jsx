@@ -81,29 +81,34 @@ export default class RegForm extends React.Component {
     return (
         <>
         <div className="register-form">
-          <h3>Registration Form</h3>
+          <h3 className="auth-h3">Register</h3>
           <form action="" onSubmit={this.handleSubmit}>
 
             <div className="form-group">
-              <input type="text" className="form-control" placeholder="Your name" name="name" value={this.state.name} onChange={this.handleNameChange}/>
+              <label htmlFor="name" className="auth-label">Username</label><br/>
+              <input type="text" className="form-control" name="name" id="name" placeholder="your username" value={this.state.name} onChange={this.handleNameChange}/><br/>
               <span className="error-message">{errors.name}</span>
             </div>
 
             <div className="form-group">
-              <input type="email" className="form-control" placeholder="Email" name="email" value={this.state.email} onChange={this.handleEmailChange}/>
+            <label htmlFor="email" className="auth-label">Email</label><br/>
+              <input type="text" id="email" className="form-control" placeholder="example@example.com" name="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
               <span className="error-message">{errors.email}</span>
             </div>
 
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="Password" name="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+              <label htmlFor="password" className="auth-label">Password</label><br/>
+              <input type="password" className="form-control" id="password" placeholder="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}/><br/>
               <span className="error-message">{errors.password}</span>
             </div>
 
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="Re-type password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleReTypePasswordChange}/>
+              <input type="password" className="form-control" placeholder="re-type password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleReTypePasswordChange}/>
             </div>
-              
-            <input type="submit" className="btn-sign-up" value="submit"/>
+            
+            <div className="auth-submit">
+              <input type="submit" className="btn-sign-up" value="Create account"/>
+            </div>
           </form>
         </div>
             

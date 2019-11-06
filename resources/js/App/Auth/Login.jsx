@@ -7,11 +7,10 @@ export default class Login extends React.Component {
     render() {
       return (
           <>
+            <div className="auth-container">
               <Menu />
-              <div className="form-container">
-                <LoginForm />
-              </div>
-              
+              <LoginForm />
+            </div>
           </>
         )
     }

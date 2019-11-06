@@ -1,33 +1,44 @@
-.form-container {
-  width: 100%;
+.auth-container {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  // justify-content: center;
   align-items: center;
+  background-color: $primary;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
 }
 
 .form-group {
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  color: $primary;
 }
 
 .error-message {
   color: red;
+  font-size: .7rem;
 }
 
-.register-form {
-  background-color: black;
-  border-radius: 10px;
-  color: white;
-  padding: 2rem;
-  min-width: 50%;
+.register-form, .login-form {
+  margin-top: 8rem;
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 4px;
+  color: $primary;
 }
 
 .form-control {
-  background-color: black;
-  color: white;
+  color: $primary;
+  margin-top: .5rem;
   border: none;
   border-bottom: darkgrey solid 1px;
-  width: 100%;
+  width: 80%;
   font-size: 1rem;
 }
 
@@ -36,15 +47,35 @@
   color: darkgrey;
 }
 
-h3 {
-  margin: 0;
-  margin-bottom: 1rem;
-  text-align: center;
+.auth-h3 {
+  color: $primary;
+  margin: 1rem;
+}
+
+.auth-submit {
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-sign-up {
-  width: 100%;
-  border: none;
-  background-color: white;
+  border: $primary solid 1px;
   font-size: 1rem;
+  background-color: $secondary;
+  text-align: center;
+
+  &:hover {
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+
+.auth-label {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.auth-link-register {
+  text-align: center;
 }
