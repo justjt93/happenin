@@ -6,6 +6,7 @@ export default class AddEventForm extends React.Component {
         
     return (
         <>
+          <div className="login-form">
           <h3>Add events nearby</h3>
        
           <form action=" " method="POST">
@@ -46,7 +47,8 @@ export default class AddEventForm extends React.Component {
             <br/><br/><br/>
             <button type="submit" className="btn-sign-up">Add</button>
           
-          </form>    
+          </form>  
+          </div>  
         </>
       )
   }
