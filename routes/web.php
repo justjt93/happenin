@@ -18,3 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'Auth\LoggedInController@index');
+Route::get('/add-event', 'EventController@create');

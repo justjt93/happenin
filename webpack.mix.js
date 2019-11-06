@@ -27,6 +27,7 @@ mix.react("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .react("resources/js/register.js", "public/js")
     .react("resources/js/login.js", "public/js")
+    .react("resources/js/add-event.js", "public/js")
 
     .browserSync({
         host: "localhost",
