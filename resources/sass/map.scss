@@ -1,3 +1,46 @@
 #app{
     height: 100vh;
 }
+
+.addBtn{
+    // width: 70px;
+    // height: 70px;
+    // background: red;
+    // border-radius: 50%;
+    
+    // // padding: 15px;
+    // text-align: center;
+    // font-size: 72px;
+
+    // position: absolute;
+    // left: 3%;
+    // top: 90%;
+    // z-index: 2;
+
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color:#45b94a;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 px #999;
+
+        position: absolute;
+        bottom: 3.5vh;
+        left: 1.2vh;
+        z-index: 2;
+      
+      &:hover {background-color: rgb(76, 175, 79)}
+      
+      &:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+}
