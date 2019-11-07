@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from './Menu.jsx';
 import Map from './Map.jsx';
+import Footer from './Footer.jsx';
 
 
 export default class App extends React.Component {
@@ -13,6 +14,7 @@ export default class App extends React.Component {
               <button className="addBtn"
             //    action={/events/create}
                >+</button>
+               <Footer/>
           </>
         )
     }
