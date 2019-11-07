@@ -10,6 +10,9 @@ export default class App extends React.Component {
           <>
               <Menu />
               <Map />
+              <button className="addBtn"
+            //    action={/events/create}
+               >+</button>
           </>
         )
     }
