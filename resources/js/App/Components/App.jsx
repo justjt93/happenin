@@ -9,12 +9,10 @@ export default class App extends React.Component {
     render() {
       return (
           <>
-              <Menu />
-              <Map />
-              <button className="addBtn"
-            //    action={/events/create}
-               >+</button>
-               <Footer/>
+            <Menu />
+            <Map />
+            <a href="/events/create"><button className="addBtn">+</button></a>
+            <Footer/>
           </>
         )
     }
