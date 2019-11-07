@@ -30,7 +30,12 @@ function renderMap() {
             defaultZoom={13}
             maxZoom={14}
             defaultCenter={{ lat: 50.094758, lng: 14.415807 }}
-            defaultOptions={{ styles: mapstyle, streetViewControl: false, maxZoom:18, minZoom: 12 }}
+            defaultOptions={{
+                styles: mapstyle,
+                streetViewControl: false,
+                maxZoom: 18,
+                minZoom: 12
+            }}
         >
             {data.map(event => (
                 <Marker
@@ -59,12 +64,20 @@ function renderMap() {
                         setSelectedEvent(null);
                     }}
                 >
-                    <div>
+                    <div className='infobox-wrap'>
                         <h2>{selectedEvent.title}</h2>
-                        <p>{selectedEvent.address}</p>
+                        <p className='infobox-address'>
+                            {selectedEvent.address}
+                        </p>
                         <hr />
-                        <p>{selectedEvent.description}</p>
-                        <button>more info</button>
+                       
+                            <p className='infobox-eventdesc'>
+                                {selectedEvent.description}
+                            </p>
+                            <div className='infobox-ratingbtn-wrap'>
+                                <p>10/10 bus drivers recommend</p>
+                            <button>more info</button>
+                        </div>
                     </div>
                 </InfoWindow>
             )}
