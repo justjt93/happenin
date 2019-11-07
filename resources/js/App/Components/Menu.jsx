@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoutPopup from "../Auth/LogoutPopup.jsx";
 
 export default class Menu extends React.Component {
     constructor(props) {
@@ -6,7 +7,8 @@ export default class Menu extends React.Component {
   
         this.state = {
             logged_in: null,
-            user: null
+            user: null,
+            show_popup: false
         };
       }
 
@@ -20,6 +22,16 @@ export default class Menu extends React.Component {
         document.getElementById("burger").style.display = "flex";
     }
 
+    confirmLogout = () => {
+        this.setState({
+            show_popup: true
+        })
+    }
+
+    logoutCallback = (answer) => { //communication with LogoutPopup component
+        answer ? this.handleLogout() : this.setState({show_popup:false});
+    }
+    
     handleLogout = () => {
         fetch('/logout', {
             method: 'POST',
@@ -33,6 +45,7 @@ export default class Menu extends React.Component {
         // location.reload(true);
 
         this.setState({
+            show_popup: false,
             logged_in: false
         });
     }
@@ -51,7 +64,7 @@ export default class Menu extends React.Component {
 
         if(this.state.logged_in) {
             login = <div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div>;
-            logout = <div className="sidenav-item" onClick={this.handleLogout}>Logout</div>;
+            logout = <div className="sidenav-item" onClick={this.confirmLogout}>Logout</div>;
         } else if (this.state.logged_in === false) {
             login = <a href="/login"><div className="sidenav-item">Login</div></a>;
         }
@@ -74,6 +87,7 @@ export default class Menu extends React.Component {
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     {logout}
                 </div>
+                {this.state.show_popup ? <LogoutPopup logoutCallback={this.logoutCallback}/> : null}
             </>
         )
     }
