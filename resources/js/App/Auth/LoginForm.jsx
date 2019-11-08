@@ -56,8 +56,8 @@ export default class LoginForm extends React.Component {
     let errors = this.state.response ? this.state.response.errors : "";
 
     if (this.state.response) {
-      if (this.state.response.status === "success") {
-        location.replace("../");
+      if (this.state.response.logged) {
+        location.replace(this.state.response.intended);
       }
     }
     
