@@ -72,7 +72,7 @@ export default class RegForm extends React.Component {
     let errors = this.state.response ? this.state.response.errors : "";
 
     if (this.state.response) {
-      if (this.state.response.status === "success") {
+      if (this.state.response.registered) {
         location.replace("../");
       }
     }
