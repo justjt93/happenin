@@ -41,8 +41,6 @@ export default class Menu extends React.Component {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
           });
-        //   .then(location.reload(true)); 
-        // location.reload(true);
 
         this.setState({
             show_popup: false,
@@ -63,7 +61,7 @@ export default class Menu extends React.Component {
         let logout;
 
         if(this.state.logged_in) {
-            login = <div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div>;
+            login = <a href="/userdetail"><div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div></a>;
             logout = <div className="sidenav-item" onClick={this.confirmLogout}>Logout</div>;
         } else if (this.state.logged_in === false) {
             login = <a href="/login"><div className="sidenav-item">Login</div></a>;
