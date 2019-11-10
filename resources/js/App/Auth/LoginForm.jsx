@@ -41,11 +41,6 @@ export default class LoginForm extends React.Component {
       .then(data => this.setState ({
         response: data
       }));
-      // .then(data => {
-      //     if (data.status === 'success') {
-      //         this.props.onLoginSuccess(data.data.token);
-      //     }
-      // })
     }
 
     handleRedirect = () => {
