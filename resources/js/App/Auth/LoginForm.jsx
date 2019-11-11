@@ -41,11 +41,6 @@ export default class LoginForm extends React.Component {
       .then(data => this.setState ({
         response: data
       }));
-      // .then(data => {
-      //     if (data.status === 'success') {
-      //         this.props.onLoginSuccess(data.data.token);
-      //     }
-      // })
     }
 
     handleRedirect = () => {
@@ -56,8 +51,8 @@ export default class LoginForm extends React.Component {
     let errors = this.state.response ? this.state.response.errors : "";
 
     if (this.state.response) {
-      if (this.state.response.status === "success") {
-        location.replace("../");
+      if (this.state.response.logged) {
+        location.replace(this.state.response.intended);
       }
     }
     

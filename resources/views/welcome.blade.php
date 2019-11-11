@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="logged-in-user" content="{{auth()->user()}}">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        
-        <title>happenin'</title>
+@extends('layout')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+@section('title')
+happenin'
+@endsection
 
-        <!-- Styles -->
-        <style>
+@section('content')
 
-        </style>
-    </head>
-    <body>
         <div id="app"></div>
         <script src="{{ mix('js/app.js') }}"></script>
-        <script src="https://kit.fontawesome.com/3bca9cb446.js" crossorigin="anonymous"></script>
-    </body>
-</html>
+
+@endsection
+        
+ 

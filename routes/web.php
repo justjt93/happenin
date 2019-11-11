@@ -18,4 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'Auth\LoggedInController@index');
-Route::get('/add-event', 'EventController@create');
+
+//events routes 
+
+//Route::get('/events', 'EventController@index');
+Route::get('/events/create', 'EventController@create')->middleware('auth');
+Route::post('/events', 'EventController@store');
+
+//User detail and edit
+Route::get('/userdetail', 'UserController@index')->middleware('auth');
+Route::get('/userdetail/edit', 'UserController@edit')->middleware('auth');
+Route::post('/userdetail/edit/{id}', 'UserController@store')->middleware('auth');
+Route::post('/userdetail/passwordchange/{id}', 'UserController@changePassword')->middleware('auth');

@@ -1,4 +1,8 @@
-@extends('add-event.layouts')
+@extends('layout')
+
+@section('title')
+Add event
+@endsection
 
 @section('content')
 
