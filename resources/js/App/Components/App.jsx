@@ -2,6 +2,7 @@ import React from 'react';
 import Menu from './Menu.jsx';
 import Map from './Map.jsx';
 import Footer from './Footer.jsx';
+import AddBtn from './AddBtn.jsx';
 
 
 export default class App extends React.Component {
@@ -11,7 +12,7 @@ export default class App extends React.Component {
           <>
             <Menu />
             <Map />
-            <a href="/events/create"><button className="addBtn">+</button></a>
+            <AddBtn/>
             <Footer/>
           </>
         )

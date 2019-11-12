@@ -3,30 +3,17 @@
 }
 
 .addBtn{
-    // width: 70px;
-    // height: 70px;
-    // background: red;
-    // border-radius: 50%;
-    
-    // // padding: 15px;
-    // text-align: center;
-    // font-size: 72px;
-
-    // position: absolute;
-    // left: 3%;
-    // top: 90%;
-    // z-index: 2;
 
         display: inline-block;
-        padding: 15px 25px;
-        font-size: 24px;
+        padding: 25px 25px;
+
         cursor: pointer;
         text-align: center;
         text-decoration: none;
         outline: none;
-        color: #fff;
-        background-color:#45b94a;
-        border: none;
+        color: rgb(0, 0, 0);
+        background-color: $primary;
+        border: solid 1.5px $secondary;
         border-radius: 50%;
         box-shadow: 0 px #999;
 
@@ -43,5 +30,14 @@
         transform: translateY(4px);
       }
 
+}
+
+.hoverText {
+  position: absolute;
+  color: $secondary;
+  bottom: 0.1vh;
+  left: 2.2vh;
+  z-index: 3;
+  font-size: 44px;
 }
 
