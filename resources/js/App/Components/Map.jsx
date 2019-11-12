@@ -12,18 +12,22 @@ function renderMap() {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [data, setData] = useState([]);
 
-    async function fetchData() {
-        const res = await fetch("/api/events");
-        res.json().then(dataResponse => {
-            setData(dataResponse);
-        });
-    }
+    // async function fetchData() {
+    //     const res = await fetch("/api/events");
+    //     res.json().then(dataResponse => {
+    //         setData(dataResponse);
+    //     });
+    // }
 
     useEffect(() => {
-        if (data.length < 2) {
-            fetchData();
-        }
-    }, [data]);
+        // if (data.length < 2) {
+        //     fetchData();
+        // }
+        fetch("/api/events")
+        .then(res => res.json())
+        .then(res => {
+            setData(res)})        
+    }, []);
 
     return (
         <GoogleMap
@@ -63,6 +67,8 @@ function renderMap() {
                     onCloseClick={() => {
                         setSelectedEvent(null);
                     }}
+                    defaultOptions={{ disableAutoPan: true }}
+                    // pixelOffset={{pixelOffset: new google.maps.Size(300, 400)}}
                 >
                     <div className='infobox-wrap'>
                         <h2>{selectedEvent.title}</h2>
