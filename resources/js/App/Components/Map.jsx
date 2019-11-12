@@ -68,6 +68,7 @@ function renderMap() {
                         setSelectedEvent(null);
                     }}
                     defaultOptions={{ disableAutoPan: true }}
+                    options={{pixelOffset: new google.maps.Size(0,-55)}}
                     // pixelOffset={{pixelOffset: new google.maps.Size(300, 400)}}
                 >
                     <div className='infobox-wrap'>
