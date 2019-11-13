@@ -11,7 +11,7 @@ export default class AddEventForm extends React.Component {
         starts_at: null,
         ends_at: null,
         description:"",
-        type: null,
+        type_id: null,
     };
   }
 
@@ -61,7 +61,7 @@ export default class AddEventForm extends React.Component {
           starts_at: this.state.starts_at,
           ends_at: this.state.ends_at,
           description: this.state.description,
-          type: this.state.type,         
+          type_id: this.state.type_id,         
       })
     })
     .then (response => response.json())
@@ -105,28 +105,29 @@ export default class AddEventForm extends React.Component {
 
             <div className="form-group categories">
 
-            <label htmlFor="type">Choose categroy: </label><br/>
+            <label htmlFor="type_id">Choose categroy: </label><br/>
 
               <div className="radio-btns">
-                <input type="radio" id="control_01" name="select"value="1"  />
+                <input type="radio" id="control_01" name="type_id" value="1" onClick={(event) => {
+                this.setState({type_id: event.target.value})}} />
                 <label htmlFor="control_01">art</label>
 
-                <input type="radio" id="control_02" name="select"value="2"  />
+                <input type="radio" id="control_02" name="type_id" value="2"  onClick={(event) => {
+                this.setState({type_id: event.target.value})}}/>
                 <label htmlFor="control_02">music</label>
 
-                <input type="radio" id="control_03" name="select"value="3"  />
+                <input type="radio" id="control_03" name="type_id" value="3"  onClick={(event) => {
+                this.setState({type_id: event.target.value})}}/>
                 <label htmlFor="control_03" defaultChecked >sport</label>
 
-                <input type="radio" id="control_04" name="select"value="4"  />
+                <input type="radio" id="control_04" name="type_id" value="4"  onClick={(event) => {
+                this.setState({type_id: event.target.value})}}/>
                 <label htmlFor="control_04">chill</label>
 
-                <input type="radio" id="control_05" name="select"value="5"  />
+                <input type="radio" id="control_05" name="type_id" value="5"  onClick={(event) => {
+                this.setState({type_id: event.target.value})}}/>
                 <label htmlFor="control_04">social</label> 
               </div>       
-
-            {/*onClick={() => {
-                this.setState({type: 'art'})
-              }}*/}
               
             </div>
 

@@ -52,7 +52,7 @@ class EventController extends Controller
             'user_id'=>auth()->user()->id,
             'latitude' => $address['lat'],
             'longitude' => $address['lng'],
-            //'type_id'=>$request->input('type'),
+            'type_id'=>$request->input('type_id'),
 
         ]);
         return $event;

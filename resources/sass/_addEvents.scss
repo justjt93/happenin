@@ -13,7 +13,7 @@ input[type="radio"] {
     
     &:not(:disabled) + label {
       cursor: pointer;
-      padding: 7px;
+      padding: 10px;
       min-width: 20px;
       min-height: 20px;
       text-align: center;
@@ -22,13 +22,11 @@ input[type="radio"] {
   }
   
 input[type="radio"]:checked + label {
-    padding: 13px;
+    padding: 10px;
     background: $primary;
     color: white;
     box-shadow: 0px 0px 20px $primary;
     
-  }
-  //p {
-    //font-weight: 900;
-//}
+}
+
   
