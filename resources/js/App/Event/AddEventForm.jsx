@@ -104,22 +104,30 @@ export default class AddEventForm extends React.Component {
             </div>
 
             <div className="form-group categories">
-              <label htmlFor="type">Choose categroy: </label><br/>
-              <button type="button" className="btn art" onClick={() => {
+
+            <label htmlFor="type">Choose categroy: </label><br/>
+
+              <div className="radio-btns">
+                <input type="radio" id="control_01" name="select"value="1"  />
+                <label htmlFor="control_01">art</label>
+
+                <input type="radio" id="control_02" name="select"value="2"  />
+                <label htmlFor="control_02">music</label>
+
+                <input type="radio" id="control_03" name="select"value="3"  />
+                <label htmlFor="control_03" defaultChecked >sport</label>
+
+                <input type="radio" id="control_04" name="select"value="4"  />
+                <label htmlFor="control_04">chill</label>
+
+                <input type="radio" id="control_05" name="select"value="5"  />
+                <label htmlFor="control_04">social</label> 
+              </div>       
+
+            {/*onClick={() => {
                 this.setState({type: 'art'})
-              }}>Art</button>
-              <button type="button" className="btn music " onClick={() => {
-                this.setState({type: 'music'})
-              }}>Music</button>
-              <button type="button" className="btn sport" onClick={() => {
-                this.setState({type: 'sport'})
-              }}>Sport</button><br/><br/>
-              <button type="button" className="btn chill" onClick={() => {
-                this.setState({type: 'chill'})
-              }}>Chill</button>
-              <button type="button" className="btn social" onClick={() => {
-                this.setState({type: 'social'})
-              }}>Social</button>
+              }}*/}
+              
             </div>
 
             <br/><br/><br/>
