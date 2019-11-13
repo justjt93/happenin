@@ -1,38 +1,29 @@
-import React from 'react';
-import LogoutPopup from "../Auth/LogoutPopup.jsx";
+import React, {useState, useEffect} from 'react'
+import LogoutPopup from "../Auth/LogoutPopup.jsx"
 
-export default class Menu extends React.Component {
-    constructor(props) {
-        super(props);
-  
-        this.state = {
-            logged_in: null,
-            user: null,
-            show_popup: false
-        };
-      }
+ const Menu = () => {
+    const [logged_in, setLogged_in] = useState()
+    const [show_popup, setShow_popup] = useState(false)
 
-    openNav = () => {
-        document.getElementById("sidenav").style.width = "250px";
-        document.getElementById("burger").style.display = "none";
+    const openNav = () => {
+        document.getElementById("sidenav").style.width = "250px"
+        document.getElementById("burger").style.display = "none"
     }
 
-    closeNav = () => {
-        document.getElementById("sidenav").style.width = "0";
-        document.getElementById("burger").style.display = "flex";
+    const closeNav = () => {
+        document.getElementById("sidenav").style.width = "0"
+        document.getElementById("burger").style.display = "flex"
     }
 
-    confirmLogout = () => {
-        this.setState({
-            show_popup: true
-        })
+    const confirmLogout = () => {
+        setShow_popup(true)
     }
 
-    logoutCallback = (answer) => { //communication with LogoutPopup component
-        answer ? this.handleLogout() : this.setState({show_popup:false});
+    const logoutCallback = (answer) => { //communication with LogoutPopup component
+        answer ? handleLogout() : setShow_popup(false)
     }
     
-    handleLogout = () => {
+    const handleLogout = () => {
         fetch('/logout', {
             method: 'POST',
             headers: {
@@ -42,51 +33,47 @@ export default class Menu extends React.Component {
             },
           });
 
-        this.setState({
-            show_popup: false,
-            logged_in: false
-        });
+        setShow_popup(false)
+        setLogged_in(false)
     }
 
-    componentDidMount() {
+    useEffect(() => {
         const loggedInUser = (document.querySelector('meta[name="logged-in-user"]').getAttribute('content'));
-
-        this.setState({
-            logged_in: loggedInUser !== ""
-        });
-    }
+        setLogged_in(loggedInUser !== "")
+      }, []);
     
-    render() {
-        let login = "loading...";
-        let logout;
+    
+    let login = "loading...";
+    let logout;
 
-        if(this.state.logged_in) {
-            login = <a href="/userdetail"><div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div></a>;
-            logout = <div className="sidenav-item" onClick={this.confirmLogout}>Logout</div>;
-        } else if (this.state.logged_in === false) {
-            login = <a href="/login"><div className="sidenav-item">Login</div></a>;
-        }
+    if(logged_in) {
+        login = <a href="/userdetail"><div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div></a>;
+        logout = <div className="sidenav-item" onClick={confirmLogout}>Logout</div>;
+    } else if (logged_in === false) {
+        login = <a href="/login"><div className="sidenav-item">Login</div></a>;
+    }
         
         return (
             <>
                 <div className="menu">
                     <a href="/" className="logo"><h2>happenin'</h2></a>
-                    <div className="burger" id="burger" onClick={this.openNav}>
+                    <div className="burger" id="burger" onClick={openNav}>
                         <div className="line"></div>
                         <div className="line"></div>
                         <div className="line"></div>
                     </div>
                 </div>
                 <div className="sidenav" id="sidenav">
-                    <div className="close-sidenav" onClick={this.closeNav}>&times;</div>
+                    <div className="close-sidenav" onClick={closeNav}>&times;</div>
                     {login}
                     <a href="/events/create"><div className="sidenav-item">New event</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     {logout}
                 </div>
-                {this.state.show_popup ? <LogoutPopup logoutCallback={this.logoutCallback}/> : null}
+                {show_popup ? <LogoutPopup logoutCallback={logoutCallback}/> : null}
             </>
         )
-    }
 }
+
+export default Menu
