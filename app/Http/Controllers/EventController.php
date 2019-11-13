@@ -39,22 +39,26 @@ class EventController extends Controller
     { 
         $client = new \GuzzleHttp\Client();
         $geocoder = new Geocoder($client);
-        //dd($geocoder);
         $geocoder->setApiKey(config('geocoder.key'));
         $address = $geocoder->getCoordinatesForAddress($request->input('address'));
+              
+        //formatting inputs
+        $type_id =(int)$request->input('type_id');
         
+
         $event = Event::create([
             'title'=>$request->input('title'),
             'address'=>$request->input('address'),
-            'starts_at'=>$request->input('starts-at'),
-            'ends_at'=>$request->input('ends-at'),
+            'starts_at'=>$request->input('starts_at'),
+            'ends_at'=>$request->input('ends_at'),
             'description'=>$request->input('description'),
             'user_id'=>auth()->user()->id,
             'latitude' => $address['lat'],
             'longitude' => $address['lng'],
-            'type_id'=>$request->input('type_id'),
-
+            'type_id'=> $type_id,
         ]);
+
+        dd($event);
         return $event;
     }
 
