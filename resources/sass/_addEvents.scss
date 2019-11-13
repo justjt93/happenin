@@ -24,7 +24,7 @@ input[type="radio"] {
 input[type="radio"]:checked + label {
     padding: 13px;
     background: $primary;
-    color: $white;
+    color: white;
     box-shadow: 0px 0px 20px $primary;
     
   }
