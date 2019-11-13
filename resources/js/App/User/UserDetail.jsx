@@ -2,14 +2,10 @@ import React from 'react';
 import Menu from "../Components/Menu.jsx";
 import Footer from "../Components/Footer.jsx";
 
-export default class UserDetail extends React.Component {
+const UserDetail = () => {
     
-    render() {
       const user = (JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')));
       const date = new Date(user.created_at);
-      console.log(user);
-      
-      
 
       return (
           <>
@@ -25,5 +21,6 @@ export default class UserDetail extends React.Component {
             </div>
           </>
         )
-    }
 }
+
+export default UserDetail

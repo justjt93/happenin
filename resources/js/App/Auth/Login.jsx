@@ -2,9 +2,7 @@ import React from 'react';
 import Menu from "../Components/Menu.jsx";
 import LoginForm from "./LoginForm.jsx";
 
-export default class Login extends React.Component {
-    
-    render() {
+const Login = () =>  {
       return (
           <>
             <div className="auth-container">
@@ -13,5 +11,6 @@ export default class Login extends React.Component {
             </div>
           </>
         )
-    }
 }
+
+export default Login

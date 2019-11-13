@@ -2,18 +2,16 @@ import React from 'react';
 import Menu from "../Components/Menu.jsx";
 import RegForm from "./RegForm.jsx";
 
-export default class Register extends React.Component {
+const Register = () => {
     
-    render() {
       return (
           <>
             <div className="auth-container">
               <Menu />
               <RegForm />
-            </div>
-              
-              
+            </div>   
           </>
         )
-    }
 }
+
+export default Register
