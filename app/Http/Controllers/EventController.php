@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
+use Spatie\Geocoder\Geocoder;
 
 class EventController extends Controller
 {
@@ -36,7 +37,12 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     { 
-        //dd(auth()->user()->id);
+        $client = new \GuzzleHttp\Client();
+        $geocoder = new Geocoder($client);
+        //dd($geocoder);
+        $geocoder->setApiKey(config('geocoder.key'));
+        $address = $geocoder->getCoordinatesForAddress($request->input('address'));
+        
         $event = Event::create([
             'title'=>$request->input('title'),
             'address'=>$request->input('address'),
@@ -44,6 +50,8 @@ class EventController extends Controller
             'ends_at'=>$request->input('ends-at'),
             'description'=>$request->input('description'),
             'user_id'=>auth()->user()->id,
+            'latitude' => $address['lat'],
+            'longitude' => $address['lng'],
             //'type_id'=>$request->input('type'),
 
         ]);

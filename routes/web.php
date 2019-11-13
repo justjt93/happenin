@@ -21,7 +21,7 @@ Route::get('/home', 'Auth\LoggedInController@index');
 
 //events routes 
 
-//Route::get('/events', 'EventController@index');
+Route::get('/events', 'EventController@index');
 Route::get('/events/create', 'EventController@create')->middleware('auth');
 Route::post('/events', 'EventController@store');
 
