@@ -1,106 +1,88 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-export default class AddEventForm extends React.Component {
-  
-  constructor(props) {
-    super(props);
+ const AddEventForm = () => {
+    const [title, setTitle] = useState('');
+    const [address, setAddress] = useState('');
+    const [starts_at, setStarts_at] = useState();
+    const [ends_at, setEnds_at] = useState();
+    const [description, setDescription] = useState('');
+    const [type, setType] = useState();
+    const [data, setData] = useState();
 
-    this.state = {
-        title: "",
-        address: "",
-        starts_at: null,
-        ends_at: null,
-        description:"",
-        type: null,
-    };
-  }
 
-  handleNameChange = (event) => {
-    this.setState({
-      title: event.target.value,
-    })
-  }
 
-  handleAddressChange = (event) => {
-    this.setState({
-      address: event.target.value,
-    })
-  }
+    const handleNameChange = (event) => {
+        setTitle(event.target.value)
+    }
 
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value,
-    })
-  }
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value)
+    }
 
-  handleStartTimeChange = (event) => {
-    this.setState({
-      starts_at: event.target.value,
-    })
-  }
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value)
+    }
 
-  handleEndTimeChange = (event) => {
-    this.setState({
-      ends_at: event.target.value,
-    })
-  }
+    const handleStartTimeChange = (event) => {
+        setStarts_at(event.target.value)
+    }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    
-    fetch('/events', {
-      method: 'POST',
-      headers: {
-          'Accept':       'application/json',
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      },
-      body: JSON.stringify({
-          title: this.state.title,
-          address: this.state.address,
-          starts_at: this.state.starts_at,
-          ends_at: this.state.ends_at,
-          description: this.state.description,
-          type: this.state.type,         
-      })
-    })
-    .then (response => response.json())
-    .then(data => this.setState ({
-      response: data
-    }));
-  }
+    const handleEndTimeChange = (event) => {
+        setEnds_at(event.target.value)
+    }
 
-  render() {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        fetch('/events', {
+        method: 'POST',
+        headers: {
+            'Accept':       'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            title: title,
+            address: address,
+            starts_at: starts_at,
+            ends_at: ends_at,
+            description: description,
+            type: type,         
+        })
+        })
+        .then (response => response.json())
+        .then(data => setData (data))
+    }
         
     return (
         <>
           <div className="login-form">
           <h3>Add events nearby</h3>
        
-          <form action="" method="POST" onSubmit={this.handleSubmit}>
+          <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="name" type="text" name="name" placeholder="name of the event" onChange={this.handleNameChange}/>
+              <input className="form-control" id="name" type="text" name="name" placeholder="name of the event" onChange={handleNameChange}/>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={this.handleAddressChange} />
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleAddressChange} />
             </div>
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" value="2019-09-11T19:20" onChange={this.handleStartTimeChange}/> 
+              <input type="datetime-local" name="starts_at" value="2019-09-11T19:20" onChange={handleStartTimeChange}/> 
             </div>
 
             <div className="form-group">
               <label htmlFor="ends_atme">Ends at: </label><br/>
-              <input type="datetime-local" value="2019-09-11T19:20"onChange={this.handleEndTimeChange}/> 
+              <input type="datetime-local" value="2019-09-11T19:20"onChange={handleEndTimeChange}/> 
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={this.handleDescriptionChange}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleDescriptionChange}></textarea>
             </div>
 
             <div className="form-group categories">
@@ -125,7 +107,7 @@ export default class AddEventForm extends React.Component {
               </div>       
 
             {/*onClick={() => {
-                this.setState({type: 'art'})
+                setState({type: 'art'})
               }}*/}
               
             </div>
@@ -137,5 +119,6 @@ export default class AddEventForm extends React.Component {
           </div>  
         </>
       )
-  }
 }
+
+export default AddEventForm
