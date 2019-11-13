@@ -5,9 +5,7 @@ import Footer from './Footer.jsx';
 import AddBtn from './AddBtn.jsx';
 
 
-export default class App extends React.Component {
-    
-    render() {
+ const App = () => {
       return (
           <>
             <Menu />
@@ -16,5 +14,6 @@ export default class App extends React.Component {
             <Footer/>
           </>
         )
-    }
 }
+
+export default App
