@@ -1,31 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class LoginForm extends React.Component {
-    constructor(props) {
-      super(props);
+const LoginForm = () =>  {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [data, setData] = useState();
 
-      this.state = {
-          email: "",
-          password: "",
-      };
+        
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value)
     }
 
-    handleEmailChange = (event) => {
-      this.setState({
-        email: event.target.value,
-      })
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
     }
 
-    handlePasswordChange = (event) => {
-      this.setState({
-        password: event.target.value,
-      })
-    }
-
-    handleSubmit = (event) => {
-      event.preventDefault();
-      
-      fetch('/login', {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Accept':       'application/json',
@@ -33,26 +25,21 @@ export default class LoginForm extends React.Component {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
         body: JSON.stringify({
-            email: this.state.email,
-            password: this.state.password,
+            email: email,
+            password: password,
         })
-      })
-      .then (response => response.json())
-      .then(data => this.setState ({
-        response: data
-      }));
+    })
+    .then (response => response.json())
+    .then(data => setData(data));
     }
 
-    handleRedirect = () => {
-      location.replace("../");
-    }
+    
   
-  render() {
-    let errors = this.state.response ? this.state.response.errors : "";
+    let errors = data ? data.errors : "";
 
-    if (this.state.response) {
-      if (this.state.response.logged) {
-        location.replace(this.state.response.intended);
+    if (data) {
+      if (data.logged) {
+        location.replace(data.intended);
       }
     }
     
@@ -61,17 +48,17 @@ export default class LoginForm extends React.Component {
         <>
         <div className="login-form">
           <h3 className="auth-h3">Login Form</h3>
-          <form action="" onSubmit={this.handleSubmit}>
+          <form action="" onSubmit={handleSubmit}>
 
             <div className="form-group">
               <label htmlFor="email" className="auth-label">Email</label><br/>
-              <input type="email" id="email" className="form-control" placeholder="example@example.com" name="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
+              <input type="email" id="email" className="form-control" placeholder="example@example.com" name="email" value={email} onChange={handleEmailChange}/><br/>
               <span className="error-message">{errors.email}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="password" className="auth-label">Password</label><br/>
-              <input type="password" id="password" className="form-control" name="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/><br/>
+              <input type="password" id="password" className="form-control" name="password" placeholder="password" value={password} onChange={handlePasswordChange}/><br/>
               <span className="error-message">{errors.password}</span>
             </div>
 
@@ -87,5 +74,6 @@ export default class LoginForm extends React.Component {
             
         </>
       )
-  }
 }
+
+export default LoginForm
