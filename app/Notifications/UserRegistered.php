@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class EventAdded extends Notification
+class UserRegistered extends Notification
 {
     use Queueable;
 
@@ -19,7 +19,6 @@ class EventAdded extends Notification
     public function __construct($username)
     {
         //
-
         $this->username = $username;
     }
 
@@ -43,13 +42,13 @@ class EventAdded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->from('happenin@prague.com', "Happenin'")
-                    ->subject('Event Added')
-                    ->greeting('Hello, ' . $this->username .'!')
-                    ->line("We are happy to inform, that you successfully added a new event at Happenin'!")
-                    ->action('View Event', '/routeToShowMethod')
-                    ->line('Thank you for using our application!')
-                    ->salutation("Regards, Happenin' team!");              
+                ->from('happenin@prague.com', "Happenin'")
+                ->subject('Registration Successful')
+                ->greeting('Hello, ' . $this->username .'!')
+                ->line("We are happy to inform, that you are now successfully registered at Happenin'!")
+                ->action('Your Profile', '/routeToShowUserProfile')
+                ->line('Thank you for joining our application!')
+                ->salutation("Regards, Happenin' team!");
     }
 
     /**

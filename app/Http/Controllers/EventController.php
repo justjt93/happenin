@@ -8,7 +8,6 @@ use App\Event;
 use App\User;
 use Spatie\Geocoder\Geocoder;
 use Illuminate\Notifications\Notifiable;
-//use Illuminate\Support\Facades\Notification;
 use App\Notifications\EventAdded;
 
 class EventController extends Controller
@@ -63,11 +62,7 @@ class EventController extends Controller
             'type_id'=> $type_id,
         ]);
 
-        //$user_email = User::where('id', auth()->user()->id)->pluck('email');
         $username = auth()->user()->name;
-        //dd(auth()->user());
-        //Notification::send($user_email, new EventAdded());
-        //Notification::route('mail', $user_email)->notify(new EventAdded());
         auth()->user()->notify(new EventAdded($username));
 
         return $event;
