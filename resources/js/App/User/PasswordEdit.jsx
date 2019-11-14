@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
  const PasswordEdit = () => {
     const [formInputValues, setFormInputValues] = useState({password: null, newPassword: null, confirmNewPassword: null, id: null});
@@ -46,6 +47,7 @@ import React, {useState, useEffect} from 'react';
 
       return (
           <>
+          <Link to="/userdetail/"><div className="go-back">X</div></Link>
               <form action="" onSubmit={handleChangePasswordSubmit}>
                 <p>change password</p>
                   <input type="password" id="password" name="password" placeholder="old password" onChange={handleTextValueChange}/><br/> 

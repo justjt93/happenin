@@ -20,8 +20,8 @@ const UserDetail = () => {
                 <p>email: {user.email}</p>
                 <p>member since: {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</p>
                 <Router history={history}>
-                  <Link to="/userdetail/editinfo">Edit info</Link><br/>
-                  <Link to="/userdetail/editpassword">Edit password</Link><br/>
+                  <Link to="/userdetail/editinfo"><button>Edit info</button></Link>
+                  <Link to="/userdetail/editpassword"><button>Change password</button></Link>
                   <Route exact path='/userdetail/editinfo' component={InfoEdit} />
                   <Route exact path='/userdetail/editpassword' component={PasswordEdit} />
                 </Router>

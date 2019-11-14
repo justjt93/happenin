@@ -4,3 +4,11 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.go-back {
+  text-decoration: none;
+  text-align: right;
+  right: 0;
+  color: $primary;
+  font-weight: bold;
+}

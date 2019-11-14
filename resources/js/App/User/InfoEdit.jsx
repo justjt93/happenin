@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
  const InfoEdit = () => {
     const [formInputValues, setFormInputValues] = useState({ name: 'Loading..', email: 'Loading..', id: null});
@@ -47,6 +48,7 @@ import React, {useState, useEffect} from 'react';
 
       return (
           <>
+            <Link to="/userdetail/"><div className="go-back">X</div></Link>
             <form action="" onSubmit={handleSubmit}>
               <p>change user information</p>
               <label htmlFor="name">name</label>
