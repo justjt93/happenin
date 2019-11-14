@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
+use App\User;
 use Spatie\Geocoder\Geocoder;
+use Illuminate\Notifications\Notifiable;
+//use Illuminate\Support\Facades\Notification;
+use App\Notifications\EventAdded;
 
 class EventController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +63,13 @@ class EventController extends Controller
             'type_id'=> $type_id,
         ]);
 
-        dd($event);
+        //$user_email = User::where('id', auth()->user()->id)->pluck('email');
+        $username = auth()->user()->name;
+        //dd(auth()->user());
+        //Notification::send($user_email, new EventAdded());
+        //Notification::route('mail', $user_email)->notify(new EventAdded());
+        auth()->user()->notify(new EventAdded($username));
+
         return $event;
     }
 
