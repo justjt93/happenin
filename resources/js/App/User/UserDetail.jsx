@@ -1,6 +1,10 @@
 import React from 'react';
-import Menu from "../Components/Menu.jsx";
-import Footer from "../Components/Footer.jsx";
+import Menu from '../Components/Menu.jsx';
+import Footer from '../Components/Footer.jsx';
+import { Router, Link, Route, Switch } from 'react-router-dom';
+import history from './history';
+import InfoEdit from './InfoEdit.jsx';
+import PasswordEdit from './PasswordEdit.jsx';
 
 const UserDetail = () => {
     
@@ -15,7 +19,12 @@ const UserDetail = () => {
                 <p>username: {user.name}</p>
                 <p>email: {user.email}</p>
                 <p>member since: {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</p>
-                <a href="userdetail/edit">Edit info</a>
+                <Router history={history}>
+                  <Link to="/userdetail/editinfo"><button>Edit info</button></Link>
+                  <Link to="/userdetail/editpassword"><button>Change password</button></Link>
+                  <Route exact path='/userdetail/editinfo' component={InfoEdit} />
+                  <Route exact path='/userdetail/editpassword' component={PasswordEdit} />
+                </Router>
               </div>
               <Footer />
             </div>
