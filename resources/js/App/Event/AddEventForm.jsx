@@ -1,35 +1,17 @@
 import React, {useState} from 'react';
 
 const AddEventForm = () => {
-  const [title, setTitle] = useState("")
-  const [address, setAddress] = useState("")
-  const [starts_at, setStarts_at] = useState("2019-09-11T19:20")
-  const [ends_at, setEnds_at] = useState("2019-09-11T19:20")
-  const [description, setDescription] = useState("")
+  const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
   const [type_id, setType_id] = useState("")
   const [data, setData] = useState();
 
-  const handleNameChange = (event) => {
-    setTitle(event.target.value)
-  }
-
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value)
-  }
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value)
-  }
-
-  const handleStartTimeChange = (event) => {
-    setStarts_at(event.target.value)
-    console.log("starts_at", starts_at);
-    
-  }
-
-  const handleEndTimeChange = (event) => {
-    setEnds_at(event.target.value)
-  }
+  
+  const handleTextValueChange = e => {
+    setFormInputValues({
+      ...formInputValues,
+      [e.target.id]: e.target.value
+    })
+  };
 
   const handleCategorySelection = (event) => {
     setType_id(event.target.value)
@@ -46,11 +28,11 @@ const AddEventForm = () => {
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       },
       body: JSON.stringify({
-          title: title,
-          address: address,
-          starts_at: starts_at,
-          ends_at: ends_at,
-          description: description,
+          title: formInputValues.title,
+          address: formInputValues.address,
+          starts_at: formInputValues.starts_at,
+          ends_at: formInputValues.ends_at,
+          description: formInputValues.description,
           type_id: type_id,         
       })
     })
@@ -66,27 +48,27 @@ const AddEventForm = () => {
           <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="name" type="text" name="name" placeholder="name of the event" onChange={handleNameChange}/>
+              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange}/>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleAddressChange} />
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} />
             </div>
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" value={starts_at} onChange={handleStartTimeChange}/> 
+              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/> 
             </div>
 
             <div className="form-group">
               <label htmlFor="ends_at">Ends at: </label><br/>
-              <input type="datetime-local" name="ends_at" value={ends_at} onChange={handleEndTimeChange}/> 
+              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/> 
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleDescriptionChange}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange}></textarea>
             </div>
 
             <div className="form-group categories">
