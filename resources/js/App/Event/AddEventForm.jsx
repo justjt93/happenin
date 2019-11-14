@@ -104,12 +104,12 @@ export default class AddEventForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" value="2019-09-11T19:20" onChange={this.handleStartTimeChange}/> 
+              <input type="datetime-local" name="starts_at" value={this.handleStartTimeChange} onChange={this.handleStartTimeChange}/> 
             </div>
 
             <div className="form-group">
               <label htmlFor="ends_at">Ends at: </label><br/>
-              <input type="datetime-local" name="ends_at" value="2019-09-11T19:20" onChange={this.handleEndTimeChange}/> 
+              <input type="datetime-local" name="ends_at" value={this.handleEndTimeChange} onChange={this.handleEndTimeChange}/> 
             </div>
 
             <div className="form-group">
