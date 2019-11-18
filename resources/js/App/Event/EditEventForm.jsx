@@ -7,6 +7,9 @@ const EditEventForm = (props) => {
   const eventStart = event.starts_at.split(" ").join("T").slice(0, event.starts_at.length - 3);
   const eventEnd = event.ends_at.split(" ").join("T").slice(0, event.ends_at.length - 3);
 
+  //access user that is logged in
+  const loggedInUser = (JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')));
+
   const [formInputValues, setFormInputValues] = useState({ title: event.title, address: event.address, starts_at: eventStart, ends_at: eventEnd, description: event.description,});
   const [type_id, setType_id] = useState(`${event.type_id}`)
   const [data, setData] = useState();
@@ -24,6 +27,8 @@ const EditEventForm = (props) => {
 
   useEffect(() => {
     data ? data.id ? location.replace('/userdetail'): null : null;
+    console.log(loggedInUser.id);
+    console.log(event.user_id);
   },);
 
   const handleSubmit = (e) => {
@@ -50,12 +55,13 @@ const EditEventForm = (props) => {
   }
 
   let errors = data ? data.errors ? data.errors : "" : "";
-        
+
+  if(loggedInUser.id === event.user_id) {
     return (
-        <>
-          <div className="login-form">
+      <>
+        <div className="login-form">
           <h3>Add events nearby</h3>
-       
+      
           <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
@@ -113,10 +119,21 @@ const EditEventForm = (props) => {
             <br/><br/><br/>
             <button type="submit" className="btn-sign-up">Edit</button>
           
-          </form>  
+          </form> 
+          <a href="/userdetail"><button className="btn-sign-up">Go Back</button></a>
           </div>  
-        </>
-      )
+      </>
+    )
+  } else {
+    return (
+      <div className="login-form">
+        <h3 style={{color: "black", textAlign: "center"}}>You can't be here!</h3>
+        <a href="/userdetail"><button className="btn-sign-up">Go Back</button></a>
+      </div>
+    )
+  }
+        
+    
 }
 
 export default EditEventForm
