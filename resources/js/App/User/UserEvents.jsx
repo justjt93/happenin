@@ -15,7 +15,6 @@ const UserEvents = (props) => {
       <EventButtons
       event={event}
       />
-      
     </div>
   ))
   

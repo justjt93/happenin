@@ -26,7 +26,7 @@ const EventButtons = (props) => {
   return (
       <>
       <div className="eventBtns">
-        <Button color="success" >Edit</Button>
+        <Button color="success" href={`events/edit/${event.id}`}>Edit</Button>
         <Button color="danger" onClick={handleDeleteClick}>Delete</Button>
       </div>
       <div className="deleteEventPopup" style={{display: displayDeletePopup}}>

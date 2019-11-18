@@ -9,6 +9,7 @@
     @if(auth()->user())
     <meta name="user-events" content="{{auth()->user()->events}}">
     @endif
+    @yield('metas')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     {{-- please either delete this font if not used or import it in the CSS --}}
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> 

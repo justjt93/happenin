@@ -1,10 +1,18 @@
 import React, {useState} from 'react';
 
-const AddEventForm = () => {
-  const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
-  const [type_id, setType_id] = useState("")
-  const [data, setData] = useState();
+const EditEventForm = (props) => {
+  const {event} = props
 
+  //dealing with different time formats
+  const eventStart = event.starts_at.split(" ").join("T").slice(0, event.starts_at.length - 3);
+  const eventEnd = event.ends_at.split(" ").join("T").slice(0, event.ends_at.length - 3);
+
+  console.log(event);
+  
+
+  const [formInputValues, setFormInputValues] = useState({ title: event.title, address: event.address, starts_at: eventStart, ends_at: eventEnd, description: event.description,});
+  const [type_id, setType_id] = useState(`${event.type_id}`)
+  const [data, setData] = useState();
   
   const handleTextValueChange = e => {
     setFormInputValues({
@@ -20,7 +28,7 @@ const AddEventForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetch('/events', {
+    fetch(`/events/edit/${event.id}`, {
       method: 'POST',
       headers: {
           'Accept':       'application/json',
@@ -48,12 +56,12 @@ const AddEventForm = () => {
           <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange}/>
+              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange} value={formInputValues.title}/>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} />
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} value={formInputValues.address}/>
             </div>
 
             <div className="form-group">
@@ -68,12 +76,12 @@ const AddEventForm = () => {
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange} value={formInputValues.description}></textarea>
             </div>
 
             <div className="form-group categories">
 
-            <label htmlFor="type_id">Choose category: </label><br/>
+            <label htmlFor="type_id">Choose categroy: </label><br/>
 
               <div className="radio-btns">
                 <input type="radio" id="control_01" name="type_id" value='1' checked={type_id === "1"} onChange={handleCategorySelection} />
@@ -95,7 +103,7 @@ const AddEventForm = () => {
             </div>
 
             <br/><br/><br/>
-            <button type="submit" className="btn-sign-up">Add</button>
+            <button type="submit" className="btn-sign-up">Edit</button>
           
           </form>  
           </div>  
@@ -103,4 +111,4 @@ const AddEventForm = () => {
       )
 }
 
-export default AddEventForm
+export default EditEventForm

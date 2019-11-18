@@ -28,6 +28,7 @@ mix.react("resources/js/app.js", "public/js")
     .react("resources/js/register.js", "public/js")
     .react("resources/js/login.js", "public/js")
     .react("resources/js/add-event.js", "public/js")
+    .react("resources/js/edit-event.js", "public/js")
     .react("resources/js/user-detail.js", "public/js")
 
     .browserSync({

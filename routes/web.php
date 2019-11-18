@@ -25,6 +25,7 @@ Route::get('/events', 'EventController@index');
 Route::get('/events/create', 'EventController@create')->middleware('auth');
 Route::post('/events', 'EventController@store');
 Route::get('/events/{id}', 'EventController@show');
+Route::get('/events/edit/{id}', 'EventController@edit');
 Route::post('/events/destroy/{id}', 'EventController@destroy');
 
 //User detail and edit
