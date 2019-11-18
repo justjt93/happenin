@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-const AddEventForm = () => {
-  const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
-  const [type_id, setType_id] = useState("")
+const EditEventForm = (props) => {
+  const {event} = props
+
+  //dealing with different time formats for the form
+  const eventStart = event.starts_at.split(" ").join("T").slice(0, event.starts_at.length - 3);
+  const eventEnd = event.ends_at.split(" ").join("T").slice(0, event.ends_at.length - 3);
+
+  const [formInputValues, setFormInputValues] = useState({ title: event.title, address: event.address, starts_at: eventStart, ends_at: eventEnd, description: event.description,});
+  const [type_id, setType_id] = useState(`${event.type_id}`)
   const [data, setData] = useState();
-
   
   const handleTextValueChange = e => {
     setFormInputValues({
@@ -17,10 +22,14 @@ const AddEventForm = () => {
     setType_id(event.target.value)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    data ? data.id ? location.replace('/userdetail'): null : null;
+  },);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     
-    fetch('/events', {
+    fetch(`/events/edit/${event.id}`, {
       method: 'POST',
       headers: {
           'Accept':       'application/json',
@@ -37,8 +46,10 @@ const AddEventForm = () => {
       })
     })
     .then (response => response.json())
-    .then(data => setData(data));
+    .then(data => setData(data))
   }
+
+  let errors = data ? data.errors ? data.errors : "" : "";
         
     return (
         <>
@@ -48,27 +59,32 @@ const AddEventForm = () => {
           <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange}/>
+              <input className="form-control" id="title" type="text" name="title" placeholder="name of the event" onChange={handleTextValueChange} value={formInputValues.title}/><br/>
+              <span className="error-message">{errors.title}</span>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} />
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} value={formInputValues.address}/><br/>
+              <span className="error-message">{errors.address}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/> 
+              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/><br/>
+              <span className="error-message">{errors.starts_at}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="ends_at">Ends at: </label><br/>
-              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/> 
+              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/><br/>
+              <span className="error-message">{errors.ends_at}</span>
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange} value={formInputValues.description}/><br/>
+                <span className="error-message">{errors.description}</span>
             </div>
 
             <div className="form-group categories">
@@ -95,7 +111,7 @@ const AddEventForm = () => {
             </div>
 
             <br/><br/><br/>
-            <button type="submit" className="btn-sign-up">Add</button>
+            <button type="submit" className="btn-sign-up">Edit</button>
           
           </form>  
           </div>  
@@ -103,4 +119,4 @@ const AddEventForm = () => {
       )
 }
 
-export default AddEventForm
+export default EditEventForm
