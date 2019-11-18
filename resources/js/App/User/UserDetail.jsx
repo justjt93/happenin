@@ -1,14 +1,16 @@
 import React from 'react';
 import Menu from '../Components/Menu.jsx';
 import Footer from '../Components/Footer.jsx';
-import { Router, Link, Route, Switch } from 'react-router-dom';
+import {Router, Link, Route} from 'react-router-dom';
 import history from './history';
 import InfoEdit from './InfoEdit.jsx';
 import PasswordEdit from './PasswordEdit.jsx';
+import UserEvents from './UserEvents.jsx';
 
 const UserDetail = () => {
     
       const user = (JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')));
+      const userEvents = (JSON.parse(document.querySelector('meta[name="user-events"]').getAttribute('content')));
       const date = new Date(user.created_at);
 
       return (
@@ -25,6 +27,10 @@ const UserDetail = () => {
                   <Route exact path='/userdetail/editinfo' component={InfoEdit} />
                   <Route exact path='/userdetail/editpassword' component={PasswordEdit} />
                 </Router>
+                <UserEvents
+                user={user}
+                userEvents={userEvents}
+                />
               </div>
               <Footer />
             </div>

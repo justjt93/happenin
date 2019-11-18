@@ -9,5 +9,6 @@ Happenin' - {{auth()->user()->name}}
     <div id="user_detail"></div>
 
     <script src="{{ mix('js/user-detail.js') }}"></script>
+
   
 @endsection

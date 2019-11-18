@@ -1,0 +1,39 @@
+.userEvents {
+  width: 90%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-top: solid $primary 5px;
+  display: flex;
+  flex-direction: column;
+  
+  h2 {
+    color: $primary;
+  }
+
+  .eventItem {
+    margin: .5rem;
+    padding: .25rem;
+    border: solid $primary 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .eventTitle {
+      text-align: center;
+      border-bottom: solid $primary 2px;
+      width: 90%;
+    }
+
+    .eventDescription {
+      margin-top: 0;
+      font-size: .8rem;
+    }
+
+    .eventBtns {
+      
+      .btn {
+        margin: .25rem;
+      }
+    }
+  }
+}
