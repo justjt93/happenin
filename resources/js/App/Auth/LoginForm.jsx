@@ -70,6 +70,15 @@ const LoginForm = () =>  {
               <a href="/register">Don't have an account? Register here</a>
             </div>
           </form>
+
+          <div className="form-group">
+            <label htmlFor="socialMedia">Or Login With</label>
+            <div className="buttons-social">
+              <a href='login/facebook'>Facebook</a>
+              <a href='login/google'>Google</a>
+            </div>
+          </div>
+
         </div>
             
         </>

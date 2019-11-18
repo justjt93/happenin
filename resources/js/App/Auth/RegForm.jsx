@@ -1,11 +1,12 @@
 import React, { useState} from 'react';
 
 const RegForm = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState(window.__username ? window.__username : '');
+    const [email, setEmail] = useState(window.__useremail ? window.__useremail : '');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [data, setData] = useState();
+    const [submitting, setSubmitting] = useState(false);
 
 
     const handleNameChange = (event) => {
@@ -26,7 +27,12 @@ const RegForm = () => {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      
+      if(submitting){
+        return false;
+      }else{
+        setSubmitting(true);
+      }
+      console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'))
       fetch('/register', {
         method: 'POST',
         headers: {
@@ -42,7 +48,9 @@ const RegForm = () => {
         })
       })
       .then (response => response.json())
-      .then(data => setData(data))
+      .then(data => {
+        setData(data)
+        setSubmitting(false)})
     }
   
     let errors = data ? data.errors : "";
@@ -68,7 +76,7 @@ const RegForm = () => {
 
             <div className="form-group">
             <label htmlFor="email" className="auth-label">Email</label><br/>
-              <input type="text" id="email" className="form-control" placeholder="example@example.com" name="email" value={email} onChange={handleEmailChange}/><br/>
+              <input type="text" id="email" className="form-control" placeholder="example@example.com" name="email" value={email} onChange={handleEmailChange}/><br/>    
               <span className="error-message">{errors.email}</span>
             </div>
 
@@ -86,7 +94,16 @@ const RegForm = () => {
               <input type="submit" className="btn-sign-up" value="Create account"/>
             </div>
           </form>
+
+          <div className="form-group">
+          <label htmlFor="socialMedia">Or register with</label>
+          <div className="buttons-social">
+            <a href='/login/facebook'>Facebook</a>
+            <a href='/login/google' >Google</a>
+          </div>
         </div>
+
+        </div> 
             
         </>
       )
