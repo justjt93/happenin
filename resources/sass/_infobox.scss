@@ -1,3 +1,20 @@
+  /*style the box which holds the text of the information window*/  
+//   .gm-style .gm-style-iw {
+//     background:#ebebeb;
+//     .gm-style-iw-d{
+//         background:red;
+//     }
+//   }
+
+// .gm-style div div div div div div div div {
+//     background-color: #252525 !important;
+//     margin: 0;
+//     padding: 0;
+//     top: 0;
+//     color: #fff;
+//     font-size: 16px;
+// }
+
 .infobox-wrap{
     background:#ebebeb;
     color: black;
@@ -24,7 +41,7 @@
         font-style: italic;
         font-style: bold;
     }
-    button{
+    .moreInfoBtn{
         color: black !important;
         text-transform: uppercase;
         text-decoration: none;
@@ -46,3 +63,40 @@
     }
 
 }
+
+// class target for original classes of gmaps that actually work
+
+
+//   /*style the box which holds the text of the information window*/  
+//   .gm-style .gm-style-iw {
+//     background-color: #252525 !important;
+//     top: 0 !important;
+//     left: 0 !important;
+//     width: 100% !important;
+//     height: 100% !important;
+//     min-height: 120px !important;
+//     padding-top: 10px;
+//     display: block !important;
+//  }    
+
+//  /*style the paragraph tag*/
+//  .gm-style .gm-style-iw #google-popup p{
+//     padding: 10px;
+//  }
+
+
+// /*style the annoying little arrow at the bottom*/
+// .gm-style div div div div div div div div {
+//     background-color: #252525 !important;
+//     margin: 0;
+//     padding: 0;
+//     top: 0;
+//     color: #fff;
+//     font-size: 16px;
+// }
+
+// /*style the link*/
+// .gm-style div div div div div div div div a {
+//     color: #f1f1f1;
+//     font-weight: bold;
+// }

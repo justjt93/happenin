@@ -1,44 +1,38 @@
-import React from 'react';
+import React, { useState} from 'react';
 
-export default class RegForm extends React.Component {
-    constructor(props) {
-      super(props);
+const RegForm = () => {
+    const [name, setName] = useState(window.__username ? window.__username : '');
+    const [email, setEmail] = useState(window.__useremail ? window.__useremail : '');
+    const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    const [data, setData] = useState();
+    const [submitting, setSubmitting] = useState(false);
 
-      this.state = {
-          name: "",
-          email: "",
-          password: "",
-          password_confirmation: "",
-      };
+
+    const handleNameChange = (event) => {
+        setName(event.target.value)
     }
 
-    handleNameChange = (event) => {
-      this.setState({
-        name: event.target.value,
-      })
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value)
     }
 
-    handleEmailChange = (event) => {
-      this.setState({
-        email: event.target.value,
-      })
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
     }
 
-    handlePasswordChange = (event) => {
-      this.setState({
-        password: event.target.value,
-      })
+    const handleReTypePasswordChange = (event) => {
+        setPasswordConfirmation(event.target.value)
     }
 
-    handleReTypePasswordChange = (event) => {
-      this.setState({
-        password_confirmation: event.target.value,
-      })
-    }
-
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
       event.preventDefault();
-      
+      if(submitting){
+        return false;
+      }else{
+        setSubmitting(true);
+      }
+      console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'))
       fetch('/register', {
         method: 'POST',
         headers: {
@@ -47,32 +41,22 @@ export default class RegForm extends React.Component {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
         body: JSON.stringify({
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            password_confirmation: this.state.password_confirmation
+            name: name,
+            email: email,
+            password: password,
+            password_confirmation: passwordConfirmation
         })
       })
       .then (response => response.json())
-      .then(data => this.setState ({
-        response: data
-      }));
-      // .then(data => {
-      //     if (data.status === 'success') {
-      //         this.props.onLoginSuccess(data.data.token);
-      //     }
-      // })
-    }
-
-    handleRedirect = () => {
-      location.replace("../");
+      .then(data => {
+        setData(data)
+        setSubmitting(false)})
     }
   
-  render() {
-    let errors = this.state.response ? this.state.response.errors : "";
+    let errors = data ? data.errors : "";
 
-    if (this.state.response) {
-      if (this.state.response.registered) {
+    if (data) {
+      if (data.registered) {
         location.replace("../");
       }
     }
@@ -82,37 +66,47 @@ export default class RegForm extends React.Component {
         <>
         <div className="register-form">
           <h3 className="auth-h3">Register</h3>
-          <form action="" onSubmit={this.handleSubmit}>
+          <form action="" onSubmit={handleSubmit}>
 
             <div className="form-group">
               <label htmlFor="name" className="auth-label">Username</label><br/>
-              <input type="text" className="form-control" name="name" id="name" placeholder="your username" value={this.state.name} onChange={this.handleNameChange}/><br/>
+              <input type="text" className="form-control" name="name" id="name" placeholder="your username" value={name} onChange={handleNameChange}/><br/>
               <span className="error-message">{errors.name}</span>
             </div>
 
             <div className="form-group">
             <label htmlFor="email" className="auth-label">Email</label><br/>
-              <input type="text" id="email" className="form-control" placeholder="example@example.com" name="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
+              <input type="text" id="email" className="form-control" placeholder="example@example.com" name="email" value={email} onChange={handleEmailChange}/><br/>    
               <span className="error-message">{errors.email}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="password" className="auth-label">Password</label><br/>
-              <input type="password" className="form-control" id="password" placeholder="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}/><br/>
+              <input type="password" className="form-control" id="password" placeholder="password" name="password" value={password} onChange={handlePasswordChange}/><br/>
               <span className="error-message">{errors.password}</span>
             </div>
 
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="re-type password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleReTypePasswordChange}/>
+              <input type="password" className="form-control" placeholder="re-type password" name="password_confirmation" value={passwordConfirmation} onChange={handleReTypePasswordChange}/>
             </div>
             
             <div className="auth-submit">
               <input type="submit" className="btn-sign-up" value="Create account"/>
             </div>
           </form>
+
+          <div className="form-group">
+          <label htmlFor="socialMedia">Or register with</label>
+          <div className="buttons-social">
+            <a href='/login/facebook'>Facebook</a>
+            <a href='/login/google' >Google</a>
+          </div>
         </div>
+
+        </div> 
             
         </>
       )
-  }
 }
+
+export default RegForm

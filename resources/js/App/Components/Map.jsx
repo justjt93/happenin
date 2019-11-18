@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mapstyle from "./mapstyle";
+import BigDetail from "./BigDetail.jsx";
+
 import {
     GoogleMap,
     withScriptjs,
@@ -10,20 +12,29 @@ import {
 
 function renderMap() {
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const [bigDetailOpen, setBigDetailOpen] = useState(null);
     const [data, setData] = useState([]);
 
-    async function fetchData() {
-        const res = await fetch("/api/events");
-        res.json().then(dataResponse => {
-            setData(dataResponse);
-        });
-    }
+    // async function fetchData() {
+    //     const res = await fetch("/api/events");
+    //     res.json().then(dataResponse => {
+    //         setData(dataResponse);
+    //     });
+    // }
 
     useEffect(() => {
-        if (data.length < 2) {
-            fetchData();
-        }
-    }, [data]);
+        fetch("/api/events")
+            .then(res => res.json())
+            .then(res => {
+                setData(res);
+            });
+    }, []);
+
+    const handleMoreInfoClick = () => {
+        setBigDetailOpen(selectedEvent);
+        setSelectedEvent(null);
+        // console.log("more info", selectedEvent.id);
+    };
 
     return (
         <GoogleMap
@@ -63,6 +74,8 @@ function renderMap() {
                     onCloseClick={() => {
                         setSelectedEvent(null);
                     }}
+                    defaultOptions={{ disableAutoPan: true }}
+                    options={{ pixelOffset: new google.maps.Size(0, -55) }}
                 >
                     <div className='infobox-wrap'>
                         <h2>{selectedEvent.title}</h2>
@@ -70,16 +83,30 @@ function renderMap() {
                             {selectedEvent.address}
                         </p>
                         <hr />
-                       
-                            <p className='infobox-eventdesc'>
-                                {selectedEvent.description}
-                            </p>
-                            <div className='infobox-ratingbtn-wrap'>
-                                <p>10/10 bus drivers recommend</p>
-                            <button>more info</button>
+
+                        <p className='infobox-eventdesc'>
+                            {selectedEvent.description}
+                        </p>
+                        <div className='infobox-ratingbtn-wrap'>
+                            <p>10/10 bus drivers recommend</p>
+                            <button
+                                className='moreInfoBtn'
+                                onClick={handleMoreInfoClick}
+                            >
+                                more info
+                            </button>
                         </div>
                     </div>
                 </InfoWindow>
+            )}
+
+            {bigDetailOpen && (
+                <>
+                    <BigDetail
+                        setBigDetailOpen={setBigDetailOpen}
+                        bigDetailOpen={bigDetailOpen}
+                    />
+                </>
             )}
         </GoogleMap>
     );

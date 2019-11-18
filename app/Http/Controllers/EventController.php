@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
+use App\User;
+use Spatie\Geocoder\Geocoder;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\EventAdded;
 
 class EventController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -36,17 +41,30 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     { 
-        //dd(auth()->user()->id);
+        $client = new \GuzzleHttp\Client();
+        $geocoder = new Geocoder($client);
+        $geocoder->setApiKey(config('geocoder.key'));
+        $address = $geocoder->getCoordinatesForAddress($request->input('address'));
+              
+        //formatting inputs
+        $type_id =(int)$request->input('type_id');
+        
+
         $event = Event::create([
             'title'=>$request->input('title'),
             'address'=>$request->input('address'),
-            'starts_at'=>$request->input('starts-at'),
-            'ends_at'=>$request->input('ends-at'),
+            'starts_at'=>$request->input('starts_at'),
+            'ends_at'=>$request->input('ends_at'),
             'description'=>$request->input('description'),
             'user_id'=>auth()->user()->id,
-            //'type_id'=>$request->input('type'),
-
+            'latitude' => $address['lat'],
+            'longitude' => $address['lng'],
+            'type_id'=> $type_id,
         ]);
+
+        $username = auth()->user()->name;
+        auth()->user()->notify(new EventAdded($username));
+
         return $event;
     }
 
@@ -58,7 +76,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return $event;
     }
 
     /**
@@ -69,7 +88,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view('events.edit-event', compact('event'));
     }
 
     /**
@@ -81,7 +101,34 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:3|max:127',
+            'address' => 'required|min:3|max:127',
+            'starts_at' => 'required|max:127',
+            'ends_at' => 'required|max:127',
+            'description' => 'required|min:10|max:2000',
+         ]);
+
+        $client = new \GuzzleHttp\Client();
+        $geocoder = new Geocoder($client);
+        $geocoder->setApiKey(config('geocoder.key'));
+        $address = $geocoder->getCoordinatesForAddress($request->input('address'));
+              
+        //formatting inputs
+        $type_id =(int)$request->input('type_id');
+        
+        $event = Event::findOrFail($id);
+        $event->title = $request->input('title');
+        $event->address = $request->input('address');
+        $event->starts_at = $request->input('starts_at');
+        $event->ends_at = $request->input('ends_at');
+        $event->description = $request->input('description');
+        $event->latitude = $address['lat'];
+        $event->longitude = $address['lng'];
+        $event->type_id = $type_id;
+        $event->save();    
+
+        return $event;
     }
 
     /**
@@ -92,6 +139,8 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return "successfully deleted";
     }
 }

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -70,6 +72,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
     }
 
     public function register(Request $request)
@@ -79,7 +82,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
-
+        $user->notify(new UserRegistered($user->name));
         return $this->registered($request, $user)
                         ?: [
                             "registered" => true,

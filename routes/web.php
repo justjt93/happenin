@@ -15,15 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Login and SocialLogin routes
 Auth::routes();
 
-Route::get('/home', 'Auth\LoggedInController@index');
+Route::get('/login/{social}', 'Auth\LoginController@socialLogin')
+        ->where('social', 'facebook|google');
+Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallback')
+        ->where('social', 'facebook|google');
 
-//events routes 
-
-//Route::get('/events', 'EventController@index');
+//Events routes 
+Route::get('/events', 'EventController@index');
 Route::get('/events/create', 'EventController@create')->middleware('auth');
 Route::post('/events', 'EventController@store');
+Route::get('/events/{id}', 'EventController@show');
+Route::get('/events/edit/{id}', 'EventController@edit');
+Route::post('/events/edit/{id}', 'EventController@update');
+Route::post('/events/destroy/{id}', 'EventController@destroy');
 
 //User detail and edit
 Route::get('/userdetail', 'UserController@index')->middleware('auth');

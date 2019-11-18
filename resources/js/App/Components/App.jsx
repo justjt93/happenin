@@ -1,19 +1,18 @@
-import React from 'react';
-import Menu from './Menu.jsx';
-import Map from './Map.jsx';
-import Footer from './Footer.jsx';
+import React from "react";
+import Menu from "./Menu.jsx";
+import Map from "./Map.jsx";
+import Footer from "./Footer.jsx";
+import AddBtn from "./AddBtn.jsx";
 
-
-export default class App extends React.Component {
-    
-    render() {
-      return (
-          <>
+const App = () => {
+    return (
+        <>
             <Menu />
             <Map />
-            <a href="/events/create"><button className="addBtn">+</button></a>
-            <Footer/>
-          </>
-        )
-    }
-}
+            <AddBtn />
+            <Footer />
+        </>
+    );
+};
+
+export default App;

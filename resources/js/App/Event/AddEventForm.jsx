@@ -1,51 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-export default class AddEventForm extends React.Component {
+const AddEventForm = () => {
+  const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
+  const [type_id, setType_id] = useState("")
+  const [data, setData] = useState();
+
   
-  constructor(props) {
-    super(props);
-
-    this.state = {
-        title: "",
-        address: "",
-        starts_at: null,
-        ends_at: null,
-        description:"",
-        type: null,
-    };
-  }
-
-  handleNameChange = (event) => {
-    this.setState({
-      title: event.target.value,
+  const handleTextValueChange = e => {
+    setFormInputValues({
+      ...formInputValues,
+      [e.target.id]: e.target.value
     })
+  };
+
+  const handleCategorySelection = (event) => {
+    setType_id(event.target.value)
   }
 
-  handleAddressChange = (event) => {
-    this.setState({
-      address: event.target.value,
-    })
-  }
-
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value,
-    })
-  }
-
-  handleStartTimeChange = (event) => {
-    this.setState({
-      starts_at: event.target.value,
-    })
-  }
-
-  handleEndTimeChange = (event) => {
-    this.setState({
-      ends_at: event.target.value,
-    })
-  }
-
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     
     fetch('/events', {
@@ -56,70 +28,70 @@ export default class AddEventForm extends React.Component {
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       },
       body: JSON.stringify({
-          title: this.state.title,
-          address: this.state.address,
-          starts_at: this.state.starts_at,
-          ends_at: this.state.ends_at,
-          description: this.state.description,
-          type: this.state.type,         
+          title: formInputValues.title,
+          address: formInputValues.address,
+          starts_at: formInputValues.starts_at,
+          ends_at: formInputValues.ends_at,
+          description: formInputValues.description,
+          type_id: type_id,         
       })
     })
     .then (response => response.json())
-    .then(data => this.setState ({
-      response: data
-    }));
+    .then(data => setData(data));
   }
-
-  render() {
         
     return (
         <>
           <div className="login-form">
           <h3>Add events nearby</h3>
        
-          <form action="" method="POST" onSubmit={this.handleSubmit}>
+          <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="name" type="text" name="name" placeholder="name of the event" onChange={this.handleNameChange}/>
+              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange}/>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={this.handleAddressChange} />
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} />
             </div>
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" value="2019-09-11T19:20" onChange={this.handleStartTimeChange}/> 
+              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/> 
             </div>
 
             <div className="form-group">
-              <label htmlFor="ends_atme">Ends at: </label><br/>
-              <input type="datetime-local" value="2019-09-11T19:20"onChange={this.handleEndTimeChange}/> 
+              <label htmlFor="ends_at">Ends at: </label><br/>
+              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/> 
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={this.handleDescriptionChange}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange}></textarea>
             </div>
 
             <div className="form-group categories">
-              <label htmlFor="type">Choose categroy: </label><br/>
-              <button type="button" className="btn art" onClick={() => {
-                this.setState({type: 'art'})
-              }}>Art</button>
-              <button type="button" className="btn music " onClick={() => {
-                this.setState({type: 'music'})
-              }}>Music</button>
-              <button type="button" className="btn sport" onClick={() => {
-                this.setState({type: 'sport'})
-              }}>Sport</button><br/><br/>
-              <button type="button" className="btn chill" onClick={() => {
-                this.setState({type: 'chill'})
-              }}>Chill</button>
-              <button type="button" className="btn social" onClick={() => {
-                this.setState({type: 'social'})
-              }}>Social</button>
+
+            <label htmlFor="type_id">Choose category: </label><br/>
+
+              <div className="radio-btns">
+                <input type="radio" id="control_01" name="type_id" value='1' checked={type_id === "1"} onChange={handleCategorySelection} />
+                <label htmlFor="control_01">art</label>
+
+                <input type="radio" id="control_02" name="type_id" value="2"  checked={type_id === "2"} onChange={handleCategorySelection}/>
+                <label htmlFor="control_02">music</label>
+
+                <input type="radio" id="control_03" name="type_id" value="3"  checked={type_id === "3"} onChange={handleCategorySelection}/>
+                <label htmlFor="control_03">sport</label>
+
+                <input type="radio" id="control_04" name="type_id" value="4"  checked={type_id === "4"} onChange={handleCategorySelection}/>
+                <label htmlFor="control_04">chill</label>
+
+                <input type="radio" id="control_05" name="type_id" value="5"  checked={type_id === "5"} onChange={handleCategorySelection}/>
+                <label htmlFor="control_05">social</label> 
+              </div>       
+              
             </div>
 
             <br/><br/><br/>
@@ -129,5 +101,6 @@ export default class AddEventForm extends React.Component {
           </div>  
         </>
       )
-  }
 }
+
+export default AddEventForm
