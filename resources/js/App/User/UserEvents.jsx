@@ -1,13 +1,10 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import EventButtons from "./EventButtons.jsx"
 
 const UserEvents = (props) => {
 
   const {user, userEvents} = props
-
-  console.log(userEvents);
   
-
   const events = userEvents.length === 0 ?
   <p>no events created by {user.name}</p>
   :
@@ -15,10 +12,9 @@ const UserEvents = (props) => {
     <div className="eventItem" key={event.id}>
       <p className="eventTitle">{event.title}</p>
       <p className="eventDescription">{event.description}</p>
-      <div className="eventBtns">
-        <Button color="success">Edit</Button>
-        <Button color="danger">Delete</Button>
-      </div>
+      <EventButtons
+      event={event}
+      />
       
     </div>
   ))

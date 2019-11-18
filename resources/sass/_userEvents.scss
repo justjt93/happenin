@@ -25,15 +25,38 @@
     }
 
     .eventDescription {
-      margin-top: 0;
+      margin: 0 2rem;
       font-size: .8rem;
+      text-align: justify;
     }
 
     .eventBtns {
+      align-self: flex-end;
+      margin-right: 2rem;
       
       .btn {
         margin: .25rem;
       }
     }
+  }
+}
+
+//delete event popupu
+.deleteEventPopup {
+  background-color: $primary;
+  color: $secondary;
+  height: 50vh;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  margin-top: -15rem;
+  flex-direction: column;
+  
+
+  .closeDeletePopup {
+    padding: 1rem;
+    cursor: pointer;
+    align-self: flex-end;
+    font-weight: bold;
   }
 }

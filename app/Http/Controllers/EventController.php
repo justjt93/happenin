@@ -76,7 +76,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return $event;
     }
 
     /**
@@ -110,6 +111,8 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return "successfully deleted";
     }
 }
