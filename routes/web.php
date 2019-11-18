@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 //Login and SocialLogin routes
 Auth::routes();
-//Route::get('/home', 'Auth\LoggedInController@index');
 
 Route::get('/login/{social}', 'Auth\LoginController@socialLogin')
         ->where('social', 'facebook|google');
