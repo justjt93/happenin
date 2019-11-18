@@ -1,14 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const EditEventForm = (props) => {
   const {event} = props
 
-  //dealing with different time formats
+  //dealing with different time formats for the form
   const eventStart = event.starts_at.split(" ").join("T").slice(0, event.starts_at.length - 3);
   const eventEnd = event.ends_at.split(" ").join("T").slice(0, event.ends_at.length - 3);
-
-  console.log(event);
-  
 
   const [formInputValues, setFormInputValues] = useState({ title: event.title, address: event.address, starts_at: eventStart, ends_at: eventEnd, description: event.description,});
   const [type_id, setType_id] = useState(`${event.type_id}`)
@@ -25,8 +22,12 @@ const EditEventForm = (props) => {
     setType_id(event.target.value)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    data ? data.id ? location.replace('/userdetail'): null : null;
+  },);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     
     fetch(`/events/edit/${event.id}`, {
       method: 'POST',
@@ -45,8 +46,10 @@ const EditEventForm = (props) => {
       })
     })
     .then (response => response.json())
-    .then(data => setData(data));
+    .then(data => setData(data))
   }
+
+  let errors = data ? data.errors ? data.errors : "" : "";
         
     return (
         <>
@@ -56,32 +59,37 @@ const EditEventForm = (props) => {
           <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
-              <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange} value={formInputValues.title}/>
+              <input className="form-control" id="title" type="text" name="title" placeholder="name of the event" onChange={handleTextValueChange} value={formInputValues.title}/><br/>
+              <span className="error-message">{errors.title}</span>
             </div>
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} value={formInputValues.address}/>
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} value={formInputValues.address}/><br/>
+              <span className="error-message">{errors.address}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="starts_at">Starts at: </label><br/>
-              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/> 
+              <input type="datetime-local" name="starts_at" id="starts_at" value={formInputValues.starts_at} onChange={handleTextValueChange}/><br/>
+              <span className="error-message">{errors.starts_at}</span>
             </div>
 
             <div className="form-group">
               <label htmlFor="ends_at">Ends at: </label><br/>
-              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/> 
+              <input type="datetime-local" name="ends_at" id="ends_at" value={formInputValues.ends_at} onChange={handleTextValueChange}/><br/>
+              <span className="error-message">{errors.ends_at}</span>
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description: </label><br/>
-                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange} value={formInputValues.description}></textarea>
+                <textarea rows="4" cols="50" className="form-control" id="description" name="description" placeholder="say something about this event .." onChange={handleTextValueChange} value={formInputValues.description}/><br/>
+                <span className="error-message">{errors.description}</span>
             </div>
 
             <div className="form-group categories">
 
-            <label htmlFor="type_id">Choose categroy: </label><br/>
+            <label htmlFor="type_id">Choose category: </label><br/>
 
               <div className="radio-btns">
                 <input type="radio" id="control_01" name="type_id" value='1' checked={type_id === "1"} onChange={handleCategorySelection} />

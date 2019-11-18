@@ -101,7 +101,34 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:3|max:127',
+            'address' => 'required|min:3|max:127',
+            'starts_at' => 'required|max:127',
+            'ends_at' => 'required|max:127',
+            'description' => 'required|min:10|max:2000',
+         ]);
+
+        $client = new \GuzzleHttp\Client();
+        $geocoder = new Geocoder($client);
+        $geocoder->setApiKey(config('geocoder.key'));
+        $address = $geocoder->getCoordinatesForAddress($request->input('address'));
+              
+        //formatting inputs
+        $type_id =(int)$request->input('type_id');
+        
+        $event = Event::findOrFail($id);
+        $event->title = $request->input('title');
+        $event->address = $request->input('address');
+        $event->starts_at = $request->input('starts_at');
+        $event->ends_at = $request->input('ends_at');
+        $event->description = $request->input('description');
+        $event->latitude = $address['lat'];
+        $event->longitude = $address['lng'];
+        $event->type_id = $type_id;
+        $event->save();    
+
+        return $event;
     }
 
     /**
