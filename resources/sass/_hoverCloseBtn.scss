@@ -1,0 +1,46 @@
+.HoverCloseBtn{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+     
+    width: 50px;
+    height: 50px;
+
+
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgba(255, 0, 0, 0.5);
+    border: solid 1.5px $secondary;
+    border-radius: 50%;
+    box-shadow: 0 px #999;
+
+    position: absolute;
+    top: 3.5vh;
+    right: 1.2vh;
+    z-index: 3;
+  
+  &:hover {background-color: red}
+  
+  &:active {
+    background-color:rgb(124, 19, 19);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .HoverCloseBtnText{
+    padding: 0;
+    margin: 0;
+    align-self: center;
+    color: $secondary;
+    font-size: 44px;
+    z-index: 3;
+  }
+}
+
+
+
