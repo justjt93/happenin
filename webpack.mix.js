@@ -30,6 +30,7 @@ mix.react("resources/js/app.js", "public/js")
     .react("resources/js/add-event.js", "public/js")
     .react("resources/js/edit-event.js", "public/js")
     .react("resources/js/user-detail.js", "public/js")
+    .react("resources/js/event-list.js", "public/js")
 
     .browserSync({
         host: "localhost",

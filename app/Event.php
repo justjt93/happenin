@@ -32,4 +32,9 @@ class Event extends Model
     {
         return $this->belongsTo('App\Type');
     }
+
+    public function avgRating()
+    {   
+        return $this->ratings();
+    }
 }

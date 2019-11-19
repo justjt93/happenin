@@ -1,0 +1,136 @@
+.event-list {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+
+  .type-1 {
+    border-bottom: solid $art 5px;
+  }
+
+  .event-cover {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: .5s;
+    color: $secondary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: .7rem;
+
+    &:hover {
+      opacity: .95;
+    }
+
+    &-title {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    &-address {
+      display: flex;
+      flex-direction: column;
+      border: solid $secondary 1px;
+      margin: .25rem;
+      padding: .25rem;
+    }
+
+    &-1 {
+      background-color: $art;
+    }
+
+    &-2 {
+      background-color: $music;
+    }
+
+    &-3 {
+      background-color: $sport;
+    }
+
+    &-4 {
+      background-color: $chill;
+    }
+
+    &-5 {
+      background-color: $party;
+    }
+  }
+
+  .type-2 {
+    border-bottom: solid $music 5px;
+  }
+
+  .type-3 {
+    border-bottom: solid $sport 5px;
+  }
+
+  .type-4 {
+    border-bottom: solid $chill 5px;
+  }
+
+  .type-5 {
+    border-bottom: solid $party 5px;
+  }
+
+  &-item {
+    margin: .5rem;
+    height: 190px;
+    width: 170px;
+    border: solid $borderLightGrey 1px;
+    position: relative;
+
+    @media (min-width: 600px) {
+      height: 260px;
+      width: 220px;
+    }
+
+    .event-image {
+      width: 100%;
+      height: 45%;
+      background-color: black;
+      background-position: center;
+      background-size: cover;
+
+      @media (min-width: 600px) {
+        height: 55%;
+      }
+    }
+
+    .event-title {
+      font-size: .8rem;
+      text-align: center;
+      font-weight: bold;
+      margin: .25rem 0;
+    }
+
+    .event-rating {
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    .event-address {
+      margin-top: .5rem;
+      font-size: .6rem;
+      text-align: center;
+    }
+
+    .event-timeframe {
+      margin-top: .4rem;
+      font-size: .7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

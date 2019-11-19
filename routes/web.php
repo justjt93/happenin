@@ -25,13 +25,14 @@ Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallb
         ->where('social', 'facebook|google');
 
 //Events routes 
-Route::get('/events', 'EventController@index');
+// Route::get('/events', 'EventController@index');
 Route::get('/events/create', 'EventController@create')->middleware('auth');
 Route::post('/events', 'EventController@store');
 Route::get('/events/{id}', 'EventController@show');
 Route::get('/events/edit/{id}', 'EventController@edit');
 Route::post('/events/edit/{id}', 'EventController@update');
 Route::post('/events/destroy/{id}', 'EventController@destroy');
+Route::view('/eventlist', 'events.event-list');
 
 //User detail and edit
 Route::get('/userdetail', 'UserController@index')->middleware('auth');
