@@ -47,36 +47,48 @@ const LoginForm = () =>  {
     return (
         <>
         <div className="login-form">
-          <h3 className="auth-h3">Login Form</h3>
-          <form action="" onSubmit={handleSubmit}>
 
+          <div className="heading-form">
+            <h3 className="auth-h3">Login Form</h3>
+          </div>
+
+          <form action="" onSubmit={handleSubmit}>
+            <div className="auth-inputs">
             <div className="form-group">
-              <label htmlFor="email" className="auth-label">Email</label><br/>
+              <label htmlFor="email" className="auth-label">Email:</label><br/>
               <input type="email" id="email" className="form-control" placeholder="example@example.com" name="email" value={email} onChange={handleEmailChange}/><br/>
               <span className="error-message">{errors.email}</span>
             </div>
 
             <div className="form-group">
-              <label htmlFor="password" className="auth-label">Password</label><br/>
+              <label htmlFor="password" className="auth-label">Password:</label><br/>
               <input type="password" id="password" className="form-control" name="password" placeholder="password" value={password} onChange={handlePasswordChange}/><br/>
               <span className="error-message">{errors.password}</span>
             </div>
-
+            </div>
             <div className="auth-submit">
               <input type="submit" className="btn-sign-up" value="Login"/>
             </div>
-
-            <div className="auth-link-register">
-              <a href="/register">Don't have an account? Register here</a>
-            </div>
           </form>
 
-          <div className="form-group">
-            <label htmlFor="socialMedia">Or Login With</label>
+          <div className="auth-or">
+            <h3><span>OR</span></h3>
+          </div>
+          
+          <div className="social-group">
+
+            <label htmlFor="socialMedia">Sign in with Social Networks</label>
+
             <div className="buttons-social">
-              <a href='login/facebook'>Facebook</a>
-              <a href='login/google'>Google</a>
+              <a href='login/facebook' class="loginBtn loginBtn--facebook">Login with Facebook</a>
+              <a href='login/google' class="loginBtn loginBtn--google">Login with Google</a>
             </div>
+
+          </div>
+
+          <div className="auth-link-register">
+              <p>Don't have an account? <a href="/register">Register here!</a> </p>
+              
           </div>
 
         </div>
