@@ -59,7 +59,10 @@ const CarouselComp = props => {
                 onExited={() => setAnimating(false)}
                 key={index}
             >
-                <img src={item.url} alt={"event image"} />
+                <div className='carouselImgWrap' key={index}>
+                    {" "}
+                    <img src={item.url} alt={"event image"} />
+                </div>
             </CarouselItem>
         );
     });

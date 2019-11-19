@@ -4,14 +4,20 @@
 
 .addBtn{
 
-        display: inline-block;
-        padding: 25px 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+         
+        width: 50px;
+        height: 50px;
+
 
         cursor: pointer;
         text-align: center;
         text-decoration: none;
         outline: none;
-        color: rgb(0, 0, 0);
         background-color: $primary;
         border: solid 1.5px $secondary;
         border-radius: 50%;
@@ -30,14 +36,16 @@
         transform: translateY(4px);
       }
 
+      .addBtnText{
+        padding: 0;
+        margin: 0;
+        align-self: center;
+        color: $secondary;
+        font-size: 44px;
+        z-index: 3;
+      }
 }
 
-.hoverText {
-  position: absolute;
-  color: $secondary;
-  bottom: 0.1vh;
-  left: 2.2vh;
-  z-index: 3;
-  font-size: 44px;
-}
+
+
 
