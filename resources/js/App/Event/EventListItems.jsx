@@ -5,7 +5,7 @@ import { Spinner } from 'reactstrap';
     const {data} = props;
   
     useEffect(() => {
-      console.log(data);
+      // console.log(data);
     });
 
   return (
@@ -17,11 +17,11 @@ import { Spinner } from 'reactstrap';
               <div className={`event-cover event-cover-${event.type_id}`}>
                 <div className="event-cover-title">{event.title}</div>
                 <div className="event-cover-address">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <i className="fas fa-map-marker-alt"></i>
                   <div>{event.address}</div>
                 </div>
                 <div className="event-timeframe">
-                  <i class="fas fa-clock"></i>
+                  <i className="fas fa-clock"></i>
                   <div>{event.starts_at}</div>
                   <div>-</div>
                   <div>{event.ends_at}</div>

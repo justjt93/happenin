@@ -129,9 +129,108 @@
     }
   }
 
+
+  //pagination
   .pagination {
     width: 100%;
     display: flex;
     justify-content: center;
   }
+
+  //type filter
+  .type-filter {
+    width: 100%;
+
+    .type-row {
+      display: flex;
+      justify-content: center;
+
+      .type-btn {
+        margin: .25rem;
+        border: solid $primary 1px;
+        border-radius: 10px;
+        padding: .25rem;
+        width: 100px;
+        text-align: center;
+        transition: .5s;
+        cursor: pointer;
+
+        &-1 {
+          color: $art;
+          border-color: $art;
+
+          &:hover{
+            color: $secondary;
+            background-color: $art;
+          }
+
+          &-active {
+            color: $secondary;
+            background-color: $art;
+          }
+        }
+
+        &-2 {
+          color: $music;
+          border-color: $music;
+
+          &:hover {
+            color: $secondary;
+            background-color: $music;
+          }
+
+          &-active {
+            color: $secondary;
+            background-color: $music;
+          }
+        }
+
+        &-3 {
+          color: $sport;
+          border-color: $sport;
+
+          &:hover {
+            color: $secondary;
+            background-color: $sport;
+          }
+
+          &-active {
+            color: $secondary;
+            background-color: $sport;
+          }
+        }
+
+        &-4 {
+          color: $chill;
+          border-color: $chill;
+
+          &:hover {
+            color: $secondary;
+            background-color: $chill;
+          }
+
+          &-active {
+            color: $secondary;
+            background-color: $chill;
+          }
+        }
+
+        &-5 {
+          color: $party;
+          border-color: $party;
+
+          &:hover {
+            color: $secondary;
+            background-color: $party;
+          }
+
+          &-active {
+            color: $secondary;
+            background-color: $party;
+          }
+        }
+      }
+    }
+  }
 }
+
