@@ -27,8 +27,6 @@ const EditEventForm = (props) => {
 
   useEffect(() => {
     data ? data.id ? location.replace('/userdetail'): null : null;
-    console.log(loggedInUser.id);
-    console.log(event.user_id);
   },);
 
   const handleSubmit = (e) => {
