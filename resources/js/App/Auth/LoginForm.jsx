@@ -35,7 +35,7 @@ const LoginForm = () =>  {
 
     
   
-    let errors = data ? data.errors : "";
+    let errors = data ? data.errors ? data.errors : "" : "";
 
     if (data) {
       if (data.logged) {
