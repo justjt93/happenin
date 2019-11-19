@@ -67,7 +67,7 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
                     <div className="close-sidenav" onClick={closeNav}>&times;</div>
                     {login}
                     <a href="/events/create"><div className="sidenav-item">New event</div></a>
-                    <a href="#"><div className="sidenav-item">Test</div></a>
+                    <a href="/eventlist"><div className="sidenav-item">Events</div></a>
                     <a href="#"><div className="sidenav-item">Test</div></a>
                     {logout}
                 </div>
