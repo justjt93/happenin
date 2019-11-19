@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { Spinner } from 'reactstrap';
 
  const EventListItems = (props) => {
     const {data} = props;
@@ -42,7 +43,7 @@ import React, {useEffect} from 'react';
             </div>
             
           )
-        }) : "Loading.."}
+        }) : <div><Spinner color="dark" /><br/></div>}
       </>
   )
 }

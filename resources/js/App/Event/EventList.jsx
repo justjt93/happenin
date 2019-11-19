@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Menu from "../Components/Menu.jsx";
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Pagination, PaginationItem, PaginationLink, Spinner } from 'reactstrap';
 import EventListItems from "./EventListItems.jsx";
 
 const EventList = () => {
@@ -11,10 +11,6 @@ const EventList = () => {
           .then(response => response.json())
           .then(response => setData(response));
   }, []);
-
-  // useEffect(() => {
-  //   console.log(data);
-  // });
 
   //fetches new events on pagination click
   const handlePaginationClick = (e) => {
@@ -48,7 +44,7 @@ const EventList = () => {
   const pagination = data ? 
   loadPagination()
   :
-  "Loading";
+  <div><Spinner color="dark" /><br/></div>;
 
 
   return (
