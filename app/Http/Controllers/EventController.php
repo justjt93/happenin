@@ -26,7 +26,7 @@ class EventController extends Controller
     //paginated events
     public function paginated()
     {
-        return Event::with("images")->with("ratings")->with("comments")->with("avgRating")->paginate(16);
+        return Event::with("images")->with("ratings")->with("comments")->paginate(16);
     }
 
     /**

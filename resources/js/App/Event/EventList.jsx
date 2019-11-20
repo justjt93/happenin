@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Menu from "../Components/Menu.jsx";
 import { Pagination, PaginationItem, PaginationLink, Spinner } from 'reactstrap';
 import EventListItems from "./EventListItems.jsx";
+import TypeFilter from "./TypeFilter.jsx";
 
 const EventList = () => {
   const [data, setData] = useState();
@@ -44,7 +45,7 @@ const EventList = () => {
   const pagination = data ? 
   loadPagination()
   :
-  <div><Spinner color="dark" /><br/></div>;
+  "";
 
 
   return (
@@ -52,6 +53,7 @@ const EventList = () => {
         <Menu />
         <div className="event-list">
           {pagination}
+          <TypeFilter/>
           <EventListItems
           data={data}
           />
