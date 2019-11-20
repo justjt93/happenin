@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import Menu from "../Components/Menu.jsx";
 import AddEventForm from "./AddEventForm";
 
- const AddEvent = () => {
-      return (
-          <>
+const AddEvent = () => {
+    return (
+        <>
             <Menu />
             <div className="auth-container">
-              <AddEventForm />
+                <AddEventForm />
             </div>
-          </>
-      )
-}
+        </>
+    );
+};
 
-export default AddEvent
+export default AddEvent;

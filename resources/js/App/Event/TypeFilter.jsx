@@ -9,9 +9,9 @@ import React, {useState, useEffect} from 'react';
     '5': false,
   })
 
-  useEffect(() => {
-    console.log(active);
-  },[active]);
+  useEffect(() => { //communcation with the parent
+    props.typeCallback(active);
+  },[active])
 
   
 
