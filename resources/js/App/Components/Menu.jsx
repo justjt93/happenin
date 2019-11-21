@@ -65,7 +65,7 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
 
                     <div className="desktop-links">
                         
-                        <a href="/events/create"><div className="sidenav-item"><i class="fas fa-plus"></i>  New event</div></a> 
+                        <a href="/events/create"><div className="sidenav-item"><i className="fas fa-plus"></i>  New event</div></a> 
                         {login}  
                         {logout}
                     </div>
@@ -74,7 +74,7 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
                 <div className="sidenav" id="sidenav">
                     <div className="close-sidenav" onClick={closeNav}>&times;</div>
                     {login}
-                    <a href="/events/create"><div className="sidenav-item"><i class="fas fa-plus"></i>  New event</div></a>
+                    <a href="/events/create"><div className="sidenav-item"><i className="fas fa-plus"></i>  New event</div></a>
                     <a href="/eventlist"><div className="sidenav-item">Events</div></a>
                     {logout}
                 </div>
