@@ -1,52 +1,60 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 
 const AddEventForm = () => {
-  const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
-  const [type_id, setType_id] = useState("")
-  const [data, setData] = useState();
+    const [formInputValues, setFormInputValues] = useState({
+        title: "",
+        address: "",
+        starts_at: "2019-09-11T19:20",
+        ends_at: "2019-09-12T19:20",
+        description: "",
+        data: null
+    });
+    const [type_id, setType_id] = useState("");
+    const [data, setData] = useState();
 
-  
-  const handleTextValueChange = e => {
-    setFormInputValues({
-      ...formInputValues,
-      [e.target.id]: e.target.value
-    })
-  };
+    const handleTextValueChange = e => {
+        setFormInputValues({
+            ...formInputValues,
+            [e.target.id]: e.target.value
+        });
+    };
 
-  const handleCategorySelection = (event) => {
-    setType_id(event.target.value)
-  }
+    const handleCategorySelection = event => {
+        setType_id(event.target.value);
+    };
 
-  useEffect(() => {
-    data ? data.id ? location.replace('/'): null : null;
-  },);
+    useEffect(() => {
+        data ? (data.id ? location.replace("/") : null) : null;
+    });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    fetch('/events', {
-      method: 'POST',
-      headers: {
-          'Accept':       'application/json',
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      },
-      body: JSON.stringify({
-          title: formInputValues.title,
-          address: formInputValues.address,
-          starts_at: formInputValues.starts_at,
-          ends_at: formInputValues.ends_at,
-          description: formInputValues.description,
-          type_id: type_id,         
-      })
-    })
-    .then (response => response.json())
-    .then(data => setData(data));
-  }
+    const handleSubmit = event => {
+        event.preventDefault();
 
-  let errors = data ? data.errors ? data.errors : "" : "";
-        
+        fetch("/events", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content")
+            },
+            body: JSON.stringify({
+                title: formInputValues.title,
+                address: formInputValues.address,
+                starts_at: formInputValues.starts_at,
+                ends_at: formInputValues.ends_at,
+                description: formInputValues.description,
+                type_id: type_id
+            })
+        })
+            .then(response => response.json())
+            .then(data => setData(data));
+    };
+
+    let errors = data ? (data.errors ? data.errors : "") : "";
+
     return (
         <>
           <div className="add-event-form">
@@ -117,7 +125,7 @@ const AddEventForm = () => {
           </form>  
           </div>  
         </>
-      )
-}
+    );
+};
 
-export default AddEventForm
+export default AddEventForm;
