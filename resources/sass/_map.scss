@@ -1,6 +1,18 @@
 #app{
     height: 100vh;
+    display: flex;
 }
+.containerMap{
+height: 100vh;
+width: 60%;
+}
+
+.containerList{
+  height: 100vh;
+  width: 40%;
+}
+
+
 
 .addBtn{
 

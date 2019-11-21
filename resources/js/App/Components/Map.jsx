@@ -15,13 +15,6 @@ function renderMap() {
     const [bigDetailOpen, setBigDetailOpen] = useState(null);
     const [data, setData] = useState([]);
 
-    // async function fetchData() {
-    //     const res = await fetch("/api/events");
-    //     res.json().then(dataResponse => {
-    //         setData(dataResponse);
-    //     });
-    // }
-
     useEffect(() => {
         fetch("/api/events")
             .then(res => res.json())
@@ -33,7 +26,6 @@ function renderMap() {
     const handleMoreInfoClick = () => {
         setBigDetailOpen(selectedEvent);
         setSelectedEvent(null);
-        // console.log("more info", selectedEvent.id);
     };
 
     return (
@@ -77,20 +69,20 @@ function renderMap() {
                     defaultOptions={{ disableAutoPan: true }}
                     options={{ pixelOffset: new google.maps.Size(0, -55) }}
                 >
-                    <div className='infobox-wrap'>
+                    <div className="infobox-wrap">
                         <h2>{selectedEvent.title}</h2>
-                        <p className='infobox-address'>
+                        <p className="infobox-address">
                             {selectedEvent.address}
                         </p>
                         <hr />
 
-                        <p className='infobox-eventdesc'>
+                        <p className="infobox-eventdesc">
                             {selectedEvent.description}
                         </p>
-                        <div className='infobox-ratingbtn-wrap'>
+                        <div className="infobox-ratingbtn-wrap">
                             <p>10/10 bus drivers recommend</p>
                             <button
-                                className='moreInfoBtn'
+                                className="moreInfoBtn"
                                 onClick={handleMoreInfoClick}
                             >
                                 more info
