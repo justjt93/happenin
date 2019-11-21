@@ -159,9 +159,11 @@
           color: $art;
           border-color: $art;
 
-          &:hover{
-            color: $secondary;
-            background-color: $art;
+          @media not screen {
+            &:hover{
+              color: $secondary;
+              background-color: $art;
+            }
           }
 
           &-active {
@@ -174,9 +176,11 @@
           color: $music;
           border-color: $music;
 
-          &:hover {
-            color: $secondary;
-            background-color: $music;
+          @media not screen {
+            &:hover {
+              color: $secondary;
+              background-color: $music;
+            }
           }
 
           &-active {
@@ -189,9 +193,11 @@
           color: $sport;
           border-color: $sport;
 
-          &:hover {
-            color: $secondary;
-            background-color: $sport;
+          @media not screen {
+            &:hover {
+              color: $secondary;
+              background-color: $sport;
+            }
           }
 
           &-active {
@@ -204,9 +210,11 @@
           color: $chill;
           border-color: $chill;
 
-          &:hover {
-            color: $secondary;
-            background-color: $chill;
+          @media not screen {
+            &:hover {
+              color: $secondary;
+              background-color: $chill;
+            }
           }
 
           &-active {
@@ -219,9 +227,11 @@
           color: $party;
           border-color: $party;
 
-          &:hover {
-            color: $secondary;
-            background-color: $party;
+          @media not screen {
+            &:hover {
+              color: $secondary;
+              background-color: $party;
+            }
           }
 
           &-active {

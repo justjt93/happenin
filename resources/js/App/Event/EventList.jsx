@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Menu from "../Components/Menu.jsx";
-import {
-    Pagination,
-    PaginationItem,
-    PaginationLink,
-    Spinner
-} from "reactstrap";
+import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import EventListItems from "./EventListItems.jsx";
 import TypeFilter from "./TypeFilter.jsx";
 
 const EventList = () => {
     const [data, setData] = useState();
     const [typeData, setTypeData] = useState();
+    const [typeStr, setTypeStr] = useState(""); 
 
-    //string containing active types
-    let typeStr = "";
-
+    //initial fetch, fetches all events paginated
     useEffect(() => {
         fetch("/api/events/paginated")
             .then(response => response.json())
@@ -24,26 +18,37 @@ const EventList = () => {
 
     //fetches new events on pagination click
     const handlePaginationClick = e => {
-        fetch(`/api/events/paginated?page=${e.target.innerHTML}`)
+        let URL;
+
+        if (typeStr === "") {
+            URL = `/api/events/paginated?page=${e.target.innerHTML}`;
+        } else {
+            URL = `/api/events/paginated?type=${typeStr}&page=${e.target.innerHTML}`;
+        }
+
+        fetch(URL)
             .then(response => response.json())
             .then(response => setData(response));
     };
 
-    for (let i = 0; i < 3; i++) {
-        console.log("pes");
-    }
-
+    //creates string for the type query
     useEffect(() => {
         if (data) {
-            typeStr = "";
+            setTypeStr("");
             for (const type in typeData) {
                 if (typeData[type]) {
-                    typeStr += type;
+                    setTypeStr(prevState => prevState + type);
                 }
             }
         }
-        console.log(typeStr);
     }, [typeData]);
+
+    //fetches new API whenever user clicks on one of the types
+    useEffect(() => {
+        fetch(`/api/events/paginated?type=${typeStr}`)
+                .then(response => response.json())
+                .then(response => setData(response));
+    }, [typeStr]);
 
     //creates pagination in reactstrap
     const loadPagination = () => {

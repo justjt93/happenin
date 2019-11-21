@@ -24,9 +24,14 @@ class EventController extends Controller
     }
 
     //paginated events
-    public function paginated()
+    public function paginated(Request $request)
     {
-        return Event::with("images")->with("ratings")->with("comments")->paginate(16);
+        $type = str_split($request->input('type'));
+        if ($type[0] !== "") {
+            return Event::wherein('type_id', $type)->with("images")->with("ratings")->with("comments")->paginate(12);
+        } else {
+            return Event::with("images")->with("ratings")->with("comments")->paginate(12);
+        }
     }
 
     /**
