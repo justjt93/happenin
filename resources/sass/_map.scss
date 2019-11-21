@@ -2,16 +2,37 @@
     height: 100vh;
     display: flex;
 }
-.containerMap{
-height: 100vh;
-width: 60%;
+
+@media (min-width: 800px){
+  .containerMap{
+    height: 100vh;
+    width: 60%;
+  }
 }
 
-.containerList{
-  height: 100vh;
-  width: 40%;
+@media (max-width: 800px){
+  .containerMap{
+    height: 100vh;
+    width: 100%;
+  }
 }
 
+@media (min-width: 800px) {
+  .containerList{
+    height: 100vh;
+    width: 40%;
+    overflow: scroll;
+  }
+  .menu-list, .footer-list{
+    display: none;
+  }  
+}
+
+@media (max-width:800px){
+  .containerList{
+    display: none;
+  }
+}
 
 
 .addBtn{
