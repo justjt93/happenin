@@ -27,10 +27,31 @@ class EventController extends Controller
     public function paginated(Request $request)
     {
         $type = str_split($request->input('type'));
-        if ($type[0] !== "") {
-            return Event::wherein('type_id', $type)->with("images")->with("ratings")->with("comments")->paginate(12);
+        $search = $request->input('search');
+        // return $search == "" ? "true" : "false";
+        if ($type[0] !== "" && $search !== "") {
+            return Event::wherein('type_id', $type)
+                ->where('title', 'like', '%' . $search . '%')
+                ->with("images")->with("ratings")
+                ->with("comments")
+                ->paginate(12);
+        } elseif ($type[0] !== "") {
+            return Event::wherein('type_id', $type)
+                ->with("images")
+                ->with("ratings")
+                ->with("comments")
+                ->paginate(12);
+        } elseif ($search !== "") {
+            return Event::where('title', 'like', '%' . $search . '%')
+                ->with("images")
+                ->with("ratings")
+                ->with("comments")
+                ->paginate(12);
         } else {
-            return Event::with("images")->with("ratings")->with("comments")->paginate(12);
+            return Event::with("images")
+                ->with("ratings")
+                ->with("comments")
+                ->paginate(12);
         }
     }
 

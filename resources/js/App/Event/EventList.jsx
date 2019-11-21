@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Menu from "../Components/Menu.jsx";
-import { PaginationItem, PaginationLink, Pagination } from 'reactstrap';
+import { PaginationItem, PaginationLink, Pagination } from "reactstrap";
 import EventListItems from "./EventListItems.jsx";
 import TypeFilter from "./TypeFilter.jsx";
+import Searchbar from "./Searchbar.jsx";
 
 const EventList = () => {
     const [data, setData] = useState();
     const [typeData, setTypeData] = useState();
-    const [typeStr, setTypeStr] = useState(""); 
+    const [searchData, setSearchData] = useState("");
+    const [typeStr, setTypeStr] = useState("");
 
     //initial fetch, fetches all events paginated
     useEffect(() => {
@@ -20,10 +22,14 @@ const EventList = () => {
     const handlePaginationClick = e => {
         let URL;
 
-        if (typeStr === "") {
-            URL = `/api/events/paginated?page=${e.target.innerHTML}`;
-        } else {
+        if (searchData !== "" && typeStr !== "") {
+            URL = `/api/events/paginated?type=${typeStr}&search=${searchData}&page=${e.target.innerHTML}`;
+        } else if (typeStr !== "") {
             URL = `/api/events/paginated?type=${typeStr}&page=${e.target.innerHTML}`;
+        } else if (searchData !== "") {
+            URL = `/api/events/paginated?search=${searchData}&page=${e.target.innerHTML}`;
+        } else {
+            URL = `/api/events/paginated?page=${e.target.innerHTML}`;
         }
 
         fetch(URL)
@@ -43,12 +49,22 @@ const EventList = () => {
         }
     }, [typeData]);
 
-    //fetches new API whenever user clicks on one of the types
+    //fetches new API whenever user clicks on one of the types or types into the search, checks for simultaneous search and type
     useEffect(() => {
-        fetch(`/api/events/paginated?type=${typeStr}`)
-                .then(response => response.json())
-                .then(response => setData(response));
-    }, [typeStr]);
+        let URL;
+
+        if (searchData !== "" && typeStr !== "") {
+            URL = `/api/events/paginated?type=${typeStr}&search=${searchData}`;
+        } else if (typeStr !== "") {
+            URL = `/api/events/paginated?type=${typeStr}`;
+        } else {
+            URL = `/api/events/paginated?search=${searchData}`;
+        }
+
+        fetch(URL)
+            .then(response => response.json())
+            .then(response => setData(response));
+    }, [typeStr, searchData]);
 
     //creates pagination in reactstrap
     const loadPagination = () => {
@@ -72,18 +88,24 @@ const EventList = () => {
         );
     };
 
-    const typeCallback = answer => {
-        //communication with the TypeFilter component
-        setTypeData(answer);
+    const pagination = data ? loadPagination() : "";
+
+    //communication with the Searchbar component
+    const searchCallback = answer => {
+        setSearchData(answer);
     };
 
-    const pagination = data ? loadPagination() : "";
+    //communication with the TypeFilter component
+    const typeCallback = answer => {
+        setTypeData(answer);
+    };
 
     return (
         <>
             <Menu />
             <div className="event-list">
                 {pagination}
+                <Searchbar searchCallback={searchCallback} />
                 <TypeFilter typeCallback={typeCallback} />
                 <EventListItems data={data} />
             </div>
