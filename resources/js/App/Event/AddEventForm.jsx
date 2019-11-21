@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+
 const AddEventForm = () => {
   const [formInputValues, setFormInputValues] = useState({ title: '', address: '', starts_at: '2019-09-11T19:20', ends_at: '2019-09-12T19:20', description: '', data: null});
   const [type_id, setType_id] = useState("")
@@ -48,10 +49,14 @@ const AddEventForm = () => {
         
     return (
         <>
-          <div className="login-form">
+          <div className="add-event-form">
           <h3>Add events nearby</h3>
        
-          <form action="" method="POST" onSubmit={handleSubmit}>
+          <form className="form" action="" method="POST" onSubmit={handleSubmit}>
+
+            
+            <div id="image_dropzone" class="dropz"></div>
+
             <div className="form-group">
               <label htmlFor="name">Name: </label><br/>
               <input className="form-control" id="title" type="text" name="name" placeholder="name of the event" onChange={handleTextValueChange}/><br/>
@@ -60,7 +65,7 @@ const AddEventForm = () => {
           
             <div className="form-group">
               <label htmlFor="address">Address: </label><br/>
-              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code and city" onChange={handleTextValueChange} /><br/>
+              <input className="form-control" id="address" type="text" name="address" placeholder="street name, number, postal code, city" onChange={handleTextValueChange} /><br/>
               <span className="error-message">{errors.address}</span>
             </div>
 
@@ -107,7 +112,7 @@ const AddEventForm = () => {
             </div>
 
             
-            <button type="submit" className="btn-sign-up">Add</button>
+            <button type="submit" className="btn-add">Add</button>
           
           </form>  
           </div>  
