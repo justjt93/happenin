@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Menu from "../Components/Menu.jsx";
+import Footer from "../Components/Footer.jsx";
 import { Pagination, PaginationItem, PaginationLink, Spinner } from 'reactstrap';
 import EventListItems from "./EventListItems.jsx";
 import TypeFilter from "./TypeFilter.jsx";
@@ -50,13 +51,20 @@ const EventList = () => {
 
   return (
       <>
-        <Menu />
+        <div className="menu-list">
+          <Menu />
+        </div>
+        
         <div className="event-list">
           {pagination}
           <TypeFilter/>
           <EventListItems
           data={data}
           />
+        </div>
+
+        <div className="footer-list">
+          <Footer />
         </div>
       </>
   )
