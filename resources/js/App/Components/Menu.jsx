@@ -62,13 +62,20 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
                         <div className="line"></div>
                         <div className="line"></div>
                     </div>
+
+                    <div className="desktop-links">
+                        
+                        <a href="/events/create"><div className="sidenav-item"><i class="fas fa-plus"></i>  New event</div></a> 
+                        {login}  
+                        {logout}
+                    </div>
+
                 </div>
                 <div className="sidenav" id="sidenav">
                     <div className="close-sidenav" onClick={closeNav}>&times;</div>
                     {login}
-                    <a href="/events/create"><div className="sidenav-item">New event</div></a>
+                    <a href="/events/create"><div className="sidenav-item"><i class="fas fa-plus"></i>  New event</div></a>
                     <a href="/eventlist"><div className="sidenav-item">Events</div></a>
-                    <a href="#"><div className="sidenav-item">Test</div></a>
                     {logout}
                 </div>
                 {show_popup ? <LogoutPopup logoutCallback={logoutCallback}/> : null}
