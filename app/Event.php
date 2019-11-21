@@ -8,6 +8,8 @@ class Event extends Model
 {
     protected $fillable = ['title', 'address', 'starts_at', 'ends_at', 'description', 'type_id', 'user_id', 'latitude', 'longitude'];
 
+    protected $appends = ['avg_rating'];
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -31,5 +33,21 @@ class Event extends Model
     public function type()
     {
         return $this->belongsTo('App\Type');
+    }
+
+    public function getAvgRatingAttribute()
+    {   
+        $sum=array_sum(array_map(function($rating){
+// dd($rating);
+            return $rating["value"];
+
+        }, $this->ratings->toArray()));
+
+        if(!$this->ratings->count()) {
+            return null;
+        }
+
+        return $sum/$this->ratings->count();
+        // return $this->ratings();
     }
 }

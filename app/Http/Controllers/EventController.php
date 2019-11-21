@@ -23,6 +23,12 @@ class EventController extends Controller
         return Event::with("images")->with("ratings")->with("comments")->get();
     }
 
+    //paginated events
+    public function paginated()
+    {
+        return Event::with("images")->with("ratings")->with("comments")->paginate(16);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
