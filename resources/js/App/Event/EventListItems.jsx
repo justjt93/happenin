@@ -3,10 +3,38 @@ import { Spinner } from "reactstrap";
 
 const EventListItems = props => {
     const { data } = props;
+    const emptyStar =  "far fa-star";
+    const fullStar = "fas fa-star full";
+    const halfStar = "fas fa-star-half-alt full";
 
     useEffect(() => {
         // console.log(data);
     });
+
+    const starRating = (avgRating) => {
+        let remainingRating = avgRating;
+        const stars = [];
+        
+        for (let i = 0; i < 5; i+= 1) {
+            if (remainingRating > 1) {
+                stars.push(fullStar);
+                remainingRating -= 1;
+            } else if (remainingRating === 0.5) {
+                stars.push(halfStar);
+                remainingRating -= 0.5;
+            } else {
+                stars.push(emptyStar);
+            }
+        }
+        
+        return (
+            <div className="star-rating">
+                {stars.map((star, index) => {
+                    return <i className={star} key={index}></i>;
+                })}
+            </div>
+        );
+    }
 
     return (
         <>
@@ -48,7 +76,7 @@ const EventListItems = props => {
                             <div className="event-rating">
                                 Rating:{" "}
                                 {event.ratings.length !== 0
-                                    ? "yes ratings"
+                                    ? starRating(Math.round(event.avg_rating * 2) / 2) //round to nearest .5
                                     : "no ratings"}
                             </div>
                             <div className="event-address">{event.address}</div>
