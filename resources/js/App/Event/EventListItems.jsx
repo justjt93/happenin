@@ -3,6 +3,8 @@ import { Spinner } from "reactstrap";
 
 const EventListItems = props => {
     const { data } = props;
+
+    //star rating constants
     const emptyStar =  "far fa-star";
     const fullStar = "fas fa-star full";
     const halfStar = "fas fa-star-half-alt full";
@@ -11,6 +13,7 @@ const EventListItems = props => {
         // console.log(data);
     });
 
+   //logic for adding star ratings
     const starRating = (avgRating) => {
         let remainingRating = avgRating;
         const stars = [];
