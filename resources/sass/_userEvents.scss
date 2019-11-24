@@ -1,8 +1,8 @@
 .userEvents {
-  width: 90%;
+  width: 100%;
+  
   padding: 1rem;
-  margin-top: 1rem;
-  border-top: solid $primary 5px;
+  
   display: flex;
   flex-direction: column;
   
@@ -11,9 +11,13 @@
   }
 
   .eventItem {
+    background-color: $secondary;
+
     margin: .5rem;
     padding: .25rem;
+
     border: solid $primary 2px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,6 +45,9 @@
   }
 }
 
+//old delete event pop-up
+
+/*
 //delete event popupu
 .deleteEventPopup {
   background-color: $primary;
@@ -49,7 +56,7 @@
   width: 80%;
   position: absolute;
   left: 10%;
-  margin-top: -15rem;
+  //margin-top: -15rem;
   flex-direction: column;
   
 
@@ -59,4 +66,4 @@
     align-self: flex-end;
     font-weight: bold;
   }
-}
+}*/
