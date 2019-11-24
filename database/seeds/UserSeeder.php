@@ -18,7 +18,9 @@ class UserSeeder extends Seeder
         })->each(function ($user) {
             $user->ratings()->save(factory(App\Rating::class)->make());
         })->each(function ($user) {
-            $user->images()->save(factory(App\Image::class)->make());
+            for ($i=0;$i<10;$i++) {
+                $user->images()->save(factory(App\Image::class)->make());
+            }
         });
     }
 }
