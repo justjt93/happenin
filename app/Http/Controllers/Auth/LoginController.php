@@ -69,7 +69,8 @@ class LoginController extends Controller
             return redirect('/');
         }else{
             return view('auth.register', ['name' => $userSocial->getName(), 
-                                          'email' => $userSocial->getEmail()]);
+                                          'email' => $userSocial->getEmail(),
+                                          'avatar' => $userSocial->getAvatar()]);
         }
     }
 }

@@ -6,6 +6,8 @@ import history from './history';
 import InfoEdit from './InfoEdit.jsx';
 import PasswordEdit from './PasswordEdit.jsx';
 import UserEvents from './UserEvents.jsx';
+import { Button } from 'reactstrap';
+
 
 const UserDetail = () => {
     
@@ -18,12 +20,25 @@ const UserDetail = () => {
             <div className="user-detail">
               <Menu />
               <div className="user-item">
-                <p>username: {user.name}</p>
-                <p>email: {user.email}</p>
-                <p>member since: {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</p>
+                <div className="amazing-avatar">
+                  <img src={user.avatar}></img>
+                </div>
+
+                <div className="personal-info">
+                  
+                  <h3>Your Profile Info</h3>
+                  <div>
+                    <p><strong>username:</strong> {user.name}</p>
+                    <p><strong>email:</strong> {user.email}</p>
+                    <p><strong>member since:</strong> {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</p>
+                  </div>
+
+                </div>
                 <Router history={history}>
-                  <Link to="/userdetail/editinfo"><button>Edit info</button></Link>
-                  <Link to="/userdetail/editpassword"><button>Change password</button></Link>
+                  <div className="profile-button">
+                    <Link to="/userdetail/editinfo"><Button color="info">Edit Info</Button></Link>
+                    <Link to="/userdetail/editpassword"><Button color="info">Change Password</Button></Link>
+                  </div>
                   <Route exact path='/userdetail/editinfo' component={InfoEdit} />
                   <Route exact path='/userdetail/editpassword' component={PasswordEdit} />
                 </Router>
