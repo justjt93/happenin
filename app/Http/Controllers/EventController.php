@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
 use App\User;
+use App\Rating;
 use Spatie\Geocoder\Geocoder;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\EventAdded;
@@ -173,5 +174,23 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->delete();
         return "successfully deleted";
+    }
+
+    public function checkRating(Request $request)
+    {
+        $event = Rating::where('user_id', $request->input('user'))->where('event_id', $request->input('event'))->first();
+
+        return $event;
+    }
+    
+    public function storeRating(Request $request)
+    {
+        $rating = Rating::create([
+            'user_id'=>$request->input('user_id'),
+            'event_id'=>$request->input('event_id'),
+            'value'=>$request->input('value')
+        ]);
+
+        return $rating;
     }
 }

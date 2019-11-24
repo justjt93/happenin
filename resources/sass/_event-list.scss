@@ -110,26 +110,6 @@
       margin: .25rem 0;
     }
 
-    //star rating
-    .event-rating {
-      font-size: .8rem;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-
-      .star-rating {
-        margin-left: .5rem;
-      }
-
-      .fa-star {
-        color: orange;
-      }
-
-      .full {
-        color: orange;
-      }
-    }
-
     .event-address {
       margin-top: .5rem;
       font-size: .6rem;
@@ -263,5 +243,13 @@
   .searchbar {
     width: 80%;
   }
+}
+
+//star rating
+.event-rating {
+  font-size: .8rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 

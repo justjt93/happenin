@@ -1,6 +1,7 @@
 import React from "react";
 import CarouselComp from "./CarouselComp.jsx";
 import HoverCloseBtn from "./HoverCloseBtn.jsx";
+import RateEvent from "./RateEvent.jsx";
 import { Button, Alert, Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 const BigDetail = props => {
@@ -28,12 +29,14 @@ const BigDetail = props => {
 
     return (
         <div className="bigdetail">
-            {/* <div className="big-detail-container"> */}
                 <CarouselComp images={bigDetailOpen.images}/>
                 <HoverCloseBtn handleCloseBigDetail={handleClose} />
                 <div className="infobox-wrap">
                     <h2>{bigDetailOpen.title}</h2>
                     <p className="infobox-address">{bigDetailOpen.address}</p>
+                    <RateEvent
+                    eventId={bigDetailOpen.id}
+                    />
                     <hr />
                     <div className="startEndWrap">
                         <Alert color="success">
@@ -59,7 +62,6 @@ const BigDetail = props => {
                     </div>
                 </div>
                 {comments}
-            {/* </div> */}
         </div>
     );
 };

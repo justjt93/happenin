@@ -33,6 +33,7 @@ Route::get('/events/edit/{id}', 'EventController@edit');
 Route::post('/events/edit/{id}', 'EventController@update');
 Route::post('/events/destroy/{id}', 'EventController@destroy');
 Route::view('/eventlist', 'events.event-list');
+Route::post('/ratings', 'EventController@storeRating');
 
 //User detail and edit
 Route::get('/userdetail', 'UserController@index')->middleware('auth');
