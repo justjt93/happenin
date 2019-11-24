@@ -1,20 +1,42 @@
 .bigdetail{
-    max-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
-    width: 100vw;
-    background: $secondary;
+    min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+    width: 100%;
+    background-color: $primary;
     color: $primary;
     border: 1px solid $primary;
 
     position: absolute;
     top: $headerHeight;
     left: 0;
-    z-index: 4;
+    z-index: 3;
 
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     overflow: auto;
+
+    .infobox-wrap {
+        padding: 2rem;
+    }
+    
+    @media (min-width: 1000px) {
+        width: 40%;
+        height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+        overflow: scroll;
+    }
+
 }
+
+// .big-detail-container {
+//     @media (min-width: 800px) {
+//         width: 60%;
+//     }
+
+//     @media (min-width: 1000px) {
+//         width: 40%;
+//     }
+// }
 
 
 .carousel-item {
@@ -23,7 +45,7 @@
         img { 
             align-items:center;
             width: 100%; 
-            max-width: 600px;
+            min-width: 600px;
         }
 }
 
@@ -39,4 +61,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    // img {
+    //     width: 100%;
+    //     height: auto;
+    // }
+
+    // @media (min-width: 800px) {
+    //     display: none;
+    // }
 }

@@ -60,6 +60,10 @@
         bottom: 3.5vh;
         left: 1.2vh;
         z-index: 2;
+
+        @media (min-width: 800px) {
+          left: 41%;
+        }
       
       &:hover {background-color: rgb(76, 175, 79)}
       
