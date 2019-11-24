@@ -6,8 +6,8 @@
     padding: 0;
     margin: 0;
      
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
 
 
     cursor: pointer;
@@ -20,9 +20,15 @@
     box-shadow: 0 px #999;
 
     position: absolute;
-    top: 3.5vh;
-    right: 1.2vh;
+    top: 2vh;
+    right: 2%;
     z-index: 3;
+
+    @media (min-width: 800px) {
+      position: fixed;
+      top: 10vh;
+      left: 36%;
+    }
   
   &:hover {background-color: red}
   
@@ -37,7 +43,7 @@
     margin: 0;
     align-self: center;
     color: $secondary;
-    font-size: 44px;
+    font-size: 18px;
     z-index: 3;
   }
 }
