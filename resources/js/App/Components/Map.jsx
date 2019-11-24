@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mapstyle from "./mapstyle";
 import BigDetail from "./BigDetail.jsx";
+import AddBtn from "./AddBtn.jsx";
 
 import {
     GoogleMap,
@@ -109,12 +110,15 @@ export default class Map extends React.Component {
         const WrappedMap = withScriptjs(withGoogleMap(renderMap));
 
         return (
+            <>
             <WrappedMap
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.MIX_REACT_APP_GOOGLE_KEY}`}
                 loadingElement={<div style={{ height: "100%" }}></div>}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
+            <AddBtn />
+            </>
         );
     }
 }
