@@ -50,7 +50,7 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
         login = <a href="/userdetail"><div className="sidenav-item"><i className="fas fa-user-circle"></i> {JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content')).name}</div></a>;
         logout = <div className="sidenav-item" onClick={confirmLogout}>Logout</div>;
     } else if (logged_in === false) {
-        login = <a href="/login"><div className="sidenav-item">Login</div></a>;
+        login = <a href="/login"><div className="sidenav-item">Login/Register</div></a>;
     }
         
         return (
@@ -66,7 +66,7 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
                     <div className="desktop-links">
                         
                         <a href="/events/create"><div className="sidenav-item"><i className="fas fa-plus"></i>  New event</div></a> 
-                        {login}  
+                        {login}
                         {logout}
                     </div>
 
