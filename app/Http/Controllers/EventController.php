@@ -176,6 +176,13 @@ class EventController extends Controller
         return "successfully deleted";
     }
 
+    public function checkRating(Request $request)
+    {
+        $event = Rating::where('user_id', $request->input('user'))->where('event_id', $request->input('event'))->first();
+
+        return $event;
+    }
+    
     public function storeRating(Request $request)
     {
         $rating = Rating::create([

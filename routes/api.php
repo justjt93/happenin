@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/events', 'EventController@index');
 Route::get('/events/paginated', 'EventController@paginated');
+Route::get('/rating', 'EventController@checkRating');
