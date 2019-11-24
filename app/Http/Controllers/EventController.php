@@ -28,7 +28,6 @@ class EventController extends Controller
     {
         $type = str_split($request->input('type'));
         $search = $request->input('search');
-        // return $search == "" ? "true" : "false";
         if ($type[0] !== "" && $search !== "") {
             return Event::wherein('type_id', $type)
                 ->where('title', 'like', '%' . $search . '%')
