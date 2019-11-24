@@ -48,20 +48,24 @@ import { Link } from 'react-router-dom';
 
       return (
           <>
-            <Link to="/userdetail/"><div className="go-back">X</div></Link>
+            <div className="profile-form">
+              <Link to="/userdetail/"><div className="go-back">X</div></Link>
+
             <form action="" onSubmit={handleSubmit}>
-              <p>change user information</p>
-              <label htmlFor="name">name</label>
-              <input type="text" id="name" name="name" value={formInputValues.name} onChange={handleTextValueChange}/><br/> 
-              <span className="error-message">{errors.name}</span><br/>
+              <div className="profile-edit-form">
+                <label htmlFor="name"><strong>Username: </strong></label>
+                <input type="text" id="name" name="name" value={formInputValues.name} onChange={handleTextValueChange}/><br/> 
+                <span className="error-message">{errors.name}</span><br/>
 
-              <label htmlFor="email">email</label>
-              <input type="text" id="email" name="email" value={formInputValues.email} onChange={handleTextValueChange}/><br/> 
-              <span className="error-message">{errors.email}</span><br/>
+                <label htmlFor="email"><strong>Email: </strong></label>
+                <input type="text" id="email" name="email"  value={formInputValues.email} onChange={handleTextValueChange}/><br/> 
+                <span className="error-message">{errors.email}</span><br/>
 
-              <input type="submit" value="Submit changes"/>
-              <p className="complete-message">{status}</p>
+                <input type="submit" value="Submit changes"/>
+                <p className="complete-message">{status}</p>
+              </div>
             </form>
+            </div>
           </>
         )
 }
