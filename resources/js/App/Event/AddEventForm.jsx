@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
+import { log } from "util";
 
 const AddEventForm = () => {
     const [formInputValues, setFormInputValues] = useState({
@@ -8,7 +9,8 @@ const AddEventForm = () => {
         starts_at: "2019-09-11T19:20",
         ends_at: "2019-09-12T19:20",
         description: "",
-        data: null
+        data: null,
+        image: []
     });
     const [type_id, setType_id] = useState("");
     const [data, setData] = useState();
@@ -28,33 +30,41 @@ const AddEventForm = () => {
         data ? (data.id ? location.replace("/") : null) : null;
     });
 
+    let formData = new FormData();
+
     const handleSubmit = event => {
         event.preventDefault();
+
+        formData.append("title", formInputValues.title);
+        formData.append("address", formInputValues.address);
+        formData.append("starts_at", formInputValues.starts_at);
+        formData.append("ends_at", formInputValues.ends_at);
+        formData.append("description", formInputValues.description);
+        formInputValues.image.forEach(file => {
+            formData.append("image[]", file);
+        });
+
+        formData.append("type_id", type_id);
 
         fetch("/events", {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json",
                 "X-CSRF-TOKEN": document
                     .querySelector('meta[name="csrf-token"]')
                     .getAttribute("content")
             },
-            body: JSON.stringify({
-                title: formInputValues.title,
-                address: formInputValues.address,
-                starts_at: formInputValues.starts_at,
-                ends_at: formInputValues.ends_at,
-                description: formInputValues.description,
-                type_id: type_id
-            })
+            body: formData
         })
             .then(response => response.json())
             .then(data => setData(data));
     };
 
     const onDrop = acceptedFiles => {
-        console.log(acceptedFiles);
+        setFormInputValues({
+            ...formInputValues,
+            image: acceptedFiles
+        });
     };
 
     let errors = data ? (data.errors ? data.errors : "") : "";
@@ -70,34 +80,41 @@ const AddEventForm = () => {
                     method="POST"
                     onSubmit={handleSubmit}
                 >
-                    <Dropzone 
-                      onDrop={onDrop} 
-                      accept="image/png, image/jpg, image/jpeg"
-                      minSize={0}
-                      maxSize={5242880}
-                      multiple
-                      >
+                    <Dropzone
+                        onDrop={onDrop}
+                        accept="image/png, image/jpg, image/jpeg"
+                        minSize={0}
+                        maxSize={5242880}
+                        multiple
+                    >
                         {({
                             getRootProps,
                             getInputProps,
                             isDragActive,
                             acceptedFiles
                         }) => (
-                           <>
-                           <div {...getRootProps()}>
-                                <input {...getInputProps()} />
-                                {isDragActive ? "Drop it like it's hot!" : 'Click me or drag a file to upload!'}
-                            </div>
-                            <ul>
-                            {acceptedFiles.length > 0 && acceptedFiles.map((acceptedFile, index) => (
-                              <li className="list-group-item list-group-item-success" key={index}>
-                                {acceptedFile.name}
-                              </li>))}
-                            </ul>
+                            <>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    {isDragActive
+                                        ? "Drop it like it's hot!"
+                                        : "Click me or drag a file to upload!"}
+                                </div>
+                                <ul>
+                                    {acceptedFiles.length > 0 &&
+                                        acceptedFiles.map(
+                                            (acceptedFile, index) => (
+                                                <li
+                                                    className="list-group-item list-group-item-success"
+                                                    key={index}
+                                                >
+                                                    {acceptedFile.name}
+                                                </li>
+                                            )
+                                        )}
+                                </ul>
                             </>
                         )}
-                        
-                        
                     </Dropzone>
 
                     <div className="form-group">
