@@ -31,24 +31,28 @@ class EventController extends Controller
         $search = $request->input('search');
         if ($type[0] !== "" && $search !== "") {
             return Event::wherein('type_id', $type)
+                ->orderBy('title')
                 ->where('title', 'like', '%' . $search . '%')
                 ->with("images")->with("ratings")
                 ->with("comments")
                 ->paginate(12);
         } elseif ($type[0] !== "") {
-            return Event::wherein('type_id', $type)
+            return Event::orderBy('title')
+                ->wherein('type_id', $type)
                 ->with("images")
                 ->with("ratings")
                 ->with("comments")
                 ->paginate(12);
         } elseif ($search !== "") {
-            return Event::where('title', 'like', '%' . $search . '%')
+            return Event::orderBy('title')
+                ->where('title', 'like', '%' . $search . '%')
                 ->with("images")
                 ->with("ratings")
                 ->with("comments")
                 ->paginate(12);
         } else {
-            return Event::with("images")
+            return Event::orderBy('title', 'desc')
+                ->with("images")
                 ->with("ratings")
                 ->with("comments")
                 ->paginate(12);
@@ -178,19 +182,26 @@ class EventController extends Controller
 
     public function checkRating(Request $request)
     {
-        $event = Rating::where('user_id', $request->input('user'))->where('event_id', $request->input('event'))->first();
+        $rating = Rating::where('user_id', $request->input('user'))->where('event_id', $request->input('event'))->first();
 
-        return $event;
+        return $rating;
     }
     
     public function storeRating(Request $request)
     {
-        $rating = Rating::create([
-            'user_id'=>$request->input('user_id'),
-            'event_id'=>$request->input('event_id'),
-            'value'=>$request->input('value')
-        ]);
+        $rating = Rating::where('user_id', $request->input('user_id'))->where('event_id', $request->input('event_id'))->first();
 
+        if ($rating) {
+            $rating->value = $request->input('value');
+            $rating->save();
+        } else {
+            $rating = Rating::create([
+                'user_id'=>$request->input('user_id'),
+                'event_id'=>$request->input('event_id'),
+                'value'=>$request->input('value')
+            ]);
+        }
+        
         return $rating;
     }
 }
