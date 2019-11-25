@@ -8,8 +8,6 @@ const BigDetail = props => {
     const { setBigDetailOpen, bigDetailOpen } = props;
 
     const handleClose = () => {
-        console.log(bigDetailOpen);
-
         setBigDetailOpen(null);
     };
 
