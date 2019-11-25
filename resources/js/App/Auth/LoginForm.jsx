@@ -46,7 +46,7 @@ const LoginForm = () =>  {
     
     return (
         <>
-        <div className="login-form">
+        <div className="register-form">
 
           <div className="heading-form">
             <h3 className="auth-h3">Login Form</h3>
@@ -87,8 +87,7 @@ const LoginForm = () =>  {
           </div>
 
           <div className="auth-link-register">
-              <p>Don't have an account? <a href="/register">Register here!</a> </p>
-              
+              <p>Don't have an account? <a href="/register">Register here!</a></p> 
           </div>
 
         </div>

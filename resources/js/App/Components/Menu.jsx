@@ -16,7 +16,9 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
     }
 
     const confirmLogout = () => {
+        closeNav()
         setShow_popup(true)
+        
     }
 
     const logoutCallback = (answer) => { //communication with LogoutPopup component
