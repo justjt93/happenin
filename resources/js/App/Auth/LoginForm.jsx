@@ -80,8 +80,8 @@ const LoginForm = () =>  {
             <label htmlFor="socialMedia">Sign in with Social Networks</label>
 
             <div className="buttons-social">
-              <a href='login/facebook' class="loginBtn loginBtn--facebook">Login with Facebook</a>
-              <a href='login/google' class="loginBtn loginBtn--google">Login with Google</a>
+              <a href='login/facebook' className="loginBtn loginBtn--facebook">Login with Facebook</a>
+              <a href='login/google' className="loginBtn loginBtn--google">Login with Google</a>
             </div>
 
           </div>

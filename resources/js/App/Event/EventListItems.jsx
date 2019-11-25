@@ -9,6 +9,11 @@ const EventListItems = props => {
     const fullStar = "fas fa-star full";
     const halfStar = "fas fa-star-half-alt full";
 
+    //open big detail on click
+    const handleClick = (eventId) => {
+        console.log(eventId, "clicked");
+    }
+
     useEffect(() => {
         // console.log(data);
     });
@@ -50,6 +55,7 @@ const EventListItems = props => {
                         >
                             <div
                                 className={`event-cover event-cover-${event.type_id}`}
+                                onClick={() => handleClick(event.id)}
                             >
                                 <div className="event-cover-title">
                                     {event.title}
