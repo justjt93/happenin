@@ -2,6 +2,10 @@
 .logo {
   cursor: pointer;
   text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 //top menu

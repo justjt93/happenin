@@ -8,35 +8,50 @@
   
   h2 {
     color: $primary;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
   }
 
   .eventItem {
-    background-color: $secondary;
+    background-color: #e9e9e9;
 
     margin: .5rem;
     padding: .25rem;
+    margin-left:3rem;
+    border: solid $secondary 6px;
+    border-radius: 10px;
 
-    border: solid $primary 2px;
-
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     .eventTitle {
-      text-align: center;
-      border-bottom: solid $primary 2px;
-      width: 90%;
+      text-align: left;
+      color: $primary;
+      margin-top:10px;
+      margin-bottom: 15px;
+      //border-bottom: solid rgb(148, 148, 148) 2px;
+      width: 94%;
+    }
+    .eventAddress{
+      color:rgb(26, 26, 172);
+      width: 93%;
+      margin-bottom: 20px;
+      border-bottom: solid rgb(148, 148, 148) 2px;
     }
 
     .eventDescription {
       margin: 0 2rem;
       font-size: .8rem;
       text-align: justify;
+      margin-bottom: 20px;
     }
 
     .eventBtns {
       align-self: flex-end;
       margin-right: 2rem;
+      margin-bottom: 10px;
       
       .btn {
         margin: .25rem;
