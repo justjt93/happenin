@@ -26,13 +26,9 @@ const AddEventForm = () => {
         setType_id(event.target.value);
     };
 
-    // useEffect(() => {
-    //     data ? (data.id ? location.replace("/") : null) : null;
-    // });
-
     useEffect(() => {
-        console.log(formInputValues.image);
-    }, [formInputValues]);
+        data ? (data.id ? location.replace("/") : null) : null;
+    });
 
     let formData = new FormData();
 
@@ -49,9 +45,6 @@ const AddEventForm = () => {
         });
 
         formData.append("type_id", type_id);
-        for (var value of formData.values()) {
-            console.log(value);
-        }
 
         fetch("/events", {
             method: "POST",
@@ -68,8 +61,6 @@ const AddEventForm = () => {
     };
 
     const onDrop = acceptedFiles => {
-        console.log(acceptedFiles);
-
         setFormInputValues({
             ...formInputValues,
             image: acceptedFiles
