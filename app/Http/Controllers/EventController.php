@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
+use App\Image;
 use App\User;
 use Spatie\Geocoder\Geocoder;
 use Illuminate\Notifications\Notifiable;
@@ -72,27 +73,47 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(EventRequest $request)
-    { 
+    {
         $client = new \GuzzleHttp\Client();
         $geocoder = new Geocoder($client);
         $geocoder->setApiKey(config('geocoder.key'));
         $address = $geocoder->getCoordinatesForAddress($request->input('address'));
-              
+
         //formatting inputs
-        $type_id =(int)$request->input('type_id');
-        
+        $type_id = (int) $request->input('type_id');
+
 
         $event = Event::create([
-            'title'=>$request->input('title'),
-            'address'=>$request->input('address'),
-            'starts_at'=>$request->input('starts_at'),
-            'ends_at'=>$request->input('ends_at'),
-            'description'=>$request->input('description'),
-            'user_id'=>auth()->user()->id,
+            'title' => $request->input('title'),
+            'address' => $request->input('address'),
+            'starts_at' => $request->input('starts_at'),
+            'ends_at' => $request->input('ends_at'),
+            'description' => $request->input('description'),
+            'user_id' => auth()->user()->id,
             'latitude' => $address['lat'],
             'longitude' => $address['lng'],
-            'type_id'=> $type_id,
+            'type_id' => $type_id
         ]);
+
+        // if ($request->hasfile('image')) {
+
+        foreach ($request->file('image', []) as $file) {
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = uniqid() . '.' . $extension;
+            $file->move('images/uplodaded_event_images', $filename);
+
+            $image = Image::create([
+                'user_id' => auth()->user()->id,
+                'url' => "images/uplodaded_event_images/" . $filename,
+                'event_id' => $event->id,
+            ]);
+        }
+
+
+
+
+
+        // }
 
         $username = auth()->user()->name;
         auth()->user()->notify(new EventAdded($username));
@@ -139,16 +160,16 @@ class EventController extends Controller
             'starts_at' => 'required|max:127',
             'ends_at' => 'required|max:127',
             'description' => 'required|min:10|max:2000',
-         ]);
+        ]);
 
         $client = new \GuzzleHttp\Client();
         $geocoder = new Geocoder($client);
         $geocoder->setApiKey(config('geocoder.key'));
         $address = $geocoder->getCoordinatesForAddress($request->input('address'));
-              
+
         //formatting inputs
-        $type_id =(int)$request->input('type_id');
-        
+        $type_id = (int) $request->input('type_id');
+
         $event = Event::findOrFail($id);
         $event->title = $request->input('title');
         $event->address = $request->input('address');
@@ -158,7 +179,7 @@ class EventController extends Controller
         $event->latitude = $address['lat'];
         $event->longitude = $address['lng'];
         $event->type_id = $type_id;
-        $event->save();    
+        $event->save();
 
         return $event;
     }

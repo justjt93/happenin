@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
+import { log } from "util";
 
 const AddEventForm = () => {
     const [formInputValues, setFormInputValues] = useState({
@@ -29,6 +30,10 @@ const AddEventForm = () => {
     //     data ? (data.id ? location.replace("/") : null) : null;
     // });
 
+    useEffect(() => {
+        console.log(formInputValues.image);
+    }, [formInputValues]);
+
     let formData = new FormData();
 
     const handleSubmit = event => {
@@ -39,7 +44,10 @@ const AddEventForm = () => {
         formData.append("starts_at", formInputValues.starts_at);
         formData.append("ends_at", formInputValues.ends_at);
         formData.append("description", formInputValues.description);
-        formData.append("image", formInputValues.image);
+        formInputValues.image.forEach(file => {
+            formData.append("image[]", file);
+        });
+
         formData.append("type_id", type_id);
         for (var value of formData.values()) {
             console.log(value);
@@ -53,15 +61,6 @@ const AddEventForm = () => {
                     .querySelector('meta[name="csrf-token"]')
                     .getAttribute("content")
             },
-            // body: JSON.stringify({
-            //     title: formInputValues.title,
-            //     address: formInputValues.address,
-            //     starts_at: formInputValues.starts_at,
-            //     ends_at: formInputValues.ends_at,
-            //     description: formInputValues.description,
-            //     type_id: type_id,
-            //     image: formData
-            // })
             body: formData
         })
             .then(response => response.json())
@@ -69,11 +68,12 @@ const AddEventForm = () => {
     };
 
     const onDrop = acceptedFiles => {
+        console.log(acceptedFiles);
+
         setFormInputValues({
             ...formInputValues,
-            image: acceptedFiles[0]
+            image: acceptedFiles
         });
-        // formData.append("file", acceptedFiles[0]);
     };
 
     let errors = data ? (data.errors ? data.errors : "") : "";
@@ -82,11 +82,6 @@ const AddEventForm = () => {
         <>
             <div className="add-event-form">
                 <h3>Add events nearby</h3>
-                {/* <form
-                    action="/file-upload"
-                    class="dropzone"
-                    id="my-awesome-dropzone"
-                ></form> */}
 
                 <form
                     className="form"
