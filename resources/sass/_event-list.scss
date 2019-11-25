@@ -81,15 +81,25 @@
 
   &-item {
     margin: .5rem;
-    height: 190px;
-    width: 170px;
+    //height: 190px;
+    //width: 170px;
+    height:260px;
+    width:220px;
     border: solid $borderLightGrey 1px;
     position: relative;
 
-    @media (min-width: 600px) {
+    @media(max-width:1400px){
+      width: 46%;
+    }
+
+    @media(max-width:1030px){
+      width: 88%;
+    }
+
+/*@media (min-width: 800px) {
       height: 260px;
       width: 220px;
-    }
+    }*/
 
     .event-image {
       width: 100%;
