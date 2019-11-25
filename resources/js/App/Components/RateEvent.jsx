@@ -8,8 +8,8 @@ const RateEvent = (props) => {
 
   //fetches logged-in user
   useEffect(() => {
-    const loggedInUser = JSON.parse(document.querySelector('meta[name="logged-in-user"]').getAttribute('content'));
-    setUser(loggedInUser)
+    const loggedInUser = document.querySelector('meta[name="logged-in-user"]').getAttribute('content');
+    setUser(loggedInUser ? JSON.parse(loggedInUser): loggedInUser);
   }, []);
 
   //checks whether user already rated this event and saves the response as data
@@ -24,13 +24,17 @@ const RateEvent = (props) => {
   //if the user has already voted, show the value in stars
   useEffect(() => {
     if (data) {
-      for (let i = 1; i <= data.value; i+= 1) {
-        document.querySelector(`#star${i}`).classList.remove("far");
-        document.querySelector(`#star${i}`).classList.add("fas", "full");
-        document.querySelector('#vote-status').innerHTML = `Already voted ${data.value} stars.`
-      }
+      resetStars();
     }
   }, [data]);
+
+  const resetStars = () => {
+    for (let i = 1; i <= data.value; i+= 1) {
+      document.querySelector(`#star${i}`).classList.remove("far");
+      document.querySelector(`#star${i}`).classList.add("fas", "full");
+      document.querySelector('#vote-status').innerHTML = `Your rating: ${data.value} stars.`
+    }
+  }
 
   const handleMouseEnter = (no) => {
     for (let i = 1; i <= no; i+= 1) {
@@ -62,18 +66,22 @@ const RateEvent = (props) => {
             value: no
         })
     })
-    .then(document.querySelector('#vote-status').innerHTML = "Succesfully voted")
+    .then(document.querySelector('#vote-status').innerHTML = "Thank you for rating this event!")
+    .then(response => response.json())
+    .then(response => setTimeout(() => setData(response), 750));
   }
   
   const rateEvent = user ? 
   <>
     <p>Rate this event:</p>
     <div className="star-rating">
-      <i className="far fa-star pointer" id="star1" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(1)}></i>
-      <i className="far fa-star pointer" id="star2" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(2)}></i>
-      <i className="far fa-star pointer" id="star3" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(3)}></i>
-      <i className="far fa-star pointer" id="star4" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(4)}></i>
-      <i className="far fa-star pointer" id="star5" onMouseEnter={() => handleMouseEnter(5)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(5)}></i>
+      <div className="star-row" onMouseLeave={resetStars}>
+        <i className="far fa-star pointer" id="star1" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(1)}></i>
+        <i className="far fa-star pointer" id="star2" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(2)}></i>
+        <i className="far fa-star pointer" id="star3" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(3)}></i>
+        <i className="far fa-star pointer" id="star4" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(4)}></i>
+        <i className="far fa-star pointer" id="star5" onMouseEnter={() => handleMouseEnter(5)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(5)}></i>
+      </div>
       <p id="vote-status">Click to vote</p>
     </div> 
   </>
@@ -82,6 +90,6 @@ const RateEvent = (props) => {
   
   return (
         rateEvent
-    );
+  );
 };
 export default RateEvent;
