@@ -1,8 +1,7 @@
 .bigdetail{
     height: calc(100vh - #{$headerHeight} - #{$footerHeight});
     width: 100%;
-
-    background-color: $primary;
+    background-color: #EBEBEB;
     color: $primary;
     border: 1px solid $primary;
 
@@ -56,8 +55,6 @@
 
 }
 
-
-
-
-
-
+.card {
+    width: 100%;
+}
