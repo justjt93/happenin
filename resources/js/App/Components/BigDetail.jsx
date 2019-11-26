@@ -8,6 +8,8 @@ import { Button, Alert, Card, CardBody, CardTitle, CardText } from "reactstrap";
 const BigDetail = props => {
     const { setBigDetailOpen, bigDetailOpen } = props;
 
+    if(bigDetailOpen == null) return null;
+
     const handleClose = () => {
         setBigDetailOpen(null);
     };

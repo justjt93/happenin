@@ -100,30 +100,36 @@ function renderMap(props) {
     );
 }
 
-export default function Map (props) {
-    const [bigDetailOpen, setBigDetailOpen] = useState(null);
+const MapWrapper =(props) => {
 
-    
-        const WrappedMap = withScriptjs(withGoogleMap(renderMap));
+    const WrappedMap = withScriptjs(withGoogleMap(renderMap));
 
-        return (
-            <>
-            <WrappedMap
+    return (
+<WrappedMap     
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.MIX_REACT_APP_GOOGLE_KEY}`}
                 loadingElement={<div style={{ height: "100%" }}></div>}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
-                setBigDetailOpen={setBigDetailOpen}
+                setBigDetailOpen={props.setBigDetailOpen}
             />
+    )
+}
+
+export default function Map (props) {
+    const [bigDetailOpen, setBigDetailOpen] = useState(null);
+
+    
+        
+        return (
+            <>
+            <MapWrapper setBigDetailOpen={setBigDetailOpen}/>
             <AddBtn />
-            {bigDetailOpen && (
-                <>
+           
                     <BigDetail
                         setBigDetailOpen={setBigDetailOpen}
                         bigDetailOpen={bigDetailOpen}
                     />
-                </>
-            )}
+          
             </>
         );
 
