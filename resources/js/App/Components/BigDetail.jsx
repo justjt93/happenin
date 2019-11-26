@@ -45,8 +45,9 @@ const BigDetail = props => {
         );
     });
 
+    //debugging
     useEffect(() => {
-        console.log(bigDetailOpen);
+        // console.log(bigDetailOpen);
     });
 
     // const commentCallback = comment => {

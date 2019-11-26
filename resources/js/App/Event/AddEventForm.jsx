@@ -3,11 +3,16 @@ import Dropzone from "react-dropzone";
 import { log } from "util";
 
 const AddEventForm = () => {
+    //variables storing today's date and date in two days to be put in the form
+    const date = new Date();
+    const now = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}T${date.getHours()}:${date.getMinutes()}`;
+    const inTwoDays = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 2}T${date.getHours()}:${date.getMinutes()}`;
+
     const [formInputValues, setFormInputValues] = useState({
         title: "",
         address: "",
-        starts_at: "2019-09-11T19:20",
-        ends_at: "2019-09-12T19:20",
+        starts_at: now,
+        ends_at: inTwoDays,
         description: "",
         data: null,
         image: []
