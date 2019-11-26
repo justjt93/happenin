@@ -24,6 +24,8 @@ const BigDetail = props => {
     };
 
     const comments = bigDetailOpen.comments.reverse().map(item => {
+        const date = new Date(item.created_at);
+
         return (
             <Card key={item.id}>
                 <CardBody>
@@ -31,7 +33,7 @@ const BigDetail = props => {
                         <img className="avatar-comment" src={avatar(item)} />
                         <div className="userdetail-comment">
                             {item.user ? item.user.name : ""}
-                            <small className="text-muted">{item.created_at}</small>
+                            <small className="text-muted">{`${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</small>
                         </div>
                     </CardTitle>
                     <CardText>{item.description}</CardText>
