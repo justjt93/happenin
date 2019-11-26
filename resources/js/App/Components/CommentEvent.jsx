@@ -58,6 +58,7 @@ const CommentEvent = props => {
                     </div>
                 );
                 commentCallback(data);
+                setComment("");
             }
         }
     }, [data]);
