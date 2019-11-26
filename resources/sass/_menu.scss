@@ -52,13 +52,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 
     color:$secondary;
     a {
       color: $secondary;
       text-decoration: none; 
-      margin-left:25px;
-      margin-right: 15px;  
+      
       &:hover {
         text-decoration: underline;
       } 
@@ -72,11 +72,23 @@
     display: none;
   }
 }
+
+.logout-pointer{
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+ 
+  :hover{
+    text-decoration: underline;
+  }
+}
   
 }
 
 //sidenav for mobile version
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -86,6 +98,7 @@
   right: 0px;
   top: 0px;
   z-index: 5;
+
   display: flex;
   flex-direction: column;
   opacity: .95;
@@ -93,8 +106,8 @@
   transition: 0.5s;
 
   .close-sidenav {
-    font-size: 50px;
-    padding: 0 32px;
+    font-size: 70px;
+    padding: 0 30px;
     cursor: pointer;
     margin-bottom: 16px;
     align-self: flex-end;
@@ -130,7 +143,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
   background: rgba(0, 0, 0, .6);
   color: $primary;
 
@@ -184,7 +197,7 @@
           background-color: rgb(175, 3, 3);
 
           &:hover {
-            background-color: red;
+            background-color:$music;
           }
         }
       }

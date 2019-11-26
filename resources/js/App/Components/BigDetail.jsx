@@ -13,7 +13,7 @@ const BigDetail = props => {
 
     const comments = bigDetailOpen.comments.map(item => {
         return (
-            <Card>
+            <Card key={item.id}>
                 <CardBody>
                     <CardTitle>Comment</CardTitle>
                     <CardText>{item.description}</CardText>

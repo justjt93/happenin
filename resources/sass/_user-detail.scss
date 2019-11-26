@@ -10,8 +10,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    //height: auto;
-
+    
   }
     
   .user-profile {
@@ -19,8 +18,7 @@
     min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
     padding-top: 1rem;
     background-color: $primary;
-    //background-color: $secondary;
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
