@@ -81,19 +81,50 @@
   }
 
   &-item {
+    
     margin: .5rem;
-    height:260px;
-    width:220px;
     border: solid $borderLightGrey 1px;
     position: relative;
 
-    @media(max-width:1400px){
+    height:260px;
+
+    width: 96%;
+
+    //FOR MOBILE SCREENS
+    @media(min-width: 374px){
+      width: 45%;
+    }
+
+    @media(min-width:410px){
       width: 46%;
     }
 
-    @media(max-width:1030px){
-      width: 88%;
+    @media(min-width: 540px){
+      width: 30%;
     }
+
+    //FOR DESKTOP SCREENS
+
+    @media(min-width:800px){
+      width: 100%;
+    }
+
+    @media(min-width:900px){
+      width: 44%;
+    }
+
+    @media(min-width: 1030px){
+      width: 46%;
+    }
+
+    @media(min-width: 1480px){
+      width: 180px;
+    }
+
+    @media(min-width:1772px){
+      width: 220px;
+    }
+
    .event-image {
       width: 100%;
       height: 45%;

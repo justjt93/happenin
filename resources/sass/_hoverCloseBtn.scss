@@ -27,15 +27,16 @@
 
     @media (min-width: 800px) {
       position: fixed;
-      top: 8vh;
-      left: 37%;
+      top: $headerHeight+6px;
+      left: 36%;
     }
 
     @media (min-width:1000px){
       position:fixed;
-      top:7vh;
-      left:36.5%;
+      top:$headerHeight+15px;
+      left:37%;
     }
+
   
   &:hover {background-color:$sport;}
   
