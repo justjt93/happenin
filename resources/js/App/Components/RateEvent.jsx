@@ -29,6 +29,8 @@ const RateEvent = (props) => {
   }, [data]);
 
   const resetStars = () => {
+    emptyStars();
+
     for (let i = 1; i <= data.value; i+= 1) {
       document.querySelector(`#star${i}`).classList.remove("far");
       document.querySelector(`#star${i}`).classList.add("fas", "full");
@@ -36,7 +38,16 @@ const RateEvent = (props) => {
     }
   }
 
+  const emptyStars = () => {
+    for (let i = 1; i <= 5; i+= 1) {
+      document.querySelector(`#star${i}`).classList.remove("fas", "full");
+      document.querySelector(`#star${i}`).classList.add("far");
+    }
+  }
+
   const handleMouseEnter = (no) => {
+    emptyStars();
+
     for (let i = 1; i <= no; i+= 1) {
       document.querySelector(`#star${i}`).classList.remove("far");
       document.querySelector(`#star${i}`).classList.add("fas", "full");
@@ -44,10 +55,7 @@ const RateEvent = (props) => {
   }
 
   const handleMouseLeave = () => {
-    for (let i = 1; i <= 5; i+= 1) {
-      document.querySelector(`#star${i}`).classList.remove("fas", "full");
-      document.querySelector(`#star${i}`).classList.add("far");
-    }  
+    emptyStars();
   }
 
   const handleClick = (no) => {
