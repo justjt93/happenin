@@ -35,28 +35,29 @@ class EventController extends Controller
             return Event::wherein('type_id', $type)
                 ->orderBy('title')
                 ->where('title', 'like', '%' . $search . '%')
-                ->with("images")->with("ratings")
-                ->with("comments")
+                ->with("images")
+                ->with("ratings")
+                ->with("comments.user")
                 ->paginate(12);
         } elseif ($type[0] !== "") {
             return Event::orderBy('title')
                 ->wherein('type_id', $type)
                 ->with("images")
                 ->with("ratings")
-                ->with("comments")
+                ->with("comments.user")
                 ->paginate(12);
         } elseif ($search !== "") {
             return Event::orderBy('title')
                 ->where('title', 'like', '%' . $search . '%')
                 ->with("images")
                 ->with("ratings")
-                ->with("comments")
+                ->with("comments.user")
                 ->paginate(12);
         } else {
             return Event::orderBy('title', 'desc')
                 ->with("images")
                 ->with("ratings")
-                ->with("comments")
+                ->with("comments.user")
                 ->paginate(12);
         }
     }

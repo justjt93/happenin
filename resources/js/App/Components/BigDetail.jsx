@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CarouselComp from "./CarouselComp.jsx";
 import HoverCloseBtn from "./HoverCloseBtn.jsx";
 import RateEvent from "./RateEvent.jsx";
@@ -12,66 +12,87 @@ const BigDetail = props => {
         setBigDetailOpen(null);
     };
 
+    const loggedInUser = JSON.parse(
+        document
+            .querySelector('meta[name="logged-in-user"]')
+            .getAttribute("content")
+    );
+
+    const avatar = item => {
+        if (item.user) {
+            if (item.user.avatar) {
+                return item.user.avatar;
+            }
+        }
+        return "https://institutogoldenprana.com.br/wp-content/uploads/2015/08/no-avatar-25359d55aa3c93ab3466622fd2ce712d1.jpg";
+    };
+
     const comments = bigDetailOpen.comments.reverse().map(item => {
         return (
             <Card key={item.id}>
                 <CardBody>
-                    <CardTitle>Comment</CardTitle>
+                    <CardTitle>
+                        <img className="avatar-comment" src={avatar(item)} />
+                        <div className="userdetail-comment">
+                            {item.user.name}
+                            <small className="text-muted">{item.created_at}</small>
+                        </div>
+                    </CardTitle>
                     <CardText>{item.description}</CardText>
                     <CardText>
-                        <small className="text-muted">{item.created_at}</small>
+                        
                     </CardText>
                 </CardBody>
             </Card>
         );
     });
 
-    const commentCallback = (comment) => {
-        setBigDetailOpen({
-            ...bigDetailOpen,
-            comments: [...bigDetailOpen.comments, comment]
-        })
-    }
+    useEffect(() => {
+        console.log(bigDetailOpen);
+    });
+
+    // const commentCallback = comment => {
+    //     setBigDetailOpen({
+    //         ...bigDetailOpen,
+    //         comments: [...bigDetailOpen.comments, ...comment, ...loggedInUser]
+    //     });
+    // };
 
     return (
         <div className="bigdetail">
-                <CarouselComp images={bigDetailOpen.images}/>
-                <HoverCloseBtn handleCloseBigDetail={handleClose} />
-                <div className="infobox-wrap">
-                    <h2>{bigDetailOpen.title}</h2>
-                    <p className="infobox-address">{bigDetailOpen.address}</p>
-                    <RateEvent
-                    eventId={bigDetailOpen.id}
-                    />
-                    <hr />
-                    <div className="startEndWrap">
-                        <Alert color="success">
-                            Event starts at: {bigDetailOpen.starts_at}
-                        </Alert>
-                        <Alert color="danger">
-                            Event finishes at: {bigDetailOpen.ends_at}
-                        </Alert>
-                    </div>
-                    <p className="infobox-eventdesc">
-                        {bigDetailOpen.description}
-                    </p>
-                    <div className="infobox-ratingbtn-wrap">
-                        <p>10/10 bus drivers recommend</p>
-                        <Button
-                            color="success"
-                            onClick={() => {
-                                console.log("Action to add photo");
-                            }}
-                        >
-                            Add a photo
-                        </Button>
-                    </div>
+            <CarouselComp images={bigDetailOpen.images} />
+            <HoverCloseBtn handleCloseBigDetail={handleClose} />
+            <div className="infobox-wrap">
+                <h2>{bigDetailOpen.title}</h2>
+                <p className="infobox-address">{bigDetailOpen.address}</p>
+                <RateEvent eventId={bigDetailOpen.id} />
+                <hr />
+                <div className="startEndWrap">
+                    <Alert color="success">
+                        Event starts at: {bigDetailOpen.starts_at}
+                    </Alert>
+                    <Alert color="danger">
+                        Event finishes at: {bigDetailOpen.ends_at}
+                    </Alert>
                 </div>
-                <CommentEvent
+                <p className="infobox-eventdesc">{bigDetailOpen.description}</p>
+                <div className="infobox-ratingbtn-wrap">
+                    <p>10/10 bus drivers recommend</p>
+                    <Button
+                        color="success"
+                        onClick={() => {
+                            console.log("Action to add photo");
+                        }}
+                    >
+                        Add a photo
+                    </Button>
+                </div>
+            </div>
+            <CommentEvent
                 eventId={bigDetailOpen.id}
-                commentCallback={commentCallback}
-                />
-                {comments}
+                // commentCallback={commentCallback}
+            />
+            {comments}
         </div>
     );
 };

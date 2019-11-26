@@ -42,7 +42,6 @@ const CommentEvent = props => {
         setComment(e.target.value);
     };
 
-    //debugging
     useEffect(() => {
         if (data) {
             if (data.errors) {
@@ -57,7 +56,7 @@ const CommentEvent = props => {
                         Comment successfully added!
                     </div>
                 );
-                commentCallback(data);
+                // commentCallback(data);
                 setComment("");
             }
         }
