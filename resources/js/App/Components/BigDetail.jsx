@@ -12,12 +12,6 @@ const BigDetail = props => {
         setBigDetailOpen(null);
     };
 
-    const loggedInUser = JSON.parse(
-        document
-            .querySelector('meta[name="logged-in-user"]')
-            .getAttribute("content")
-    );
-
     const avatar = item => {
         if (item.user) {
             if (item.user.avatar) {
@@ -34,7 +28,7 @@ const BigDetail = props => {
                     <CardTitle>
                         <img className="avatar-comment" src={avatar(item)} />
                         <div className="userdetail-comment">
-                            {item.user.name}
+                            {item.user ? item.user.name : ""}
                             <small className="text-muted">{item.created_at}</small>
                         </div>
                     </CardTitle>
