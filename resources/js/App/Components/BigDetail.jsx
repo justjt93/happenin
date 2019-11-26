@@ -2,6 +2,7 @@ import React from "react";
 import CarouselComp from "./CarouselComp.jsx";
 import HoverCloseBtn from "./HoverCloseBtn.jsx";
 import RateEvent from "./RateEvent.jsx";
+import CommentEvent from "./CommentEvent.jsx";
 import { Button, Alert, Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 const BigDetail = props => {
@@ -11,7 +12,7 @@ const BigDetail = props => {
         setBigDetailOpen(null);
     };
 
-    const comments = bigDetailOpen.comments.map(item => {
+    const comments = bigDetailOpen.comments.reverse().map(item => {
         return (
             <Card>
                 <CardBody>
@@ -24,6 +25,13 @@ const BigDetail = props => {
             </Card>
         );
     });
+
+    const commentCallback = (comment) => {
+        setBigDetailOpen({
+            ...bigDetailOpen,
+            comments: [...bigDetailOpen.comments, comment]
+        })
+    }
 
     return (
         <div className="bigdetail">
@@ -59,6 +67,10 @@ const BigDetail = props => {
                         </Button>
                     </div>
                 </div>
+                <CommentEvent
+                eventId={bigDetailOpen.id}
+                commentCallback={commentCallback}
+                />
                 {comments}
         </div>
     );

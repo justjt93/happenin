@@ -8,6 +8,7 @@ use App\Event;
 use App\Image;
 use App\User;
 use App\Rating;
+use App\Comment;
 use Spatie\Geocoder\Geocoder;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\EventAdded;
@@ -210,7 +211,11 @@ class EventController extends Controller
     
     public function storeRating(Request $request)
     {
-        $rating = Rating::where('user_id', $request->input('user_id'))->where('event_id', $request->input('event_id'))->first();
+        $rating = Rating::where('user_id', $request
+            ->input('user_id'))
+            ->where('event_id', $request
+            ->input('event_id'))
+            ->first();
 
         if ($rating) {
             $rating->value = $request->input('value');
@@ -225,4 +230,19 @@ class EventController extends Controller
         
         return $rating;
     }
+
+    public function storeComment(Request $request)
+    {
+        $this->validate($request, [
+            'description' => 'required|max:400',
+        ]);
+
+        $comment = Comment::create([
+            'user_id'=>$request->input('user_id'),
+            'event_id'=>$request->input('event_id'),
+            'description'=>$request->input('description')
+        ]);
+
+        return $comment;
+    }    
 }
