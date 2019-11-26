@@ -31,7 +31,6 @@
       color: $primary;
       margin-top:10px;
       margin-bottom: 15px;
-      //border-bottom: solid rgb(148, 148, 148) 2px;
       width: 94%;
     }
     .eventAddress{
@@ -59,26 +58,3 @@
     }
   }
 }
-//
-//old delete event pop-up
-
-/*
-//delete event popupu
-.deleteEventPopup {
-  background-color: $primary;
-  color: $secondary;
-  height: 50vh;
-  width: 80%;
-  position: absolute;
-  left: 10%;
-  //margin-top: -15rem;
-  flex-direction: column;
-  
-
-  .closeDeletePopup {
-    padding: 1rem;
-    cursor: pointer;
-    align-self: flex-end;
-    font-weight: bold;
-  }
-}*/

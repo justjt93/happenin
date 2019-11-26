@@ -21,8 +21,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  //margin-left:20px;
-
 }
 .categories{
     margin-top:1.5rem;
@@ -58,7 +56,6 @@ input[type="radio"]:checked + label {
 }
 
 .btn-add{
-  //width: 270px;
   width: 100%;
 
     border: $primary solid 1px;

@@ -11,9 +11,8 @@ import {
     InfoWindow
 } from "react-google-maps";
 
-function renderMap() {
+function renderMap(props) {
     const [selectedEvent, setSelectedEvent] = useState(null);
-    const [bigDetailOpen, setBigDetailOpen] = useState(null);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -25,11 +24,12 @@ function renderMap() {
     }, []);
 
     const handleMoreInfoClick = () => {
-        setBigDetailOpen(selectedEvent);
+        props.setBigDetailOpen(selectedEvent);
         setSelectedEvent(null);
     };
 
     return (
+        <>
         <GoogleMap
             defaultZoom={13}
             maxZoom={14}
@@ -93,20 +93,17 @@ function renderMap() {
                 </InfoWindow>
             )}
 
-            {bigDetailOpen && (
-                <>
-                    <BigDetail
-                        setBigDetailOpen={setBigDetailOpen}
-                        bigDetailOpen={bigDetailOpen}
-                    />
-                </>
-            )}
+            
         </GoogleMap>
+        
+        </>
     );
 }
 
-export default class Map extends React.Component {
-    render() {
+export default function Map (props) {
+    const [bigDetailOpen, setBigDetailOpen] = useState(null);
+
+    
         const WrappedMap = withScriptjs(withGoogleMap(renderMap));
 
         return (
@@ -116,9 +113,18 @@ export default class Map extends React.Component {
                 loadingElement={<div style={{ height: "100%" }}></div>}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
+                setBigDetailOpen={setBigDetailOpen}
             />
             <AddBtn />
+            {bigDetailOpen && (
+                <>
+                    <BigDetail
+                        setBigDetailOpen={setBigDetailOpen}
+                        bigDetailOpen={bigDetailOpen}
+                    />
+                </>
+            )}
             </>
         );
-    }
+
 }
