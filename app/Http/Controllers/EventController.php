@@ -101,7 +101,6 @@ class EventController extends Controller
             'type_id' => $type_id
         ]);
 
-        // if ($request->hasfile('image')) {
 
         foreach ($request->file('image', []) as $file) {
             $extension = $file->getClientOriginalExtension(); // getting image extension
@@ -115,16 +114,29 @@ class EventController extends Controller
             ]);
         }
 
-
-
-
-
-        // }
-
         $username = auth()->user()->name;
         auth()->user()->notify(new EventAdded($username));
 
         return $event;
+    }
+
+    public function addEventPicture(Request $request)
+    {
+        foreach ($request->file('image', []) as $file) {
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = uniqid() . '.' . $extension;
+            $file->move('images/uplodaded_event_images', $filename);
+
+            $image = Image::create([
+                'user_id' => auth()->user()->id,
+                'url' => "images/uplodaded_event_images/" . $filename,
+                'event_id' => $request->eventId,
+            ]);
+        }
+
+
+
+        return ["status" => "Image/Images added successfully."];
     }
 
     /**
@@ -209,13 +221,13 @@ class EventController extends Controller
 
         return $rating;
     }
-    
+
     public function storeRating(Request $request)
     {
         $rating = Rating::where('user_id', $request
             ->input('user_id'))
             ->where('event_id', $request
-            ->input('event_id'))
+                ->input('event_id'))
             ->first();
 
         if ($rating) {
@@ -223,12 +235,12 @@ class EventController extends Controller
             $rating->save();
         } else {
             $rating = Rating::create([
-                'user_id'=>$request->input('user_id'),
-                'event_id'=>$request->input('event_id'),
-                'value'=>$request->input('value')
+                'user_id' => $request->input('user_id'),
+                'event_id' => $request->input('event_id'),
+                'value' => $request->input('value')
             ]);
         }
-        
+
         return $rating;
     }
 
@@ -239,11 +251,11 @@ class EventController extends Controller
         ]);
 
         $comment = Comment::create([
-            'user_id'=>$request->input('user_id'),
-            'event_id'=>$request->input('event_id'),
-            'description'=>$request->input('description')
+            'user_id' => $request->input('user_id'),
+            'event_id' => $request->input('event_id'),
+            'description' => $request->input('description')
         ]);
 
         return $comment;
-    }    
+    }
 }

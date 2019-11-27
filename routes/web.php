@@ -35,6 +35,8 @@ Route::post('/events/destroy/{id}', 'EventController@destroy');
 Route::view('/eventlist', 'events.event-list');
 Route::post('/ratings', 'EventController@storeRating');
 Route::post('/comments', 'EventController@storeComment');
+Route::post('/addEventPicture', 'EventController@addEventPicture');
+
 
 //User detail and edit and updateProfPic
 Route::get('/userdetail', 'UserController@index')->middleware('auth');

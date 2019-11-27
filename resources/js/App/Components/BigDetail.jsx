@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CarouselComp from "./CarouselComp.jsx";
 import HoverCloseBtn from "./HoverCloseBtn.jsx";
 import RateEvent from "./RateEvent.jsx";
 import CommentEvent from "./CommentEvent.jsx";
+import EventPictureUploadForm from "./EventPictureUploadForm.jsx";
 import { Button, Alert, Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 const BigDetail = props => {
     const { setBigDetailOpen, bigDetailOpen } = props;
 
-    if(bigDetailOpen == null) return null;
+    if (bigDetailOpen == null) return null;
 
     const handleClose = () => {
         setBigDetailOpen(null);
@@ -33,13 +34,12 @@ const BigDetail = props => {
                         <img className="avatar-comment" src={avatar(item)} />
                         <div className="userdetail-comment">
                             {item.user ? item.user.name : ""}
-                            <small className="text-muted">{`${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</small>
+                            <small className="text-muted">{`${date.getDate()}. ${date.getMonth() +
+                                1}. ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</small>
                         </div>
                     </CardTitle>
                     <CardText>{item.description}</CardText>
-                    <CardText>
-                        
-                    </CardText>
+                    <CardText></CardText>
                 </CardBody>
             </Card>
         );
@@ -77,14 +77,7 @@ const BigDetail = props => {
                 <p className="infobox-eventdesc">{bigDetailOpen.description}</p>
                 <div className="infobox-ratingbtn-wrap">
                     <p>10/10 bus drivers recommend</p>
-                    <Button
-                        color="success"
-                        onClick={() => {
-                            console.log("Action to add photo");
-                        }}
-                    >
-                        Add a photo
-                    </Button>
+                    <EventPictureUploadForm eventId={bigDetailOpen.id} />
                 </div>
             </div>
             <CommentEvent

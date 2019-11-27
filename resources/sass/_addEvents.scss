@@ -77,4 +77,25 @@ input[type="radio"]:checked + label {
     }
 }
 
-  
+.dropzoneContainer{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-Width: 2;
+
+  border-Radius: 2;
+  border-Color: #eeeeee;
+  border-Style: dashed;
+  background-Color: #fafafa;
+  color: #bdbdbd;
+  outline: none;
+  transition: border .24s ease-in-out;
+  max-width: 100%;
+  ul {
+    padding: 0;
+    list-style-type: none;
+    max-width: 100%;
+}
+}
