@@ -4,6 +4,7 @@ import { PaginationItem, PaginationLink, Pagination } from "reactstrap";
 import EventListItems from "./EventListItems.jsx";
 import TypeFilter from "./TypeFilter.jsx";
 import Searchbar from "./Searchbar.jsx";
+import Footer from "../Components/Footer.jsx";
 
 const EventList = () => {
     const [data, setData] = useState();
@@ -109,6 +110,7 @@ const EventList = () => {
                 <TypeFilter typeCallback={typeCallback} />
                 <EventListItems data={data} />
             </div>
+            <Footer/>
         </>
     );
 };
