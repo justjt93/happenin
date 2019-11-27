@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "../Components/Menu.jsx";
 import EditEventForm from "./EditEventForm";
+import Footer from "../Components/Footer.jsx";
 
 const EditEvent = () => {
     const event = JSON.parse(
@@ -15,6 +16,7 @@ const EditEvent = () => {
             <div className="auth-container">
                 <EditEventForm event={event} />
             </div>
+            <Footer />
         </>
     );
 };
