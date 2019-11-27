@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+        return view('welcome');
 });
 
 
@@ -35,8 +35,9 @@ Route::post('/events/destroy/{id}', 'EventController@destroy');
 Route::view('/eventlist', 'events.event-list');
 Route::post('/ratings', 'EventController@storeRating');
 
-//User detail and edit
+//User detail and edit and updateProfPic
 Route::get('/userdetail', 'UserController@index')->middleware('auth');
 Route::get('/userdetail/edit', 'UserController@edit')->middleware('auth');
 Route::post('/userdetail/edit/{id}', 'UserController@store')->middleware('auth');
+Route::post('/userdetail/update', 'UserController@update')->middleware('auth');
 Route::post('/userdetail/passwordchange/{id}', 'UserController@changePassword')->middleware('auth');
