@@ -107,19 +107,19 @@ const AddEventForm = () => {
                                         {isDragActive
                                             ? "Drop it like it's hot!"
                                             : "Click me or drag a file to upload!"}
-                                    <ul>
+                                    <div className="accepted-files">
                                         {acceptedFiles.length > 0 &&
                                             acceptedFiles.map(
                                                 (acceptedFile, index) => (
-                                                    <li
-                                                        className="list-group-item list-group-item-success"
+                                                    <div
+                                                        className="list-group-item list-group-item-success accepted-file"
                                                         key={index}
                                                     >
                                                         {acceptedFile.name}
-                                                    </li>
+                                                    </div>
                                                 )
                                             )}
-                                    </ul>
+                                    </div>
                                     </div>
                                 </>
                             )}
@@ -216,7 +216,7 @@ const AddEventForm = () => {
                                 checked={type_id === "1"}
                                 onChange={handleCategorySelection}
                             />
-                            <label htmlFor="control_01">art</label>
+                            <label htmlFor="control_01" classname="radio-art">art</label>
 
                             <input
                                 type="radio"
