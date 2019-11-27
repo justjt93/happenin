@@ -13,8 +13,7 @@ const App = () => {
             </div>
             <div className="containerMap">
                 <Map />
-            </div>
-        
+            </div>       
             <Footer />
         </>
     );

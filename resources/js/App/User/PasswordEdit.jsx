@@ -47,9 +47,12 @@ import { Link } from 'react-router-dom';
 
       return (
           <>
-          <Link to="/userdetail/"><div className="go-back">X</div></Link>
+          <div className="popup-container">
+          
+          <div className="popup-window edit-info">
+              <div className="popup-top-stripe">Change your password</div>
               <form action="" onSubmit={handleChangePasswordSubmit}>
-                <p>change password</p>
+                <div className="popup-text">
                   <input type="password" id="password" name="password" placeholder="old password" onChange={handleTextValueChange}/><br/> 
                   <span className="error-message">{errors.password}</span><br/>
 
@@ -57,10 +60,17 @@ import { Link } from 'react-router-dom';
                   <span className="error-message">{errors.newPassword}</span><br/>
 
                   <input type="password" id="confirmNewPassword" name="newPassword_confirmation" placeholder="confirm new password" onChange={handleTextValueChange}/><br/>
+                </div>
 
-                  <input type="submit" value="Change password"/> 
-                  <p className="complete-message">{status}</p>
+                <div className="popup-btns">
+                    <input type="submit" value="Change password"/>
+                  <Link to="/userdetail/"><div className="go-back">Cancel</div></Link>   
+                </div>
+
+
               </form>
+            </div>
+            </div>
           </>
         )
 }
