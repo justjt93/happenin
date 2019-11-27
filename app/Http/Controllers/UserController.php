@@ -23,7 +23,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:127',
             'email' => 'required|email|max:127',
-         ]);
+        ]);
 
         $user = User::find($id);
         $user->name = $request->name;
@@ -39,12 +39,39 @@ class UserController extends Controller
         $this->validate($request, [
             'password' => 'required|password',
             'newPassword' => 'required|confirmed',
-         ]);
-        
+        ]);
+
         $user = User::find($id);
         $user->password = Hash::make($request->newPassword);
         $user->save();
 
         return ["status" => "password succesfully changed"];
+    }
+
+    public function update(Request $request)
+    {
+        // $this->validate($request, [
+        //     'name' => 'required|min:3|max:127',
+        //     'email' => 'required|email|max:127',
+        //  ]);
+
+
+
+        $file = $request->avatar;
+        $user_id = $request->user_id;
+
+
+        $extension = $file->getClientOriginalExtension(); // getting image extension
+        $filename = $user_id . '.' . $extension;
+        $file->move('images/user_avatars', $filename);
+
+
+        $user = User::find($user_id);
+        $user->avatar = "images/user_avatars/" . $filename;
+        $user->save();
+
+
+
+        return ["status" => "Avatar uploaded successfully"];
     }
 }
