@@ -1,7 +1,7 @@
 .add-event-form{
   background-color: white;
-  margin-top: 5rem;
-  height: 85%;
+  margin-top: $headerHeight;
+  height: calc(100vh - 64px);
 
   display: flex;
   flex-direction: column;
@@ -12,6 +12,23 @@
     padding-top:20px;
     padding-bottom: 20px;
   }
+}
+
+.dropzone {
+
+  div:first-child {
+  border: dashed $primary 2px;
+  transition: 5s;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+    &:hover {
+      border: solid $primary 2px;
+    }
+  } 
 }
 
 .form{
