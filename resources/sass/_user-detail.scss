@@ -3,13 +3,16 @@
   
   justify-content: center;
   
-  max-height: 100vh;
-  margin-top: 4rem;
+  background-image: url('/images/background.png');
+  background-size: contain;
+  //max-height: 100vh;
+  //margin-top:90px;
 
   @media(max-width:800px){
     display: flex;
     flex-direction: column;
-    //height: 100vh - $headerHeight;
+    justify-content: flex-start;
+    //min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
     
   }
     
@@ -24,23 +27,26 @@
     align-items: center;
 
     border-right: 2px solid $secondary;
-    border-top: 2px solid #f7f7f7;
-    border-bottom: 2px solid #f7f7f7;
+    //border-top: 2px solid #f7f7f7;
+    //border-bottom: 2px solid #f7f7f7;
+
+    
 
     @media(max-width:800px){
-      //min-height: 800px;
-      margin-top:30rem;
+      min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+      margin-top:$headerHeight;
 
       //margin-top:$headerHeight;
       width: 100%;
 
-      background-color: $secondary;
+      background-color: rgba(255,255,255,0.6);
     }
     
 
     h3{
       @media(max-width:800px){
         color:$primary;
+        
       }
       color:$secondary;
       text-align: center;
@@ -48,20 +54,22 @@
 
     .amazing-avatar{ 
       img{
-        border-radius: 170px;
+        border-radius: 50%;
 
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
 
-        margin-top:4rem;
-        margin-bottom: 3rem;
+        object-fit: cover;
+
+        margin-top:3rem;
+        margin-bottom: 2rem;
 
         box-shadow: 0px 0px 7px 2px white;
         @media(max-width:800px){
           margin-top:2rem;
 
-          width: 200px;
-          height: 200px;
+          width: 250px;
+          height: 250px;
         } 
       }
     }
@@ -91,10 +99,13 @@
     }
 
     .profile-button{
-      width:303px;
-      display: flex;
-      justify-content: space-around;
 
+      width: 270px;
+
+      display: flex; 
+      justify-content: space-between;
+      
+      margin-bottom: 3rem;
       button{
         cursor: pointer;
       }
@@ -103,86 +114,87 @@
 
   .profile-comments{
     background-color: #f7f7f7;
-    background-image: url('/images/bgg.png');
+    background-image: url('/images/background.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    //background-repeat: no-repeat;
 
-    min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+    min-height: 300px;
+    //min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   }
 }
 
 //EDITING - FORMS
 
-.profile-form{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 15px;
-}
-.profile-edit-form{
-  width: 320px;
+// .profile-form{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-end;
+//   margin-top: 15px;
+// }
+// .profile-edit-form{
+//   width: 320px;
 
-  border-top: 1px solid $secondary;
-  color: $secondary;
+//   border-top: 1px solid $secondary;
+//   color: $secondary;
 
-  @media(max-width:800px){
-    border-top: 1px solid $primary;
-    width:270px;
-    color:$primary;
-    font-size: 15px;
-  }
+//   @media(max-width:800px){
+//     border-top: 1px solid $primary;
+//     width:270px;
+//     color:$primary;
+//     font-size: 15px;
+//   }
 
-  input{
-    background-color: $secondary;
-    margin-left: 10px;
-    width: 100%;
-    border: none;
+//   input{
+//     background-color: $secondary;
+//     margin-left: 10px;
+//     width: 100%;
+//     border: none;
 
-    @media(max-width: 800px){
-      background-color: $primary;
-      width: 60%;
-    }
-  }
+//     @media(max-width: 800px){
+//       background-color: $primary;
+//       width: 60%;
+//     }
+//   }
 
-  input[type=submit]{
-    box-sizing: border-box;
-    position: relative;
-    width: 270px;  
-    margin: 5px;
-    padding: 5px 15px 5px 15px;
-    border: none;
-    text-align: center;
-    line-height: 34px;
-    white-space: nowrap;
-    border-radius: 0.2em;
-    font-size: 16px;
-    color: #FFF;
-    cursor: pointer;
-    @media(min-width: 800px){
-      background-color: $secondary;
-      color: $primary;
-    }
-  }
+//   input[type=submit]{
+//     box-sizing: border-box;
+//     position: relative;
+//     width: 270px;  
+//     margin: 5px;
+//     padding: 5px 15px 5px 15px;
+//     border: none;
+//     text-align: center;
+//     line-height: 34px;
+//     white-space: nowrap;
+//     border-radius: 0.2em;
+//     font-size: 16px;
+//     color: #FFF;
+//     cursor: pointer;
+//     @media(min-width: 800px){
+//       background-color: $secondary;
+//       color: $primary;
+//     }
+//   }
 
-}
-.go-back {
-  @media(max-width: 800px){
-    color:$primary;
-    cursor: pointer;
-  }
-  cursor: pointer;
-  text-decoration: none;
-  text-align: right;
-  right: 0;
-  color: $secondary;
-  font-weight: bold;
-}
+// }
+// .go-back {
+//   @media(max-width: 800px){
+//     color:$primary;
+//     cursor: pointer;
+//   }
+//   cursor: pointer;
+//   text-decoration: none;
+//   text-align: right;
+//   right: 0;
+//   color: $secondary;
+//   font-weight: bold;
+// }
 
 // Uploading user avatar
 .userPicUploadContainer{
-  width: 320px;
+  width: 270px;
  .form{  
-   width:320px; 
+   width:270px; 
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
@@ -193,22 +205,29 @@
     .avatarSubmitBtn,.fileUploadNameField{
       color: white;
       display: none;
+
+      i{
+        p{
+          font-weight: normal;
+        }
+      }
     }
 
     button{
-      width: 140px;
+      width: 100px;
       height: 50px;
       margin-bottom: 8px;
     }
     .avatarUploadLabel{
-    width: 140px;
-    height: 50px;
+    //width: 100px;
+    height: 46px;
+
     color: #fff;
     background-color: #17a2b8;
     border-color: #17a2b8;
     cursor: pointer;
     display: inline-block;
-    font-weight: 400;
+    //font-weight: 400;
     text-align: center;
     vertical-align: middle;
     border: 1px solid transparent;
@@ -218,6 +237,12 @@
     border-radius: 0.25rem;
 
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    i{
+      p{
+        font-weight: normal;
+      }
+    }
     }
   }
 

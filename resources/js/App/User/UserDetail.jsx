@@ -40,7 +40,7 @@ const UserDetail = () => {
             <div className="user-detail">
                 <Menu />
                 <div className="user-profile">
-                    <h3>Your Profile Info</h3>
+                    <h3>Your Profile Page</h3>
 
                     <div className="amazing-avatar">
                         <img src={user.avatar}></img>
@@ -63,12 +63,18 @@ const UserDetail = () => {
                         </div>
                     </div>
 
+                    <div className="profile-button">
+
+                    <Button color="info" onClick={showOrHideEdit}>Edit Info</Button>
+                    
+                    {editPopup ? <InfoEdit setUserData={setUserData} showOrHideEdit={showOrHideEdit} /> : ""}
+                    
                     <Router history={history}>
-                        <div className="profile-button">
+                      
                             <Link to="/userdetail/editpassword">
                                 <Button color="info">Change Password</Button>
                             </Link>
-                        </div>
+                        
 
                         <Route
                             exact
@@ -77,10 +83,9 @@ const UserDetail = () => {
                         />
                     </Router>
                     
-                    <div className="profile-button">
-                        <Button color="info" onClick={showOrHideEdit}>Edit Info</Button>
-                    </div>
-                    {editPopup ? <InfoEdit setUserData={setUserData} showOrHideEdit={showOrHideEdit} /> : ""}
+    
+                        
+                </div>
                 </div>
 
                 <div className="profile-comments">
