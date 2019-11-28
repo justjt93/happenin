@@ -6,24 +6,51 @@
   flex-direction: column;
   align-items: center;
 
+  @media(min-width:800px){
+    //display: inline;
+      width: 100%;
+      display: flex;
+
+      padding-bottom: 3rem;
+      align-items: flex-end;
+     
+  }
+
   .notice{
-    width: 90%;
-    color: gray;
-    font-size: 14px;
+   
+    @media(min-width:800px){
+      margin: .5rem;
+      padding: .25rem;
+      margin-left:4.5rem;
+
+      align-self: flex-start;
+      margin-left: 35%;
+    }
+    h5{  
+      @media(min-width:800px){
+        display: none;
+      }
+      color: gray;
+      font-size: 14px;}
+      margin-bottom: 2rem;  
   }
   
   h2 {
     color: $primary;
+    @media(min-width:800px){
+      margin: .5rem;
+      padding: .25rem;
+      margin-left:4rem;
+
+      align-self: flex-start;
+      margin-left: 35%;
+    }
   }
 
   .eventItem {
     background-color: #f7f7f7;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
-    // margin: .5rem;
-    // padding: .25rem;
-    // margin-left:3rem;
-    //border: solid $secondary 6px;
     border-radius: 6px;
     margin-bottom: 2rem;
 
@@ -32,26 +59,48 @@
     flex-direction: column;
     align-items: center;
 
+    @media(min-width:800px){
+      margin: .5rem;
+      padding: 1rem 3rem;
+      margin-left:3rem;
+      margin-right: 2rem;
+      display: block;
+      width: 65%;
+    }
     .eventTitle {
+      @media(min-width:800px){
+        text-align: left;       
+      }
       text-align: center;
       color: $primary;
       font-size:26px;
       margin-top:10px;
       margin-bottom: 15px;
       width: 94%;
+      color:$primary;
     }
     .eventAddress{
       color:rgb(26, 26, 172);
-      font-size: 14px;
+      font-size: 12px;
       //width: 93%;
       margin-bottom: 20px;
       border-bottom: solid rgb(148, 148, 148) 2px;
+
+      @media(min-width: 800px){
+        font-size: 14px;
+      }
     }
 
     .eventDescription {
       padding: 0 2rem;
       font-size: .8rem;
       text-align: justify;
+      color:$primary;
+
+      @media(min-width: 800px){
+        padding:0px;
+        font-size: 14px;
+      }
     }
 
     .eventBtns {
@@ -62,6 +111,13 @@
       
       .btn {
         margin: .25rem;
+      }
+
+      @media(min-width: 800px){
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top:0px;
       }
     }
   }

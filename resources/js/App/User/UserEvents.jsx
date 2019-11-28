@@ -8,6 +8,7 @@ const UserEvents = (props) => {
   const events = userEvents.length === 0 ?
   <p>No events created by {user.name}</p>
   :
+  
   userEvents.map(event =>(
     <div className="eventItem" key={event.id}>
       <h3 className="eventTitle">{event.title}</h3>
@@ -18,6 +19,7 @@ const UserEvents = (props) => {
       />
     </div>
   ))
+ 
   
     
       return (

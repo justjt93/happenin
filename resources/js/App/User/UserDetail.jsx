@@ -39,7 +39,10 @@ const UserDetail = () => {
         <>
             <div className="user-detail">
                 <Menu />
+
+                <div className="overlay-profile">
                 <div className="user-profile">
+                    
                     <h3>Your Profile Page</h3>
 
                     <div className="amazing-avatar">
@@ -86,8 +89,9 @@ const UserDetail = () => {
                     
     
                         
+                    </div>
                 </div>
-                </div>
+            </div>
 
                 <div className="profile-comments">
                     <UserEvents user={user} userEvents={userEvents} />
