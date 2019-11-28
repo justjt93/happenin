@@ -74,3 +74,15 @@
         flex-direction: column;
     }
 }
+
+.bigdetail-dropzone {
+    width: 100%;
+
+    form {
+        width: auto;
+    }
+
+    .dropzoneContainer {
+        width: 100%;
+    }
+}

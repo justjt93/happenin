@@ -56,7 +56,7 @@ const CommentEvent = props => {
                         Comment successfully added!
                     </div>
                 );
-                // commentCallback(data);
+                commentCallback(data);
                 setComment("");
             }
         }
