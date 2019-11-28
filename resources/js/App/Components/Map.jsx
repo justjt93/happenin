@@ -28,6 +28,36 @@ function renderMap(props) {
         setSelectedEvent(null);
     };
 
+    //star rating
+    const emptyStar = "far fa-star";
+    const fullStar = "fas fa-star full";
+    const halfStar = "fas fa-star-half-alt full";
+    
+    const starRating = avgRating => {
+        let remainingRating = avgRating;
+        const stars = [];
+
+        for (let i = 0; i < 5; i += 1) {
+            if (remainingRating > 1) {
+                stars.push(fullStar);
+                remainingRating -= 1;
+            } else if (remainingRating === 0.5) {
+                stars.push(halfStar);
+                remainingRating -= 0.5;
+            } else {
+                stars.push(emptyStar);
+            }
+        }
+
+        return (
+            <div className="star-rating">
+                {stars.map((star, index) => {
+                    return <i className={star} key={index}></i>;
+                })}
+            </div>
+        );
+    };
+
     return (
         <>
         <GoogleMap
@@ -81,7 +111,12 @@ function renderMap(props) {
                             {selectedEvent.description}
                         </p>
                         <div className="infobox-ratingbtn-wrap">
-                            <p>10/10 bus drivers recommend</p>
+                            <div className="event-rating">
+                                Rating:{" "}
+                                {selectedEvent.ratings.length !== 0
+                                ? starRating(Math.round(selectedEvent.avg_rating * 2) / 2) //round to nearest .5
+                                : "no ratings"}
+                            </div>
                             <button
                                 className="moreInfoBtn"
                                 onClick={handleMoreInfoClick}
