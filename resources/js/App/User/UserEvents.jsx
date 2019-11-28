@@ -6,7 +6,7 @@ const UserEvents = (props) => {
   const {user, userEvents} = props
   
   const events = userEvents.length === 0 ?
-  <p>No events created by {user.name}</p>
+  <p className="no-events">No events created by {user.name}</p>
   :
   
   userEvents.map(event =>(
