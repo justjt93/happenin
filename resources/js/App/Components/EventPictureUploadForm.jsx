@@ -48,7 +48,7 @@ const EventPictureUploadForm = props => {
 
     return (
         <>
-            <div className="add-event-form">
+            <div className="bigdetail-dropzone">
                 <form
                     className="form"
                     action=""
