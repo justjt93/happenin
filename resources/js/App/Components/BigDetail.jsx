@@ -50,12 +50,12 @@ const BigDetail = props => {
         // console.log(bigDetailOpen);
     });
 
-    // const commentCallback = comment => {
-    //     setBigDetailOpen({
-    //         ...bigDetailOpen,
-    //         comments: [...bigDetailOpen.comments, ...comment, ...loggedInUser]
-    //     });
-    // };
+    const commentCallback = comment => {
+        setBigDetailOpen({
+            ...bigDetailOpen,
+            comments: [...bigDetailOpen.comments, comment]
+        });
+    };
 
     return (
         <div className="bigdetail">
@@ -76,13 +76,12 @@ const BigDetail = props => {
                 </div>
                 <p className="infobox-eventdesc">{bigDetailOpen.description}</p>
                 <div className="infobox-ratingbtn-wrap">
-                    <p>10/10 bus drivers recommend</p>
                     <EventPictureUploadForm eventId={bigDetailOpen.id} />
                 </div>
             </div>
             <CommentEvent
                 eventId={bigDetailOpen.id}
-                // commentCallback={commentCallback}
+                commentCallback={commentCallback}
             />
             {comments}
         </div>
