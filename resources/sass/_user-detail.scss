@@ -5,17 +5,12 @@
   
   background-image: url('/images/background.png');
   background-size: contain;
-
-  // @media(min-width:800px){
-  //   .overlay-profile{
-  //     background-image: url('/images/background.png');
-  //   }
-  // }
+  min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   
   @media(max-width:800px){
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-start;   
   }
     
   .user-profile {
@@ -33,8 +28,7 @@
     @media(min-width: 800px){
       position:fixed;
       top:0px;
-      left:0px;
-      
+      left:0px;   
     }
    
     border-right: 2px solid $secondary;
@@ -124,11 +118,12 @@
 
     @media(min-width: 800px){
       margin-top:4rem;  
-      
-    }
-    
+      min-height:calc(100vh - #{$headerHeight} - #{$footerHeight});
+      width: 70%;
+    }    
+    }   
   }
-}
+
 // Uploading user avatar
 .userPicUploadContainer{
   width: 270px;
@@ -173,7 +168,6 @@
     font-size: 1rem;
     line-height: 2.5;
     border-radius: 0.25rem;
-
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     i{
