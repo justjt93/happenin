@@ -30,6 +30,10 @@
 
     .carousel{
         width: 100%;
+
+        &-inner {
+            height: 40vh;
+        }
     }
     .carousel-item {
         align-items:center;
