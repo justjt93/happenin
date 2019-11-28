@@ -33,10 +33,15 @@ import LogoutPopup from "../Auth/LogoutPopup.jsx"
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
+          })
+          .then(() => {
+            setShow_popup(false)
+            setLogged_in(false)
+    
+            window.location = '/';
           });
 
-        setShow_popup(false)
-        setLogged_in(false)
+        
     }
 
     useEffect(() => {

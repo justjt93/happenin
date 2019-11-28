@@ -50,6 +50,7 @@ const UserDetail = () => {
 
                     <div className="personal-info">
                         <div>
+                            <h5>Personal information</h5>
                             <p>
                                 <strong>username:</strong> {user.name}
                             </p>
