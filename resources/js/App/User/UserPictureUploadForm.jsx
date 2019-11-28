@@ -76,14 +76,14 @@ const UserPictureUploadForm = props => {
                     htmlFor="file-upload"
                     className="avatarUploadLabel"
                 >
-                    New picture
+                    <i className="fas fa-camera"><p>Update</p></i>
                 </label>
 
                 <p className="fileUploadNameField"></p>
 
                 <div className="avatarSubmitBtn">
                     <Button type="submit" color="success">
-                        Upload picture
+                    <i className="fas fa-upload"><p>Upload</p></i>
                     </Button>
                 </div>
             </form>

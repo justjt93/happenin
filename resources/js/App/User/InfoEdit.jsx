@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
- const InfoEdit = () => {
+ const InfoEdit = (props) => {
     const [formInputValues, setFormInputValues] = useState({ name: 'Loading..', email: 'Loading..', id: null});
     const [data, setData] = useState();
 
@@ -39,20 +39,26 @@ import { Link } from 'react-router-dom';
         })
         })
         .then (response => response.json())
-        .then(data => setData(data))
+        .then((data) => {
+          props.setUserData(formInputValues.name, formInputValues.email)
+          setData(data)
+          props.showOrHideEdit();
+        })
     }
     
     let errors = data ? data.errors ? data.errors: "" : "";
-    let status = data ? data.status ? data.status: "" : "";
-
+    
 
       return (
           <>
-            <div className="profile-form">
-              <Link to="/userdetail/"><div className="go-back">X</div></Link>
-
+            <div className="popup-container">
+              
+            <div className="popup-window edit-info">
+              <div className="popup-top-stripe">Edit your profile information</div>
             <form action="" onSubmit={handleSubmit}>
-              <div className="profile-edit-form">
+
+              <div className="popup-text">
+              {/*<div className="profile-edit-form">*/}
                 <label htmlFor="name"><strong>Username: </strong></label>
                 <input type="text" id="name" name="name" value={formInputValues.name} onChange={handleTextValueChange}/><br/> 
                 <span className="error-message">{errors.name}</span><br/>
@@ -60,11 +66,16 @@ import { Link } from 'react-router-dom';
                 <label htmlFor="email"><strong>Email: </strong></label>
                 <input type="text" id="email" name="email"  value={formInputValues.email} onChange={handleTextValueChange}/><br/> 
                 <span className="error-message">{errors.email}</span><br/>
-
-                <input type="submit" value="Submit changes"/>
-                <p className="complete-message">{status}</p>
+                  
               </div>
+
+                <div className="popup-btns">
+                  <input type="submit" value="Submit changes"/>
+                  <button onClick={props.showOrHideEdit} className="go-back btn btn-red">Cancel</button>   
+                </div>
+              
             </form>
+            </div>
             </div>
           </>
         )

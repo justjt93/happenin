@@ -5,8 +5,10 @@ import { log } from "util";
 const AddEventForm = () => {
     //variables storing today's date and date in two days to be put in the form
     const date = new Date();
-    const now = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}T${date.getHours()}:${date.getMinutes()}`;
-    const inTwoDays = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 2}T${date.getHours()}:${date.getMinutes()}`;
+    const now = `${date.getFullYear()}-${date.getMonth() +
+        1}-${date.getDate()}T${date.getHours()}:${date.getMinutes()}`;
+    const inTwoDays = `${date.getFullYear()}-${date.getMonth() +
+        1}-${date.getDate() + 2}T${date.getHours()}:${date.getMinutes()}`;
 
     const [formInputValues, setFormInputValues] = useState({
         title: "",
@@ -85,43 +87,44 @@ const AddEventForm = () => {
                     method="POST"
                     onSubmit={handleSubmit}
                 >
-                    <Dropzone
-                        onDrop={onDrop}
-                        accept="image/png, image/jpg, image/jpeg"
-                        minSize={0}
-                        maxSize={5242880}
-                        multiple
-                    >
-                        {({
-                            getRootProps,
-                            getInputProps,
-                            isDragActive,
-                            acceptedFiles
-                        }) => (
-                            <>
-                                <div {...getRootProps()}>
-                                    <input {...getInputProps()} />
-                                    {isDragActive
-                                        ? "Drop it like it's hot!"
-                                        : "Click me or drag a file to upload!"}
-                                </div>
-                                <ul>
-                                    {acceptedFiles.length > 0 &&
-                                        acceptedFiles.map(
-                                            (acceptedFile, index) => (
-                                                <li
-                                                    className="list-group-item list-group-item-success"
-                                                    key={index}
-                                                >
-                                                    {acceptedFile.name}
-                                                </li>
-                                            )
-                                        )}
-                                </ul>
-                            </>
-                        )}
-                    </Dropzone>
-
+                    <div className="dropzone">
+                        <Dropzone
+                            onDrop={onDrop}
+                            accept="image/png, image/jpg, image/jpeg"
+                            minSize={0}
+                            maxSize={5242880}
+                            multiple
+                        >
+                            {({
+                                getRootProps,
+                                getInputProps,
+                                isDragActive,
+                                acceptedFiles
+                            }) => (
+                                <>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        {isDragActive
+                                            ? "Drop it like it's hot!"
+                                            : "Click me or drag a file to upload!"}
+                                    <div className="accepted-files">
+                                        {acceptedFiles.length > 0 &&
+                                            acceptedFiles.map(
+                                                (acceptedFile, index) => (
+                                                    <div
+                                                        className="list-group-item list-group-item-success accepted-file"
+                                                        key={index}
+                                                    >
+                                                        {acceptedFile.name}
+                                                    </div>
+                                                )
+                                            )}
+                                    </div>
+                                    </div>
+                                </>
+                            )}
+                        </Dropzone>
+                    </div>
                     <div className="form-group">
                         <label htmlFor="name">Name: </label>
                         <br />
@@ -213,7 +216,7 @@ const AddEventForm = () => {
                                 checked={type_id === "1"}
                                 onChange={handleCategorySelection}
                             />
-                            <label htmlFor="control_01">art</label>
+                            <label htmlFor="control_01" classname="radio-art">art</label>
 
                             <input
                                 type="radio"

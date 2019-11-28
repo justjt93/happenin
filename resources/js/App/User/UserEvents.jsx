@@ -25,6 +25,7 @@ const UserEvents = (props) => {
           
           <div className="userEvents">
             <h2>Your active events</h2>
+            <div className="notice"><h5>You can edit or delete all events that you added</h5></div>
             {events}
           </div>
           </>
