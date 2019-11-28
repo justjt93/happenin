@@ -5,11 +5,17 @@
   
   background-image: url('/images/background.png');
   background-size: contain;
+
+  // @media(min-width:800px){
+  //   .overlay-profile{
+  //     background-image: url('/images/background.png');
+  //   }
+  // }
   
   @media(max-width:800px){
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-start; 
   }
     
   .user-profile {
@@ -18,11 +24,18 @@
     margin-top:4rem;
     padding-top:2rem;
     
-    background-color: rgba(255,255,255,0.6);
-    
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    background-color: rgba(255,255,255,0.6);
+    
+    @media(min-width: 800px){
+      position:fixed;
+      top:0px;
+      left:0px;
+      
+    }
    
     border-right: 2px solid $secondary;
     @media(max-width:800px){
@@ -33,7 +46,6 @@
       background-color: rgba(255,255,255,0.6);
     }
     
-
     h3{
       color:gray;
       font-weight: 400;
@@ -61,7 +73,6 @@
         } 
       }
     }
-
     .personal-info{ 
       width: 320px;
       height: 180px;
@@ -87,7 +98,6 @@
         margin-bottom: 18px;
       }
     }
-
     .profile-button{
       width: 270px;
       @media(min-width: 800px){
@@ -100,9 +110,7 @@
       margin-bottom: 3rem;
       button{
         cursor: pointer;
-      }
-
-      
+      }    
     }
   }
 
@@ -115,12 +123,12 @@
     min-height: 300px;
 
     @media(min-width: 800px){
-      margin-top:4rem;
+      margin-top:4rem;  
+      
     }
     
   }
 }
-
 // Uploading user avatar
 .userPicUploadContainer{
   width: 270px;
@@ -145,7 +153,6 @@
         }
       }
     }
-
     button{
       width: 100px;
       height: 50px;
@@ -174,11 +181,9 @@
         font-weight: normal;
       }
     }
-    }
   }
-
+  }
 }
-
 .popup-window.edit-info{
   overflow: visible;
   height: 240px;

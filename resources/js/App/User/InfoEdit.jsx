@@ -70,7 +70,7 @@ import React, {useState, useEffect} from 'react';
               </div>
 
                 <div className="popup-btns">
-                  <input type="submit" value="Submit changes"/>
+                  <input type="submit" className="btn btn-success" value="Submit changes"/>
                   <button onClick={props.showOrHideEdit} className="go-back btn btn-red">Cancel</button>   
                 </div>
               
