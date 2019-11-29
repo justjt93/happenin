@@ -7,6 +7,12 @@ import OpeningAnimationPage from "./OpeningAnimationPage.jsx";
 
 const App = () => {
     useEffect(() => {
+        if (localStorage.getItem("animationRan")) {
+            document.getElementById("containerForAnimation").style.display =
+                "none";
+            return;
+        }
+        localStorage.setItem("animationRan", true);
         setTimeout(() => {
             document.getElementById("containerForAnimation").style.display =
                 "none";
