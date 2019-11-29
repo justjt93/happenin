@@ -32,12 +32,12 @@ return [
     'facebook' => [
         'client_id' => '600404850703791',
         'client_secret' => 'a37fe733a1e2417d3fdef9c1405558ad',
-        'redirect' => 'http://localhost:3000/login/facebook/callback',
+        'redirect' => env('APP_URL').'/login/facebook/callback',
     ],
     'google' => [
         'client_id' => '700573757108-lk7rsn0gt5q27mdo1tsm1vrh1e2se56n.apps.googleusercontent.com',
         'client_secret' => 'ASAr5qPEhnjg_jVuvXNLaqYV',
-        'redirect' => 'http://localhost:3000/login/google/callback',
+        'redirect' => env('APP_URL').'/login/google/callback',
     ],
 
 ];

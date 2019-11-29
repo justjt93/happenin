@@ -4,7 +4,6 @@
   justify-content: center;
   
   background-image: url('/images/background.png');
-  background-size: contain;
   min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   
   @media(max-width:800px){
@@ -109,11 +108,6 @@
   }
 
   .profile-comments{
-    background-color: #f7f7f7;
-    background-image: url('/images/background.png');
-    background-size: cover;
-    
-
     min-height: 300px;
 
     @media(min-width: 800px){
@@ -183,12 +177,6 @@
   min-height: 240px;
   width: 310px;
 }
-
-.pswd{
-  
-}
-
-
 .edit-info{
   width:303px;
 }
@@ -207,81 +195,12 @@
     width: 213px;
   }
 }
-
 .pswd{
   line-height: 1;
  
 }
-
 .popup-btns{
   .submit-green{
     width:100px;
   }
 }
-
-//EDITING - FORMS
-
-// .profile-form{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-end;
-//   margin-top: 15px;
-// }
-// .profile-edit-form{
-//   width: 320px;
-
-//   border-top: 1px solid $secondary;
-//   color: $secondary;
-
-//   @media(max-width:800px){
-//     border-top: 1px solid $primary;
-//     width:270px;
-//     color:$primary;
-//     font-size: 15px;
-//   }
-
-//   input{
-//     background-color: $secondary;
-//     margin-left: 10px;
-//     width: 100%;
-//     border: none;
-
-//     @media(max-width: 800px){
-//       background-color: $primary;
-//       width: 60%;
-//     }
-//   }
-
-//   input[type=submit]{
-//     box-sizing: border-box;
-//     position: relative;
-//     width: 270px;  
-//     margin: 5px;
-//     padding: 5px 15px 5px 15px;
-//     border: none;
-//     text-align: center;
-//     line-height: 34px;
-//     white-space: nowrap;
-//     border-radius: 0.2em;
-//     font-size: 16px;
-//     color: #FFF;
-//     cursor: pointer;
-//     @media(min-width: 800px){
-//       background-color: $secondary;
-//       color: $primary;
-//     }
-//   }
-
-// }
-// .go-back {
-//   @media(max-width: 800px){
-//     color:$primary;
-//     cursor: pointer;
-//   }
-//   cursor: pointer;
-//   text-decoration: none;
-//   text-align: right;
-//   right: 0;
-//   color: $secondary;
-//   font-weight: bold;
-// }

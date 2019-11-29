@@ -58,7 +58,6 @@
 
 .form{
   width: 87%;
-  //min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,7 +71,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
     width: 100%;
 }
 
@@ -147,4 +145,3 @@ input[type="radio"]:checked + label {
 }
 }
 
-//type buttons
