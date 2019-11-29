@@ -35482,6 +35482,11 @@ var AddEventForm = function AddEventForm() {
       data = _useState6[0],
       setData = _useState6[1];
 
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      errors = _useState8[0],
+      setErrors = _useState8[1];
+
   var handleTextValueChange = function handleTextValueChange(e) {
     setFormInputValues(_objectSpread({}, formInputValues, _defineProperty({}, e.target.id, e.target.value)));
   };
@@ -35520,13 +35525,17 @@ var AddEventForm = function AddEventForm() {
     });
   };
 
-  var onDrop = function onDrop(acceptedFiles) {
+  var onDropAccepted = function onDropAccepted(acceptedFiles) {
+    setErrors("");
     setFormInputValues(_objectSpread({}, formInputValues, {
       image: acceptedFiles
     }));
   };
 
-  var errors = data ? data.errors ? data.errors : "" : "";
+  var onDropRejected = function onDropRejected(Files) {
+    setErrors("File size cannot be larger than 2MB.");
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "add-event-form"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Add events nearby"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -35537,17 +35546,18 @@ var AddEventForm = function AddEventForm() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropzone"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropzone__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    onDrop: onDrop,
+    onDropAccepted: onDropAccepted,
+    onDropRejected: onDropRejected,
     accept: "image/png, image/jpg, image/jpeg",
     minSize: 0,
-    maxSize: 5242880,
+    maxSize: 2097152,
     multiple: true
   }, function (_ref) {
     var getRootProps = _ref.getRootProps,
         getInputProps = _ref.getInputProps,
         isDragActive = _ref.isDragActive,
         acceptedFiles = _ref.acceptedFiles;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getRootProps(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps()), isDragActive ? "Drop it like it's hot!" : "Click me or drag a file to upload!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getRootProps(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps()), isDragActive ? "Drop it like it's hot!" : "Click me or drag a file to upload!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "accepted-files"
     }, acceptedFiles.length > 0 && acceptedFiles.map(function (acceptedFile, index) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35711,7 +35721,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/add-event.js */"./resources/js/add-event.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\add-event.js */"./resources/js/add-event.js");
 
 
 /***/ })
