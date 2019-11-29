@@ -34465,7 +34465,7 @@ module.exports = warning;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51231,7 +51231,7 @@ var InfoEdit = function InfoEdit(props) {
     action: "",
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "popup-text"
+    className: "popup-text edit-profile"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "name"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Username: ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -51245,6 +51245,7 @@ var InfoEdit = function InfoEdit(props) {
   }, errors.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Email: ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "email",
     type: "text",
     id: "email",
     name: "email",
@@ -51256,8 +51257,8 @@ var InfoEdit = function InfoEdit(props) {
     className: "popup-btns"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
-    className: "btn btn-success",
-    value: "Submit changes"
+    className: "btn btn-success submit-green",
+    value: "Submit"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.showOrHideEdit,
     className: "go-back btn btn-red"
@@ -51350,14 +51351,14 @@ var PasswordEdit = function PasswordEdit() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "popup-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "popup-window edit-info"
+    className: "popup-window edit-info pswd"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "popup-top-stripe"
   }, "Change your password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     action: "",
     onSubmit: handleChangePasswordSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "popup-text"
+    className: "popup-text edit-profile pswd"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
     id: "password",
@@ -51384,11 +51385,12 @@ var PasswordEdit = function PasswordEdit() {
     className: "popup-btns"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
-    value: "Change password"
+    className: "btn btn-success submit-green",
+    value: "Change"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/userdetail/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "go-back"
+    className: "go-back btn btn-red"
   }, "Cancel")))))));
 };
 
@@ -51716,7 +51718,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\user-detail.js */"./resources/js/user-detail.js");
+module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/user-detail.js */"./resources/js/user-detail.js");
 
 
 /***/ })

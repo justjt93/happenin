@@ -81,7 +81,7 @@ const RateEvent = (props) => {
   
   const rateEvent = user ? 
   <>
-    <p>Rate this event:</p>
+    
     <div className="star-rating">
       <div className="star-row" onMouseLeave={resetStars}>
         <i className="far fa-star pointer" id="star1" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(1)}></i>

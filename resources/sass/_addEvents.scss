@@ -1,7 +1,7 @@
 .add-event-form{
   background-color: white;
   margin-top: $headerHeight;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
 
   display: flex;
   flex-direction: column;
@@ -17,6 +17,8 @@
     margin-bottom: 1rem;
   }
 }
+
+.edit{padding:1rem;}
 
 .dropzone {
   border: dashed $primary 2px;
@@ -56,8 +58,7 @@
 
 .form{
   width: 87%;
-  height: 80%;
-
+  //min-height: calc(100vh - #{$headerHeight} - #{$footerHeight});
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,7 +103,7 @@ input[type="radio"]:checked + label {
 
 .btn-add{
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 
     border: $primary solid 1px;
     border-radius: 2px;

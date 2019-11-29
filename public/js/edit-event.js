@@ -32250,7 +32250,7 @@ var EditEventForm = function EditEventForm(props) {
 
   if (loggedInUser.id === event.user_id) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "login-form"
+      className: "add-event-form edit"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Add events nearby"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
       action: "",
       method: "POST",
@@ -32375,12 +32375,12 @@ var EditEventForm = function EditEventForm(props) {
       htmlFor: "control_05"
     }, "social"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn-sign-up"
-    }, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn-add"
+    }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "/userdetail"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn-sign-up"
-    }, "Go Back"))));
+    }, "Go Back")))));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-form"
@@ -32429,7 +32429,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\edit-event.js */"./resources/js/edit-event.js");
+module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/edit-event.js */"./resources/js/edit-event.js");
 
 
 /***/ })

@@ -49,10 +49,10 @@ import { Link } from 'react-router-dom';
           <>
           <div className="popup-container">
           
-          <div className="popup-window edit-info">
+          <div className="popup-window edit-info pswd">
               <div className="popup-top-stripe">Change your password</div>
               <form action="" onSubmit={handleChangePasswordSubmit}>
-                <div className="popup-text">
+                <div className="popup-text edit-profile pswd">
                   <input type="password" id="password" name="password" placeholder="old password" onChange={handleTextValueChange}/><br/> 
                   <span className="error-message">{errors.password}</span><br/>
 
@@ -63,8 +63,8 @@ import { Link } from 'react-router-dom';
                 </div>
 
                 <div className="popup-btns">
-                    <input type="submit" value="Change password"/>
-                  <Link to="/userdetail/"><div className="go-back">Cancel</div></Link>   
+                    <input type="submit" className="btn btn-success submit-green" value="Change"/>
+                  <Link to="/userdetail/"><div className="go-back btn btn-red">Cancel</div></Link>   
                 </div>
 
 
