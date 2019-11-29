@@ -67164,16 +67164,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// if (localStorage.getItem("animationRan")) {
-    //     document.getElementById("containerForAnimation").style.display =
-    //         "none";
-    //     return;
-    // }
-    // localStorage.setItem("animationRan", true);
-    // setTimeout(() => {
-    //     document.getElementById("containerForAnimation").style.display =
-    //         "none";
-    // }, 3500);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (localStorage.getItem("animationRan")) {
+      document.getElementById("containerForAnimation").style.display = "none";
+      return;
+    }
+
+    localStorage.setItem("animationRan", true);
+    setTimeout(function () {
+      document.getElementById("containerForAnimation").style.display = "none";
+    }, 3500);
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "containerForAnimation"
@@ -67246,7 +67246,7 @@ var BigDetail = function BigDetail(props) {
     return "https://institutogoldenprana.com.br/wp-content/uploads/2015/08/no-avatar-25359d55aa3c93ab3466622fd2ce712d1.jpg";
   };
 
-  var comments = bigDetailOpen.comments.reverse().map(function (item) {
+  var comments = bigDetailOpen.comments.map(function (item) {
     var date = new Date(item.created_at);
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Card"], {
       key: item.id
@@ -67265,7 +67265,7 @@ var BigDetail = function BigDetail(props) {
 
   var commentCallback = function commentCallback(comment) {
     setBigDetailOpen(_objectSpread({}, bigDetailOpen, {
-      comments: [].concat(_toConsumableArray(bigDetailOpen.comments), [comment])
+      comments: [comment].concat(_toConsumableArray(bigDetailOpen.comments))
     }));
   };
 
@@ -67559,9 +67559,14 @@ var EventPictureUploadForm = function EventPictureUploadForm(props) {
       data = _useState4[0],
       setData = _useState4[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object.keys(data).length > 0 ? window.location.reload() : "";
-  }, [data]);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      errors = _useState6[0],
+      setErrors = _useState6[1]; // useEffect(() => {
+  //     Object.keys(data).length > 0 ? window.location.reload() : "";
+  // }, [data]);
+
+
   var formData = new FormData();
 
   var handleSubmit = function handleSubmit(event) {
@@ -67584,13 +67589,18 @@ var EventPictureUploadForm = function EventPictureUploadForm(props) {
     });
   };
 
-  var onDrop = function onDrop(acceptedFiles) {
+  var onDropAccepted = function onDropAccepted(Files) {
+    console.log("accepted", Files);
+    setErrors("");
     setFormInputValues(_objectSpread({}, formInputValues, {
-      image: acceptedFiles
+      image: Files
     }));
   };
 
-  var errors = data ? data.errors ? data.errors : "" : "";
+  var onDropRejected = function onDropRejected(Files) {
+    setErrors("File size cannot be larger than 2MB.");
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bigdetail-dropzone"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -67599,10 +67609,11 @@ var EventPictureUploadForm = function EventPictureUploadForm(props) {
     method: "POST",
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropzone__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    onDrop: onDrop,
+    onDropAccepted: onDropAccepted,
+    onDropRejected: onDropRejected,
     accept: "image/png, image/jpg, image/jpeg",
     minSize: 0,
-    maxSize: 5242880,
+    maxSize: 2097152,
     multiple: true
   }, function (_ref) {
     var getRootProps = _ref.getRootProps,
@@ -67611,7 +67622,7 @@ var EventPictureUploadForm = function EventPictureUploadForm(props) {
         acceptedFiles = _ref.acceptedFiles;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
       className: "dropzoneContainer"
-    }, getRootProps()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps()), isDragActive ? "Drop it like it's hot!" : "Drag or click to upload a new image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, acceptedFiles.length > 0 && acceptedFiles.map(function (acceptedFile, index) {
+    }, getRootProps()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps()), isDragActive ? "Drop it like it's hot!" : "Drag or click to upload a new image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, acceptedFiles.length > 0 && acceptedFiles.map(function (acceptedFile, index) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item list-group-item-success",
         key: index
@@ -68888,8 +68899,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

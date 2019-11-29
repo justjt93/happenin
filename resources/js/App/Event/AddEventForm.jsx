@@ -27,6 +27,7 @@ const AddEventForm = () => {
     });
     const [type_id, setType_id] = useState("");
     const [data, setData] = useState();
+    const [errors, setErrors] = useState("");
 
     const handleTextValueChange = e => {
         setFormInputValues({
@@ -73,14 +74,17 @@ const AddEventForm = () => {
             .then(data => setData(data));
     };
 
-    const onDrop = acceptedFiles => {
+    const onDropAccepted = acceptedFiles => {
+        setErrors("");
         setFormInputValues({
             ...formInputValues,
             image: acceptedFiles
         });
     };
 
-    let errors = data ? (data.errors ? data.errors : "") : "";
+    const onDropRejected = Files => {
+        setErrors("File size cannot be larger than 2MB.");
+    };
 
     return (
         <>
@@ -95,10 +99,11 @@ const AddEventForm = () => {
                 >
                     <div className="dropzone">
                         <Dropzone
-                            onDrop={onDrop}
+                            onDropAccepted={onDropAccepted}
+                            onDropRejected={onDropRejected}
                             accept="image/png, image/jpg, image/jpeg"
                             minSize={0}
-                            maxSize={5242880}
+                            maxSize={2097152}
                             multiple
                         >
                             {({
@@ -113,6 +118,10 @@ const AddEventForm = () => {
                                         {isDragActive
                                             ? "Drop it like it's hot!"
                                             : "Click me or drag a file to upload!"}
+<<<<<<< HEAD
+=======
+                                        <p>{errors}</p>
+>>>>>>> imageValidation
                                         <div className="accepted-files">
                                             {acceptedFiles.length > 0 &&
                                                 acceptedFiles.map(
@@ -232,7 +241,11 @@ const AddEventForm = () => {
                                 checked={type_id === "1"}
                                 onChange={handleCategorySelection}
                             />
+<<<<<<< HEAD
                             <label htmlFor="control_01" className="radio-art">
+=======
+                            <label htmlFor="control_01" classname="radio-art">
+>>>>>>> imageValidation
                                 art
                             </label>
 
