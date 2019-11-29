@@ -888,10 +888,22 @@ footer {
           flex-direction: column;
   -webkit-box-align: center;
           align-items: center;
+  color: #180f2a;
+}
+.add-event-form .header-add {
+  width: 100%;
+  text-align: center;
+}
+.add-event-form h2 {
+  color: #180f2a;
+  margin: 15px;
 }
 @media (min-width: 800px) {
   .add-event-form {
-    width: 80%;
+    width: 70%;
+  }
+  .add-event-form h2 {
+    margin-top: 2rem;
   }
 }
 .add-event-form h3 {
@@ -926,6 +938,7 @@ footer {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
+  color: gray;
 }
 .dropzone .accepted-files {
   display: -webkit-box;
@@ -944,6 +957,8 @@ footer {
 .dropzone .accepted-files .accepted-file {
   margin: 0.25rem;
   border: solid #180f2a 1px;
+  background-color: #45b74a;
+  color: white;
   border-radius: 10px;
   padding: 0.5rem;
   height: auto;
@@ -961,29 +976,59 @@ footer {
 }
 @media (min-width: 800px) {
   .form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    margin-top: 3rem;
+    width: 90%;
+  }
+  .form .first-group {
+    display: -webkit-box;
+    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
             flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: space-around;
   }
   .form .dropzone {
-    width: 50%;
+    width: 40%;
+  }
+  .form .dropzone div {
+    background-color: #f7f7f7;
   }
   .form .mid-group {
-    width: 40%;
+    width: 50%;
+    min-height: 200px;
+  }
+  .form .mid-group .form-group {
+    margin-bottom: 20px;
   }
   .form .timeframe {
     display: -webkit-box;
     display: flex;
   }
+  .form .timeframe .form-group {
+    margin-right: 1rem;
+  }
   .form .description {
-    width: 100%;
+    width: 80%;
     margin-top: 2rem;
+    align-self: center;
+    height: 150px;
+  }
+  .form .description .form-control {
+    height: 90%;
+    margin-top: 17px;
   }
 }
 
 .categories {
   margin-top: 1.5rem;
+}
+@media (min-width: 800px) {
+  .categories {
+    align-self: center;
+  }
 }
 
 .radio-btns {
@@ -1025,10 +1070,17 @@ input[type=radio]:checked + label {
   border-radius: 2px;
   padding: 8px;
   font-size: 1rem;
-  background-color: #180f2a;
+  background-color: #45b74a;
   color: white;
   text-align: center;
   cursor: pointer;
+}
+@media (min-width: 800px) {
+  .btn-add {
+    margin-top: 3rem;
+    width: 80%;
+    align-self: center;
+  }
 }
 .btn-add:hover {
   background-color: #f7f7f7;

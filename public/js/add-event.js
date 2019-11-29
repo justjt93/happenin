@@ -35541,11 +35541,15 @@ var AddEventForm = function AddEventForm() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "add-event-form"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Add events nearby"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-add"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Add new events nearby")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "form",
     action: "",
     method: "POST",
     onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "first-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropzone"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropzone__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -35622,7 +35626,7 @@ var AddEventForm = function AddEventForm() {
     onChange: handleTextValueChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "error-message"
-  }, errors.ends_at)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, errors.ends_at))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group description"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "description"

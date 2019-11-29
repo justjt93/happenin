@@ -49308,9 +49308,6 @@ var BigDetail = function BigDetail(props) {
     }, item.user ? item.user.name : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
       className: "text-muted"
     }, "".concat(date.getDate(), ". ").concat(date.getMonth() + 1, ". ").concat(date.getFullYear(), " ").concat(date.getHours(), ":").concat(date.getMinutes())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardText"], null, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardText"], null)));
-  }); //debugging
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// console.log(bigDetailOpen);
   });
 
   var commentCallback = function commentCallback(comment) {
@@ -50097,7 +50094,7 @@ var EventItem = function EventItem(props) {
     var stars = [];
 
     for (var i = 0; i < 5; i += 1) {
-      if (remainingRating > 1) {
+      if (remainingRating >= 1) {
         stars.push(fullStar);
         remainingRating -= 1;
       } else if (remainingRating === 0.5) {
