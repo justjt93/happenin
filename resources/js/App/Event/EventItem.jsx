@@ -23,7 +23,7 @@ const EventItem = props => {
         const stars = [];
 
         for (let i = 0; i < 5; i += 1) {
-            if (remainingRating > 1) {
+            if (remainingRating >= 1) {
                 stars.push(fullStar);
                 remainingRating -= 1;
             } else if (remainingRating === 0.5) {
