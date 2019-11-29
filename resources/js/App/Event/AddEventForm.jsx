@@ -85,7 +85,8 @@ const AddEventForm = () => {
     return (
         <>
             <div className="add-event-form">
-                <h3>Add events nearby</h3>
+                <div className="header-add"><h2>Add new events nearby</h2></div>
+                
 
                 <form
                     className="form"
@@ -93,6 +94,7 @@ const AddEventForm = () => {
                     method="POST"
                     onSubmit={handleSubmit}
                 >
+                    <div className="first-group">
                     <div className="dropzone">
                         <Dropzone
                             onDrop={onDrop}
@@ -199,6 +201,8 @@ const AddEventForm = () => {
                                 </span>
                             </div>
                         </div>
+                    </div>
+
                     </div>
 
                     <div className="form-group description">
