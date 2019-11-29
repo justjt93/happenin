@@ -4,11 +4,17 @@ import { log } from "util";
 
 const AddEventForm = () => {
     //variables storing today's date and date in two days to be put in the form
-    const date = new Date();
-    const now = `${date.getFullYear()}-${date.getMonth() +
-        1}-${date.getDate()}T${date.getHours()}:${date.getMinutes()}`;
-    const inTwoDays = `${date.getFullYear()}-${date.getMonth() +
-        1}-${date.getDate() + 2}T${date.getHours()}:${date.getMinutes()}`;
+    const today = new Date();
+    let dayAfterTomorrow = new Date(today);
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+    const now = `${today.getFullYear()}-${today.getMonth() +
+        1}-${today.getDate()}T${today.getHours()}:${today.getMinutes()}`;
+    const inTwoDays = `${dayAfterTomorrow.getFullYear()}-${dayAfterTomorrow.getMonth() +
+        1}-${("0" + dayAfterTomorrow.getDate()).slice(
+        -2
+    )}T${dayAfterTomorrow.getHours()}:${dayAfterTomorrow.getMinutes()}`;
+
+    console.log(inTwoDays);
 
     const [formInputValues, setFormInputValues] = useState({
         title: "",
@@ -107,85 +113,95 @@ const AddEventForm = () => {
                                         {isDragActive
                                             ? "Drop it like it's hot!"
                                             : "Click me or drag a file to upload!"}
-                                    <div className="accepted-files">
-                                        {acceptedFiles.length > 0 &&
-                                            acceptedFiles.map(
-                                                (acceptedFile, index) => (
-                                                    <div
-                                                        className="list-group-item list-group-item-success accepted-file"
-                                                        key={index}
-                                                    >
-                                                        {acceptedFile.name}
-                                                    </div>
-                                                )
-                                            )}
-                                    </div>
+                                        <div className="accepted-files">
+                                            {acceptedFiles.length > 0 &&
+                                                acceptedFiles.map(
+                                                    (acceptedFile, index) => (
+                                                        <div
+                                                            className="list-group-item list-group-item-success accepted-file"
+                                                            key={index}
+                                                        >
+                                                            {acceptedFile.name}
+                                                        </div>
+                                                    )
+                                                )}
+                                        </div>
                                     </div>
                                 </>
                             )}
                         </Dropzone>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="name">Name: </label>
-                        <br />
-                        <input
-                            className="form-control"
-                            id="title"
-                            type="text"
-                            name="name"
-                            placeholder="name of the event"
-                            onChange={handleTextValueChange}
-                        />
-                        <br />
-                        <span className="error-message">{errors.title}</span>
+                    <div className="mid-group">
+                        <div className="form-group">
+                            <label htmlFor="name">Name: </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                id="title"
+                                type="text"
+                                name="name"
+                                placeholder="name of the event"
+                                onChange={handleTextValueChange}
+                            />
+                            <br />
+                            <span className="error-message">
+                                {errors.title}
+                            </span>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="address">Address: </label>
+                            <br />
+                            <input
+                                className="form-control"
+                                id="address"
+                                type="text"
+                                name="address"
+                                placeholder="street name, number, postal code, city"
+                                onChange={handleTextValueChange}
+                            />
+                            <br />
+                            <span className="error-message">
+                                {errors.address}
+                            </span>
+                        </div>
+
+                        <div className="timeframe">
+                            <div className="form-group">
+                                <label htmlFor="starts_at">Starts at: </label>
+                                <br />
+                                <input
+                                    type="datetime-local"
+                                    name="starts_at"
+                                    id="starts_at"
+                                    value={formInputValues.starts_at}
+                                    onChange={handleTextValueChange}
+                                />
+                                <br />
+                                <span className="error-message">
+                                    {errors.starts_at}
+                                </span>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="ends_at">Ends at: </label>
+                                <br />
+                                <input
+                                    type="datetime-local"
+                                    name="ends_at"
+                                    id="ends_at"
+                                    value={formInputValues.ends_at}
+                                    onChange={handleTextValueChange}
+                                />
+                                <br />
+                                <span className="error-message">
+                                    {errors.ends_at}
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="address">Address: </label>
-                        <br />
-                        <input
-                            className="form-control"
-                            id="address"
-                            type="text"
-                            name="address"
-                            placeholder="street name, number, postal code, city"
-                            onChange={handleTextValueChange}
-                        />
-                        <br />
-                        <span className="error-message">{errors.address}</span>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="starts_at">Starts at: </label>
-                        <br />
-                        <input
-                            type="datetime-local"
-                            name="starts_at"
-                            id="starts_at"
-                            value={formInputValues.starts_at}
-                            onChange={handleTextValueChange}
-                        />
-                        <br />
-                        <span className="error-message">
-                            {errors.starts_at}
-                        </span>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="ends_at">Ends at: </label>
-                        <br />
-                        <input
-                            type="datetime-local"
-                            name="ends_at"
-                            id="ends_at"
-                            value={formInputValues.ends_at}
-                            onChange={handleTextValueChange}
-                        />
-                        <br />
-                        <span className="error-message">{errors.ends_at}</span>
-                    </div>
-
-                    <div className="form-group">
+                    <div className="form-group description">
                         <label htmlFor="description">Description: </label>
                         <br />
                         <textarea
@@ -216,7 +232,9 @@ const AddEventForm = () => {
                                 checked={type_id === "1"}
                                 onChange={handleCategorySelection}
                             />
-                            <label htmlFor="control_01" classname="radio-art">art</label>
+                            <label htmlFor="control_01" className="radio-art">
+                                art
+                            </label>
 
                             <input
                                 type="radio"
