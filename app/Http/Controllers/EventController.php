@@ -23,7 +23,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::with("images")->with("ratings")->with("comments")->get();
+        return Event::with("images")->with("ratings")->with("comments.user")->get();
     }
 
     //paginated events
