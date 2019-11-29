@@ -7,16 +7,16 @@ import OpeningAnimationPage from "./OpeningAnimationPage.jsx";
 
 const App = () => {
     useEffect(() => {
-        if (localStorage.getItem("animationRan")) {
-            document.getElementById("containerForAnimation").style.display =
-                "none";
-            return;
-        }
-        localStorage.setItem("animationRan", true);
-        setTimeout(() => {
-            document.getElementById("containerForAnimation").style.display =
-                "none";
-        }, 3500);
+        // if (localStorage.getItem("animationRan")) {
+        //     document.getElementById("containerForAnimation").style.display =
+        //         "none";
+        //     return;
+        // }
+        // localStorage.setItem("animationRan", true);
+        // setTimeout(() => {
+        //     document.getElementById("containerForAnimation").style.display =
+        //         "none";
+        // }, 3500);
     }, []);
 
     return (

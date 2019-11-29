@@ -67164,16 +67164,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (localStorage.getItem("animationRan")) {
-      document.getElementById("containerForAnimation").style.display = "none";
-      return;
-    }
-
-    localStorage.setItem("animationRan", true);
-    setTimeout(function () {
-      document.getElementById("containerForAnimation").style.display = "none";
-    }, 3500);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {// if (localStorage.getItem("animationRan")) {
+    //     document.getElementById("containerForAnimation").style.display =
+    //         "none";
+    //     return;
+    // }
+    // localStorage.setItem("animationRan", true);
+    // setTimeout(() => {
+    //     document.getElementById("containerForAnimation").style.display =
+    //         "none";
+    // }, 3500);
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "containerForAnimation"
