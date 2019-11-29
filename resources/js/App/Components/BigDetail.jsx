@@ -68,10 +68,10 @@ const BigDetail = props => {
                 <hr />
                 <div className="startEndWrap">
                     <Alert color="success">
-                        Event starts at: {bigDetailOpen.starts_at}
+                        Starts at: {bigDetailOpen.starts_at}
                     </Alert>
                     <Alert color="danger">
-                        Event finishes at: {bigDetailOpen.ends_at}
+                        Ends at: {bigDetailOpen.ends_at}
                     </Alert>
                 </div>
                 <p className="infobox-eventdesc">{bigDetailOpen.description}</p>

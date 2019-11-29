@@ -76,7 +76,7 @@ const EditEventForm = props => {
     if (loggedInUser.id === event.user_id) {
         return (
             <>
-                <div className="login-form">
+                <div className="add-event-form edit">
                     <h3>Add events nearby</h3>
 
                     <form action="" method="POST" onSubmit={handleSubmit}>
@@ -227,13 +227,14 @@ const EditEventForm = props => {
                         <br />
                         <br />
                         <br />
-                        <button type="submit" className="btn-sign-up">
+                        <button type="submit" className="btn-add">
                             Edit
                         </button>
-                    </form>
-                    <a href="/userdetail">
+                        <a href="/userdetail">
                         <button className="btn-sign-up">Go Back</button>
                     </a>
+                    </form>
+                    
                 </div>
             </>
         );

@@ -187,6 +187,7 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   font-size: 20px;
   font-weight: 400;
+  border-radius: 5px 5px 0px 0px;
 }
 .popup-container .popup-window .popup-text {
   align-self: center;
@@ -561,6 +562,15 @@ h1, h2, h3, h4, h5, h6 {
   overflow: auto !important;
 }
 
+.gm-style-iw-d {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.gm-style-iw.gm-style-iw-c {
+  min-width: 320px;
+}
+
 .gm-ui-hover-effect img {
   width: 20px !important;
   height: 20px !important;
@@ -762,8 +772,34 @@ footer {
 
 .popup-window.edit-info {
   overflow: visible;
-  height: 240px;
+  min-height: 240px;
   width: 310px;
+}
+
+.edit-info {
+  width: 303px;
+}
+
+.edit-profile {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+.edit-profile input {
+  margin-left: 5px;
+  border: none;
+  border-bottom: 1px solid #180f2a;
+  width: 60%;
+}
+.edit-profile input#email.email {
+  width: 213px;
+}
+
+.pswd {
+  line-height: 1;
+}
+
+.popup-btns .submit-green {
+  width: 100px;
 }
 
 #app {
@@ -820,8 +856,8 @@ footer {
   border-radius: 50%;
   box-shadow: 0 px #999;
   position: absolute;
-  bottom: 3.5vh;
-  left: 1.2vh;
+  bottom: 30px;
+  left: 10px;
   z-index: 2;
 }
 @media (min-width: 800px) {
@@ -850,7 +886,7 @@ footer {
 .add-event-form {
   background-color: white;
   margin-top: 64px;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px - 21px);
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -866,6 +902,10 @@ footer {
 }
 .add-event-form .form-group {
   margin-bottom: 1rem;
+}
+
+.edit {
+  padding: 1rem;
 }
 
 .dropzone {
@@ -912,7 +952,6 @@ footer {
 
 .form {
   width: 87%;
-  height: 80%;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -960,7 +999,7 @@ input[type=radio]:checked + label {
 
 .btn-add {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   border: #180f2a solid 1px;
   border-radius: 2px;
   padding: 8px;
@@ -1063,8 +1102,23 @@ input[type=radio]:checked + label {
           justify-content: center;
 }
 
+.infobox-eventdesc {
+  text-align: justify;
+}
+
+.bigdetail-dropzone form {
+  min-height: 200px;
+}
+
 .card {
   width: 100%;
+  display: -webkit-box;
+  display: flex;
+}
+@media (min-width: 800px) {
+  .card {
+    display: block;
+  }
 }
 .card .avatar-comment {
   width: 50px;

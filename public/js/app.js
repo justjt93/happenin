@@ -67279,9 +67279,9 @@ var BigDetail = function BigDetail(props) {
     className: "startEndWrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Alert"], {
     color: "success"
-  }, "Event starts at: ", bigDetailOpen.starts_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Alert"], {
+  }, "Starts at: ", bigDetailOpen.starts_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Alert"], {
     color: "danger"
-  }, "Event finishes at: ", bigDetailOpen.ends_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "Ends at: ", bigDetailOpen.ends_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "infobox-eventdesc"
   }, bigDetailOpen.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "infobox-ratingbtn-wrap"
@@ -68158,7 +68158,7 @@ var RateEvent = function RateEvent(props) {
     });
   };
 
-  var rateEvent = user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Rate this event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var rateEvent = user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "star-rating"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "star-row",
@@ -68882,8 +68882,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

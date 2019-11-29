@@ -180,11 +180,44 @@
 }
 .popup-window.edit-info{
   overflow: visible;
-  height: 240px;
+  min-height: 240px;
   width: 310px;
 }
 
+.pswd{
+  
+}
 
+
+.edit-info{
+  width:303px;
+}
+.edit-profile{
+  padding-left: 1rem;
+  padding-bottom:1rem;
+
+  input{
+    margin-left:5px;
+    border:none;
+    border-bottom: 1px solid $primary;
+    width: 60%;
+  }
+
+  input#email.email{
+    width: 213px;
+  }
+}
+
+.pswd{
+  line-height: 1;
+ 
+}
+
+.popup-btns{
+  .submit-green{
+    width:100px;
+  }
+}
 
 //EDITING - FORMS
 

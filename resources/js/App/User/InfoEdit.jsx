@@ -57,20 +57,20 @@ import React, {useState, useEffect} from 'react';
               <div className="popup-top-stripe">Edit your profile information</div>
             <form action="" onSubmit={handleSubmit}>
 
-              <div className="popup-text">
+              <div className="popup-text edit-profile">
               {/*<div className="profile-edit-form">*/}
                 <label htmlFor="name"><strong>Username: </strong></label>
                 <input type="text" id="name" name="name" value={formInputValues.name} onChange={handleTextValueChange}/><br/> 
                 <span className="error-message">{errors.name}</span><br/>
 
                 <label htmlFor="email"><strong>Email: </strong></label>
-                <input type="text" id="email" name="email"  value={formInputValues.email} onChange={handleTextValueChange}/><br/> 
+                <input className="email" type="text" id="email" name="email"  value={formInputValues.email} onChange={handleTextValueChange}/><br/> 
                 <span className="error-message">{errors.email}</span><br/>
                   
               </div>
 
                 <div className="popup-btns">
-                  <input type="submit" className="btn btn-success" value="Submit changes"/>
+                  <input type="submit" className="btn btn-success submit-green" value="Submit"/>
                   <button onClick={props.showOrHideEdit} className="go-back btn btn-red">Cancel</button>   
                 </div>
               

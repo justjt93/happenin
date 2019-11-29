@@ -35711,7 +35711,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\add-event.js */"./resources/js/add-event.js");
+module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/add-event.js */"./resources/js/add-event.js");
 
 
 /***/ })
