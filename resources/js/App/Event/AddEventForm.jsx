@@ -118,10 +118,7 @@ const AddEventForm = () => {
                                         {isDragActive
                                             ? "Drop it like it's hot!"
                                             : "Click me or drag a file to upload!"}
-<<<<<<< HEAD
-=======
                                         <p>{errors}</p>
->>>>>>> imageValidation
                                         <div className="accepted-files">
                                             {acceptedFiles.length > 0 &&
                                                 acceptedFiles.map(
@@ -241,11 +238,7 @@ const AddEventForm = () => {
                                 checked={type_id === "1"}
                                 onChange={handleCategorySelection}
                             />
-<<<<<<< HEAD
                             <label htmlFor="control_01" className="radio-art">
-=======
-                            <label htmlFor="control_01" classname="radio-art">
->>>>>>> imageValidation
                                 art
                             </label>
 

@@ -1,10 +1,10 @@
 {
-    "/js/add-event.js": "/js/add-event.js?id=f299d15e23528d1ff1c8",
-    "/js/add-event.js.map": "/js/add-event.js.map?id=c552743046f3cace73e5",
+    "/js/add-event.js": "/js/add-event.js?id=cf820814c05cbd795f44",
+    "/js/add-event.js.map": "/js/add-event.js.map?id=842999e401dcea768580",
     "/js/app.js": "/js/app.js?id=d7ff404fcd04bc266f38",
-    "/css/app.css": "/css/app.css?id=edf37e707ff08ead6de5",
+    "/css/app.css": "/css/app.css?id=0c2638c29128d428e1ad",
     "/js/app.js.map": "/js/app.js.map?id=6390261b8c094fb85739",
-    "/css/app.css.map": "/css/app.css.map?id=9423cb7a88848ac9cf66",
+    "/css/app.css.map": "/css/app.css.map?id=59374457342ef503c4ec",
     "/js/dropzone.js": "/js/dropzone.js?id=56f3ef9038719c8befdc",
     "/js/dropzone.js.map": "/js/dropzone.js.map?id=ca25ae29604f9c5d262b",
     "/js/edit-event.js": "/js/edit-event.js?id=47bc4a67019149310fdb",
@@ -15,6 +15,6 @@
     "/js/login.js.map": "/js/login.js.map?id=0e65658357ad45aa3cc7",
     "/js/register.js": "/js/register.js?id=9fa95765e8732384cfbb",
     "/js/register.js.map": "/js/register.js.map?id=c062a7a3ca4b8c64639b",
-    "/js/user-detail.js": "/js/user-detail.js?id=f12578c78d63ba762bee",
-    "/js/user-detail.js.map": "/js/user-detail.js.map?id=64a5d6792e0f5366a576"
+    "/js/user-detail.js": "/js/user-detail.js?id=a21dcf9fd6248933211c",
+    "/js/user-detail.js.map": "/js/user-detail.js.map?id=12226947b851747a7bdb"
 }

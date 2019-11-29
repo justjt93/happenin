@@ -51467,8 +51467,12 @@ var UserDetail = function UserDetail() {
 
   var showOrHideEdit = function showOrHideEdit() {
     setEditPopup(!editPopup);
-  };
+  }; //debugging
 
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log(user.avatar);
+  }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-detail"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Menu_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -51478,7 +51482,7 @@ var UserDetail = function UserDetail() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Profile Page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "amazing-avatar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: user.avatar
+    src: user.avatar ? user.avatar : "https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPictureUploadForm_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], {
     user: user
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

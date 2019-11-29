@@ -595,7 +595,6 @@ footer {
   -webkit-box-pack: center;
           justify-content: center;
   background-image: url("/images/background.png");
-  background-size: contain;
   min-height: calc(100vh - 64px - 21px);
 }
 @media (max-width: 800px) {
@@ -646,19 +645,17 @@ footer {
 }
 .user-detail .user-profile .amazing-avatar img {
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0px 0px 7px 2px white;
 }
 @media (max-width: 800px) {
   .user-detail .user-profile .amazing-avatar img {
     margin-top: 2rem;
-    width: 250px;
-    height: 250px;
   }
 }
 .user-detail .user-profile .personal-info {
@@ -704,9 +701,6 @@ footer {
   cursor: pointer;
 }
 .user-detail .profile-comments {
-  background-color: #f7f7f7;
-  background-image: url("/images/background.png");
-  background-size: cover;
   min-height: 300px;
 }
 @media (min-width: 800px) {
@@ -895,6 +889,11 @@ footer {
   -webkit-box-align: center;
           align-items: center;
 }
+@media (min-width: 800px) {
+  .add-event-form {
+    width: 80%;
+  }
+}
 .add-event-form h3 {
   color: #180f2a;
   padding-top: 20px;
@@ -959,6 +958,28 @@ footer {
           flex-direction: column;
   -webkit-box-pack: justify;
           justify-content: space-between;
+}
+@media (min-width: 800px) {
+  .form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .form .dropzone {
+    width: 50%;
+  }
+  .form .mid-group {
+    width: 40%;
+  }
+  .form .timeframe {
+    display: -webkit-box;
+    display: flex;
+  }
+  .form .description {
+    width: 100%;
+    margin-top: 2rem;
+  }
 }
 
 .categories {

@@ -35455,9 +35455,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var AddEventForm = function AddEventForm() {
   //variables storing today's date and date in two days to be put in the form
-  var date = new Date();
-  var now = "".concat(date.getFullYear(), "-").concat(date.getMonth() + 1, "-").concat(date.getDate(), "T").concat(date.getHours(), ":").concat(date.getMinutes());
-  var inTwoDays = "".concat(date.getFullYear(), "-").concat(date.getMonth() + 1, "-").concat(date.getDate() + 2, "T").concat(date.getHours(), ":").concat(date.getMinutes());
+  var today = new Date();
+  var dayAfterTomorrow = new Date(today);
+  dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+  var now = "".concat(today.getFullYear(), "-").concat(today.getMonth() + 1, "-").concat(today.getDate(), "T").concat(today.getHours(), ":").concat(today.getMinutes());
+  var inTwoDays = "".concat(dayAfterTomorrow.getFullYear(), "-").concat(dayAfterTomorrow.getMonth() + 1, "-").concat(("0" + dayAfterTomorrow.getDate()).slice(-2), "T").concat(dayAfterTomorrow.getHours(), ":").concat(dayAfterTomorrow.getMinutes());
+  console.log(inTwoDays);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     title: "",
@@ -35566,6 +35569,8 @@ var AddEventForm = function AddEventForm() {
       }, acceptedFile.name);
     }))));
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mid-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "name"
@@ -35592,6 +35597,8 @@ var AddEventForm = function AddEventForm() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "error-message"
   }, errors.address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "timeframe"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "starts_at"
@@ -35615,8 +35622,8 @@ var AddEventForm = function AddEventForm() {
     onChange: handleTextValueChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "error-message"
-  }, errors.ends_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
+  }, errors.ends_at)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group description"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "description"
   }, "Description: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
@@ -35644,7 +35651,7 @@ var AddEventForm = function AddEventForm() {
     onChange: handleCategorySelection
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "control_01",
-    classname: "radio-art"
+    className: "radio-art"
   }, "art"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "radio",
     id: "control_02",
