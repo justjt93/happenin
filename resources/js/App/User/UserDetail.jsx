@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Menu from "../Components/Menu.jsx";
 import Footer from "../Components/Footer.jsx";
 import { Router, Link, Route } from "react-router-dom";
@@ -35,6 +35,11 @@ const UserDetail = () => {
         setEditPopup(!editPopup);
     }
 
+    //debugging
+    useEffect(() => {
+        console.log(user.avatar);
+    }, []);
+
     return (
         <>
             <div className="user-detail">
@@ -46,7 +51,7 @@ const UserDetail = () => {
                     <h3>Your Profile Page</h3>
 
                     <div className="amazing-avatar">
-                        <img src={user.avatar}></img>
+                        <img src={user.avatar ? user.avatar : "https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif"}></img>
                     </div>
 
                     <UserPictureUploadForm user={user} />
