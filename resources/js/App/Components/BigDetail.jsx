@@ -24,7 +24,7 @@ const BigDetail = props => {
         return "https://institutogoldenprana.com.br/wp-content/uploads/2015/08/no-avatar-25359d55aa3c93ab3466622fd2ce712d1.jpg";
     };
 
-    const comments = bigDetailOpen.comments.reverse().map(item => {
+    const comments = bigDetailOpen.comments.map(item => {
         const date = new Date(item.created_at);
 
         return (
@@ -53,7 +53,7 @@ const BigDetail = props => {
     const commentCallback = comment => {
         setBigDetailOpen({
             ...bigDetailOpen,
-            comments: [...bigDetailOpen.comments, comment]
+            comments: [comment, ...bigDetailOpen.comments]
         });
     };
 

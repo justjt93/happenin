@@ -25,7 +25,6 @@ function renderMap(props) {
 
     const handleMoreInfoClick = () => {
         props.setBigDetailOpen(selectedEvent);
-        console.log("selectedEvent", selectedEvent)
         setSelectedEvent(null);
     };
 
