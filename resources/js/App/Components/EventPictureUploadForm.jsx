@@ -10,9 +10,9 @@ const EventPictureUploadForm = props => {
     const [data, setData] = useState({});
     const [errors, setErrors] = useState("");
 
-    // useEffect(() => {
-    //     Object.keys(data).length > 0 ? window.location.reload() : "";
-    // }, [data]);
+    useEffect(() => {
+        Object.keys(data).length > 0 ? window.location.reload() : "";
+    }, [data]);
 
     let formData = new FormData();
 
