@@ -8,10 +8,11 @@ const EventPictureUploadForm = props => {
     });
 
     const [data, setData] = useState({});
+    const [errors, setErrors] = useState("");
 
-    useEffect(() => {
-        Object.keys(data).length > 0 ? window.location.reload() : "";
-    }, [data]);
+    // useEffect(() => {
+    //     Object.keys(data).length > 0 ? window.location.reload() : "";
+    // }, [data]);
 
     let formData = new FormData();
 
@@ -37,14 +38,19 @@ const EventPictureUploadForm = props => {
             .then(data => setData(data));
     };
 
-    const onDrop = acceptedFiles => {
+    const onDropAccepted = Files => {
+        console.log("accepted", Files);
+        setErrors("");
+
         setFormInputValues({
             ...formInputValues,
-            image: acceptedFiles
+            image: Files
         });
     };
 
-    let errors = data ? (data.errors ? data.errors : "") : "";
+    const onDropRejected = Files => {
+        setErrors("File size cannot be larger than 2MB.");
+    };
 
     return (
         <>
@@ -56,10 +62,11 @@ const EventPictureUploadForm = props => {
                     onSubmit={handleSubmit}
                 >
                     <Dropzone
-                        onDrop={onDrop}
+                        onDropAccepted={onDropAccepted}
+                        onDropRejected={onDropRejected}
                         accept="image/png, image/jpg, image/jpeg"
                         minSize={0}
-                        maxSize={5242880}
+                        maxSize={2097152}
                         multiple
                     >
                         {({
@@ -77,7 +84,7 @@ const EventPictureUploadForm = props => {
                                     {isDragActive
                                         ? "Drop it like it's hot!"
                                         : "Drag or click to upload a new image"}
-
+                                    <p>{errors}</p>
                                     <ul>
                                         {acceptedFiles.length > 0 &&
                                             acceptedFiles.map(

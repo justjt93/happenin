@@ -3685,7 +3685,7 @@ function __guardMethod__(obj, methodName, transform) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/dropzone.js */"./resources/js/dropzone.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\dropzone.js */"./resources/js/dropzone.js");
 
 
 /***/ })

@@ -7,6 +7,8 @@ import EventPictureUploadForm from "./EventPictureUploadForm.jsx";
 import { Button, Alert, Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 const BigDetail = props => {
+    const [user, setUser] = useState();
+    const [pictureUpload, setPictureUpload] = useState("")
     const { setBigDetailOpen, bigDetailOpen } = props;
 
     if (bigDetailOpen == null) return null;
@@ -23,6 +25,23 @@ const BigDetail = props => {
         }
         return "https://institutogoldenprana.com.br/wp-content/uploads/2015/08/no-avatar-25359d55aa3c93ab3466622fd2ce712d1.jpg";
     };
+
+    //fetches logged-in user
+    useEffect(() => {
+        const loggedInUser = document
+            .querySelector('meta[name="logged-in-user"]')
+            .getAttribute("content");
+        setUser(loggedInUser ? JSON.parse(loggedInUser) : loggedInUser);
+        console.log(loggedInUser);
+    }, []);
+
+    useEffect(() => {
+        if (user) {
+            setPictureUpload(<div className="infobox-ratingbtn-wrap">
+            <EventPictureUploadForm eventId={bigDetailOpen.id} />
+        </div>)
+        }
+    }, [user]);
 
     const comments = bigDetailOpen.comments.map(item => {
         const date = new Date(item.created_at);
@@ -43,11 +62,6 @@ const BigDetail = props => {
                 </CardBody>
             </Card>
         );
-    });
-
-    //debugging
-    useEffect(() => {
-        // console.log(bigDetailOpen);
     });
 
     const commentCallback = comment => {
@@ -75,9 +89,8 @@ const BigDetail = props => {
                     </Alert>
                 </div>
                 <p className="infobox-eventdesc">{bigDetailOpen.description}</p>
-                <div className="infobox-ratingbtn-wrap">
-                    <EventPictureUploadForm eventId={bigDetailOpen.id} />
-                </div>
+                {pictureUpload}
+                
             </div>
             <CommentEvent
                 eventId={bigDetailOpen.id}

@@ -34465,7 +34465,7 @@ module.exports = warning;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51467,8 +51467,12 @@ var UserDetail = function UserDetail() {
 
   var showOrHideEdit = function showOrHideEdit() {
     setEditPopup(!editPopup);
-  };
+  }; //debugging
 
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log(user.avatar);
+  }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-detail"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Menu_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -51478,7 +51482,7 @@ var UserDetail = function UserDetail() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Profile Page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "amazing-avatar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: user.avatar
+    src: user.avatar ? user.avatar : "https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPictureUploadForm_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], {
     user: user
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -51718,7 +51722,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/itana/web/Bootcamp/happenin/resources/js/user-detail.js */"./resources/js/user-detail.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\happenin\resources\js\user-detail.js */"./resources/js/user-detail.js");
 
 
 /***/ })
